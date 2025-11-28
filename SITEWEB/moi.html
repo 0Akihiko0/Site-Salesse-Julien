@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- BARRE DE SCROLL CUSTOM GLOBALE -->
+  <style>
+    /* Scroll Chrome, Edge, Safari */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1e1e1e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #6b21a8;
+      border-radius: 10px;
+      border: 3px solid #1e1e1e;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #9333ea;
+    }
+
+    /* Scroll Firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #6b21a8 #1e1e1e;
+    }
+
+    /* Forcer scroll au cas où */
+    html, body {
+      overflow-y: auto !important;
+    }
+  </style>
+
+</head>
+<body class="bg-[#252525] text-white font-sans overflow-y-scroll">
+
+  <!-- NAVIGATION FIXE -->
+  <nav class="fixed top-0 w-full flex justify-center bg-[#252525]/80 backdrop-blur-md py-4 z-50 shadow-lg">
+    <div class="flex space-x-4 flex-wrap justify-center">
+      <a href="home.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Home</a>
+      <a href="moi.html" class="px-4 py-2 rounded-lg font-semibold bg-purple-600 hover:bg-purple-500 transition">Moi</a>
+      <a href="experience.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Expériences</a>
+      <a href="skills.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Compétences</a>
+      <a href="projects.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Projets</a>
+      <a href="contact.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Contact</a>
+      <a href="cv.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">CV</a>
+    </div>
+  </nav>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="relative w-full flex flex-col items-center justify-start px-4 md:px-32 pt-32 pb-16 min-h-screen overflow-y-auto">
+
+    <!-- Section présentation -->
+    <section class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center w-full max-w-5xl">
+      <!-- Image -->
+      <div class="bg-[#1e1e1e] rounded-2xl p-4 shadow-2xl hover:shadow-purple-700/50 transition transform hover:-translate-y-2">
+        <img src="Photos/imgcode.png" alt="Moi" class="rounded-2xl w-full object-cover shadow-lg">
+      </div>
+
+      <!-- Texte -->
+      <div class="space-y-6">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-purple-300 drop-shadow-lg">À propos de moi</h1>
+        <p class="text-gray-300 text-base md:text-lg drop-shadow-md">
+          Je m'appelle Julien, je suis actuellement en classe de seconde et passionné par l’informatique et les nouvelles technologies. Curieux et motivé, j’aime relever des défis et apprendre chaque jour.
+        </p>
+        <p class="text-gray-300 text-base md:text-lg drop-shadow-md">
+          J’aborde les difficultés comme des opportunités d’apprentissage et je trouve toujours des solutions, avec l’aide d’outils modernes comme l’IA et des projets pratiques.
+        </p>
+        <p class="text-gray-300 text-base md:text-lg drop-shadow-md">
+          Je m’adapte facilement aux nouvelles situations et explore constamment de nouveaux outils, langages et technologies pour progresser et créer des projets toujours plus ambitieux.
+        </p>
+      </div>
+    </section>
+
+    <!-- Slider des atouts -->
+    <section class="mt-16 w-full max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-purple-300 drop-shadow-lg">Mes Atouts</h2>
+      <div class="relative w-full overflow-hidden">
+        <div id="slider" class="flex transition-transform duration-500 ease-in-out">
+          <!-- Carte 1 -->
+          <div class="flex-none w-full sm:w-3/4 md:w-full p-4">
+            <div class="bg-[#1e1e1e] rounded-2xl p-8 shadow-2xl text-center hover:shadow-purple-700/50 transition transform hover:-translate-y-2">
+              <div class="text-purple-500 text-5xl mb-4">🧠</div>
+              <h3 class="text-2xl font-bold mb-2">Curiosité</h3>
+              <p class="text-gray-300">Toujours prêt à explorer de nouvelles technologies et à apprendre rapidement.</p>
+            </div>
+          </div>
+          <!-- Carte 2 -->
+          <div class="flex-none w-full sm:w-3/4 md:w-full p-4">
+            <div class="bg-[#1e1e1e] rounded-2xl p-8 shadow-2xl text-center hover:shadow-purple-700/50 transition transform hover:-translate-y-2">
+              <div class="text-purple-500 text-5xl mb-4">🎨</div>
+              <h3 class="text-2xl font-bold mb-2">Créativité</h3>
+              <p class="text-gray-300">Je combine imagination et technique pour créer des projets uniques.</p>
+            </div>
+          </div>
+          <!-- Carte 3 -->
+          <div class="flex-none w-full sm:w-3/4 md:w-full p-4">
+            <div class="bg-[#1e1e1e] rounded-2xl p-8 shadow-2xl text-center hover:shadow-purple-700/50 transition transform hover:-translate-y-2">
+              <div class="text-purple-500 text-5xl mb-4">💪</div>
+              <h3 class="text-2xl font-bold mb-2">Persévérance</h3>
+              <p class="text-gray-300">Je ne lâche jamais face aux défis et trouve toujours une solution.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flèches -->
+        <button id="prev" class="absolute top-1/2 -translate-y-1/2 left-0 bg-purple-600/70 hover:bg-purple-500 text-white rounded-full p-3 shadow-lg hidden">&#8592;</button>
+        <button id="next" class="absolute top-1/2 -translate-y-1/2 right-0 bg-purple-600/70 hover:bg-purple-500 text-white rounded-full p-3 shadow-lg">&#8594;</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const slider = document.getElementById('slider');
+    const slides = slider.children;
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    let index = 0;
+
+    function updateSlider() {
+      slider.style.transform = `translateX(-${index * 100}%)`;
+      prevBtn.style.display = index === 0 ? 'none' : 'block';
+      nextBtn.style.display = index === slides.length - 1 ? 'none' : 'block';
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if(index > 0) index--;
+      updateSlider();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if(index < slides.length - 1) index++;
+      updateSlider();
+    });
+
+    updateSlider();
+  </script>
+
+</body>
+</html>
