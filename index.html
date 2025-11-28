@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+
+  <!-- Spline Viewer -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.2/build/spline-viewer.js"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#252525] text-white font-sans overflow-hidden">
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 w-full flex justify-center bg-[#252525]/80 backdrop-blur-md py-4 z-50 shadow-lg">
+    <div class="flex space-x-4 flex-wrap justify-center">
+      <a href="home.html" class="px-4 py-2 rounded-lg font-semibold bg-purple-600 hover:bg-purple-500 hover:bg-white/20 transition">Home</a>
+      <a href="moi.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Moi</a>
+      <a href="experience.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Expériences</a>
+      <a href="skills.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Compétences</a>
+      <a href="projects.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Projets</a>
+      <a href="contact.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Contact</a>
+      <a href="cv.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">CV</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HOME -->
+  <main class="relative w-full h-screen flex items-center justify-end px-8 md:px-32">
+    <!-- Fond Spline interactif -->
+    <div class="fixed top-0 left-0 w-full h-full z-0 pointer-events-auto">
+      <spline-viewer
+        url="https://prod.spline.design/L1I5DTUmbdl7ouW4/scene.splinecode"
+        style="width:100%; height:100%;"
+        interaction-enable
+      ></spline-viewer>
+    </div>
+
+    <!-- Texte à droite -->
+    <div class="max-w-xl text-right z-10 pointer-events-auto">
+      <h1 class="text-6xl md:text-7xl font-extrabold text-purple-300 mb-6 drop-shadow-lg">Bienvenue sur mon site !</h1>
+      <p class="mb-8 text-gray-300 text-lg md:text-xl drop-shadow-md">
+        Ici, vous pourrez découvrir tout ce qu’il y a à savoir sur moi : mon parcours, mes expériences, mes compétences et, bien sûr, mes projets. Chaque section a été pensée pour vous donner une vision complète de mon univers et de mon travail.
+      </p>
+      <a href="moi.html" class="px-6 py-3 bg-purple-600 rounded-lg font-semibold hover:bg-purple-500 shadow-lg transition duration-300 transform hover:-translate-y-1">
+        En apprendre plus sur moi !
+      </a>
+    </div>
+  </main>
+
+</body>
+</html>
