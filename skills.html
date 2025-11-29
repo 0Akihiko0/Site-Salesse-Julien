@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compétences</title>
+  <link rel="icon" type="image/png" href="Favicon.png?v=1">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Scrollbar custom -->
+  <style>
+    /* Scroll global Chrome, Edge, Safari */
+    ::-webkit-scrollbar { width: 12px; }
+    ::-webkit-scrollbar-track { background: #1e1e1e; }
+    ::-webkit-scrollbar-thumb { background: #6b21a8; border-radius: 10px; border: 3px solid #1e1e1e; }
+    ::-webkit-scrollbar-thumb:hover { background: #9333ea; }
+
+    /* Scroll Firefox */
+    * { scrollbar-width: thin; scrollbar-color: #6b21a8 #1e1e1e; }
+
+    html, body, .overflow-y-scroll, .overflow-auto { overflow-y: auto !important; }
+  </style>
+</head>
+<body class="bg-[#252525] text-white font-sans overflow-y-scroll">
+
+  <!-- NAVIGATION CLASSIQUE (grand écran) -->
+  <nav class="hidden md:flex fixed top-0 w-full justify-center bg-[#252525]/80 backdrop-blur-md py-4 z-50 shadow-lg">
+    <div class="flex space-x-4 flex-wrap justify-center">
+      <a href="index.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Home</a>
+      <a href="moi.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Moi</a>
+      <a href="experience.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Expériences</a>
+      <a href="skills.html" class="px-4 py-2 rounded-lg font-semibold bg-purple-600 hover:bg-purple-500 transition">Compétences</a>
+      <a href="projects.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Projets</a>
+      <a href="contact.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Contact</a>
+      <a href="cv.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">CV</a>
+      <a href="voyages.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Voyages</a>
+    </div>
+  </nav>
+
+  <!-- NAVIGATION BURGER (petit écran) -->
+  <div class="md:hidden fixed top-0 left-0 w-full bg-[#252525]/90 backdrop-blur-md z-50 flex justify-between items-center p-4 shadow-lg">
+    <span class="text-purple-300 font-bold text-xl">Menu</span>
+    <button id="burgerBtn" class="text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- MENU BURGER TOUTE LARGEUR -->
+  <div id="burgerMenu" class="fixed top-0 left-0 w-full h-auto bg-[#1e1e1e] shadow-xl transform -translate-x-full transition-transform z-50">
+    <button id="closeBurger" class="absolute top-4 right-4 text-gray-300 hover:text-white text-3xl">&times;</button>
+    <div class="flex flex-col mt-16 space-y-4 px-6 pb-6">
+      <a href="index.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Home</a>
+      <a href="moi.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Moi</a>
+      <a href="experience.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Expériences</a>
+      <a href="skills.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Compétences</a>
+      <a href="projects.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Projets</a>
+      <a href="contact.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Contact</a>
+      <a href="cv.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">CV</a>
+      <a href="voyages.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Voyages</a>
+    </div>
+  </div>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="pt-32 px-4 md:px-16 lg:px-32 pb-16 flex flex-col items-center min-h-screen overflow-y-auto">
+
+    <h1 class="text-4xl md:text-5xl font-extrabold text-purple-300 mb-12 drop-shadow-lg text-center">
+      Mes Compétences
+    </h1>
+
+    <div class="flex flex-col md:flex-row gap-8 w-full max-w-5xl">
+
+      <!-- Colonne gauche : compétences avec jauges -->
+      <div class="flex-1 flex flex-col space-y-6">
+        <div class="bg-[#1e1e1e] rounded-3xl p-6 shadow-2xl shadow-purple-900/30 border border-purple-700/40">
+          <h2 class="text-xl font-bold text-purple-300 mb-4">Programmation</h2>
+          <div class="w-full bg-[#252525] rounded-full h-6 mb-2 max-w-[500px]">
+            <div class="bg-purple-600 h-6 rounded-full" style="width: 45%;"></div>
+          </div>
+          <p class="text-gray-300">Python, HTML/CSS</p>
+        </div>
+        <div class="bg-[#1e1e1e] rounded-3xl p-6 shadow-2xl shadow-purple-900/30 border border-purple-700/40">
+          <h2 class="text-xl font-bold text-purple-300 mb-4">Robotique</h2>
+          <div class="w-full bg-[#252525] rounded-full h-6 mb-2 max-w-[500px]">
+            <div class="bg-purple-600 h-6 rounded-full" style="width: 85%;"></div>
+          </div>
+          <p class="text-gray-300">Capteurs, programmation robotique avec blocs</p>
+        </div>
+        <div class="bg-[#1e1e1e] rounded-3xl p-6 shadow-2xl shadow-purple-900/30 border border-purple-700/40">
+          <h2 class="text-xl font-bold text-purple-300 mb-4">Créativité / Design</h2>
+          <div class="w-full bg-[#252525] rounded-full h-6 mb-2 max-w-[500px]">
+            <div class="bg-purple-600 h-6 rounded-full" style="width: 80%;"></div>
+          </div>
+          <p class="text-gray-300">Graphisme, conception de projets, imagination pratique</p>
+        </div>
+        <div class="bg-[#1e1e1e] rounded-3xl p-6 shadow-2xl shadow-purple-900/30 border border-purple-700/40">
+          <h2 class="text-xl font-bold text-purple-300 mb-4">Travail en équipe</h2>
+          <div class="w-full bg-[#252525] rounded-full h-6 mb-2 max-w-[500px]">
+            <div class="bg-purple-600 h-6 rounded-full" style="width: 95%;"></div>
+          </div>
+          <p class="text-gray-300">Communication, organisation, gestion de projet collaboratif</p>
+        </div>
+        <div class="bg-[#1e1e1e] rounded-3xl p-6 shadow-2xl shadow-purple-900/30 border border-purple-700/40">
+          <h2 class="text-xl font-bold text-purple-300 mb-4">Curiosité & Persévérance</h2>
+          <div class="w-full bg-[#252525] rounded-full h-6 mb-2 max-w-[500px]">
+            <div class="bg-purple-600 h-6 rounded-full" style="width: 100%;"></div>
+          </div>
+          <p class="text-gray-300">Toujours motivé à explorer de nouvelles technologies et apprendre rapidement</p>
+        </div>
+      </div>
+
+      <!-- Colonne droite : compétences déjà acquises -->
+      <div class="flex-1 flex flex-col justify-start space-y-6 overflow-y-auto">
+        <div class="bg-[#1e1e1e] rounded-3xl p-6 shadow-2xl shadow-purple-900/30 border border-purple-700/40 h-full">
+          <h2 class="text-xl font-bold text-purple-300 mb-4">Compétences déjà acquises</h2>
+          <ul class="list-disc list-inside text-gray-300 space-y-2">
+            <br><li>Coder en blocs</li>
+            <br><li>Réaliser un cahier des charges (en respectant les consignes)</li>
+            <br><li>Initiation aux réseaux et protocoles</li>
+            <br><li>Conception de circuits électroniques simples</li>
+            <br><li>Communiquer efficacement avec l’IA</li>
+            <br><li>Prise de parole et présentation de projets</li>
+            <br><li>Adaptation rapide à de nouveaux outils ou logiciels</li>
+            <br><li>Utilisation des outils Canva</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- SCRIPT BURGER -->
+  <script>
+    const burgerBtn = document.getElementById("burgerBtn");
+    const closeBurger = document.getElementById("closeBurger");
+    const burgerMenu = document.getElementById("burgerMenu");
+
+    burgerBtn.addEventListener("click", () => {
+      burgerMenu.classList.remove("-translate-x-full");
+    });
+
+    closeBurger.addEventListener("click", () => {
+      burgerMenu.classList.add("-translate-x-full");
+    });
+  </script>
+
+</body>
+</html>

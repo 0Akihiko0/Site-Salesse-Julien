@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voyages</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="Favicon.png?v=1">
+
+  <style>
+    /* Scroll Chrome, Edge, Safari */
+    ::-webkit-scrollbar { width: 12px; }
+    ::-webkit-scrollbar-track { background: #1e1e1e; }
+    ::-webkit-scrollbar-thumb { background: #6b21a8; border-radius: 10px; border: 3px solid #1e1e1e; }
+    ::-webkit-scrollbar-thumb:hover { background: #9333ea; }
+
+    /* Scroll Firefox */
+    * { scrollbar-width: thin; scrollbar-color: #6b21a8 #1e1e1e; }
+
+    html, body { overflow-y: auto !important; }
+  </style>
+</head>
+<body class="bg-[#252525] text-white font-sans overflow-y-scroll">
+
+  <!-- NAVIGATION CLASSIQUE -->
+  <nav class="hidden md:flex fixed top-0 w-full justify-center bg-[#252525]/80 backdrop-blur-md py-4 z-50 shadow-lg">
+    <div class="flex space-x-4 flex-wrap justify-center">
+      <a href="index.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Home</a>
+      <a href="moi.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Moi</a>
+      <a href="experience.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Expériences</a>
+      <a href="skills.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Compétences</a>
+      <a href="projects.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Projets</a>
+      <a href="contact.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Contact</a>
+      <a href="cv.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">CV</a>
+      <a href="voyages.html" class="px-4 py-2 rounded-lg font-semibold bg-purple-600 hover:bg-purple-500 transition">Voyages</a>
+    </div>
+  </nav>
+
+  <!-- NAVIGATION BURGER -->
+  <div class="md:hidden fixed top-0 left-0 w-full bg-[#252525]/90 backdrop-blur-md z-50 flex justify-between items-center p-4 shadow-lg">
+    <span class="text-purple-300 font-bold text-xl">Menu</span>
+    <button id="burgerBtn" class="text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- MENU BURGER -->
+  <div id="burgerMenu" class="fixed top-0 left-0 w-full h-auto bg-[#1e1e1e] shadow-xl transform -translate-x-full transition-transform z-50">
+    <button id="closeBurger" class="absolute top-4 right-4 text-gray-300 hover:text-white text-3xl">&times;</button>
+    <div class="flex flex-col mt-16 space-y-4 px-6 pb-6">
+      <a href="index.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Home</a>
+      <a href="moi.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Moi</a>
+      <a href="experience.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Expériences</a>
+      <a href="skills.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Compétences</a>
+      <a href="projects.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Projets</a>
+      <a href="contact.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Contact</a>
+      <a href="cv.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">CV</a>
+      <a href="voyages.html" class="text-purple-300 font-semibold text-xl hover:text-white transition">Voyages</a>
+    </div>
+  </div>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="pt-32 px-4 md:px-32 pb-16 flex flex-col items-center min-h-screen">
+
+    <h1 class="text-4xl md:text-5xl font-extrabold text-purple-300 mb-12 drop-shadow-lg text-center">
+      Mes Voyages
+    </h1>
+
+    <h2 class="text-2xl md:text-2xl font-extrabold text-purple-300 mb-12 drop-shadow-lg text-center">Mes voyages m'ont permis d'enrichir ma culture, de découvrir de nouvelles traditions et de m'immerger dans différentes ambiances linguistiques, notamment en pratiquant l'anglais et d'autres langues locales.</h2>
+
+    <!-- Section voyages -->
+    <div class="grid md:grid-cols-2 gap-8 w-full max-w-5xl">
+
+      <!-- Miami -->
+      <div class="bg-[#1e1e1e] rounded-2xl p-6 shadow-2xl shadow-purple-900/30 border border-purple-700/40">
+        <h2 class="text-2xl font-bold text-purple-300 mb-4">États-Unis, Floride</h2>
+        <p class="text-gray-300 mb-4">Découverte de la plage et de la ville de Miami.</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d460033.90863739623!2d-80.32475367410902!3d25.737020470253103!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20Floride%2C%20%C3%89tats-Unis!5e0!3m2!1sfr!2sfr!4v1764436198342!5m2!1sfr!2sfr" class="w-full h-64 rounded-xl" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <!-- Canada -->
+      <div class="bg-[#1e1e1e] rounded-2xl p-6 shadow-2xl shadow-purple-900/30 border border-purple-700/40">
+        <h2 class="text-2xl font-bold text-purple-300 mb-4">Canada</h2>
+        <p class="text-gray-300 mb-4">Voyage dans les villes et paysages naturels du Canada en hiver.</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2785929.016265319!2d-123.36564434440022!3d53.72666825000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5346edcd9dfb9bff%3A0x1f6db7e9b67c7f6a!2sCanada!5e0!3m2!1sfr!2sfr!4v1700000000001!5m2!1sfr!2sfr" class="w-full h-64 rounded-xl" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <!-- Dubai -->
+      <div class="bg-[#1e1e1e] rounded-2xl p-6 shadow-2xl shadow-purple-900/30 border border-purple-700/40">
+        <h2 class="text-2xl font-bold text-purple-300 mb-4">Émirats Arabes Unis</h2>
+        <p class="text-gray-300 mb-4">Visite de la ville moderne et du désert de Dubai.</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.869243143738!2d55.27228358497714!3d25.204849583827528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f4342b96a1d77%3A0x600c3b3d0b3f0b8!2sDuba%C3%AF%2C%20%C3%89mirats%20Arabes%20Unis!5e0!3m2!1sfr!2sfr!4v1700000000002!5m2!1sfr!2sfr" class="w-full h-64 rounded-xl" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <!-- Espagne -->
+      <div class="bg-[#1e1e1e] rounded-2xl p-6 shadow-2xl shadow-purple-900/30 border border-purple-700/40">
+        <h2 class="text-2xl font-bold text-purple-300 mb-4">Espagne</h2>
+        <p class="text-gray-300 mb-4">Découverte de Barcelone.</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d271024.68047522666!2d2.0931361161984596!3d41.36478587256374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49816718e30e5%3A0x44b0fb3d4f47660a!2sBarcelone%2C%20Espagne!5e0!3m2!1sfr!2sfr!4v1764436512392!5m2!1sfr!2sfr" class="w-full h-64 rounded-xl" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <!-- Italie -->
+      <div class="bg-[#1e1e1e] rounded-2xl p-6 shadow-2xl shadow-purple-900/30 border border-purple-700/40">
+        <h2 class="text-2xl font-bold text-purple-300 mb-4">Italie</h2>
+        <p class="text-gray-300 mb-4">Naples et découverte de Pompei.</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d163144.7483660327!2d14.22824988975174!3d40.806073977662635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133bbc95914ba4ef%3A0xd2d18a72aeb414a4!2s80045%20Pompei%2C%20Naples%2C%20Italie!5e0!3m2!1sfr!2sfr!4v1764436641866!5m2!1sfr!2sfr" class="w-full h-64 rounded-xl" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <!-- Tunisie -->
+      <div class="bg-[#1e1e1e] rounded-2xl p-6 shadow-2xl shadow-purple-900/30 border border-purple-700/40">
+        <h2 class="text-2xl font-bold text-purple-300 mb-4">Tunisie</h2>
+        <p class="text-gray-300 mb-4">Découverte de Tunis.</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2974781.709711949!2d8.78047308851165!3d35.97167682147927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd337f5e7ef543%3A0xd671924e714a0275!2sTunis%2C%20Tunisie!5e0!3m2!1sfr!2sfr!4v1764436729482!5m2!1sfr!2sfr" class="w-full h-64 rounded-xl" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    const burgerBtn = document.getElementById("burgerBtn");
+    const closeBurger = document.getElementById("closeBurger");
+    const burgerMenu = document.getElementById("burgerMenu");
+
+    burgerBtn.addEventListener("click", () => {
+      burgerMenu.classList.remove("-translate-x-full");
+    });
+
+    closeBurger.addEventListener("click", () => {
+      burgerMenu.classList.add("-translate-x-full");
+    });
+  </script>
+
+</body>
+</html>
