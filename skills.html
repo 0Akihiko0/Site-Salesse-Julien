@@ -139,23 +139,19 @@
 
   <!-- SCRIPT BURGER -->
   <script>
-    const burgerBtn = document.getElementById("burgerBtn");
-    const closeBurger = document.getElementById("closeBurger");
-    const burgerMenu = document.getElementById("burgerMenu");
-    const burgerIcon = document.getElementById("burgerIcon");
+  const burgerBtn = document.getElementById("burgerBtn");
+  const closeBurger = document.getElementById("closeBurger");
+  const burgerMenu = document.getElementById("burgerMenu");
 
-    burgerBtn.addEventListener("click", () => {
-      burgerMenu.classList.remove("-translate-x-full");
-      // Transformer le burger en croix
-      burgerIcon.outerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
-    });
+  burgerBtn.addEventListener("click", () => {
+    burgerMenu.classList.remove("-translate-x-full");
+  });
 
-    closeBurger.addEventListener("click", () => {
-      burgerMenu.classList.add("-translate-x-full");
-      // Remettre la croix en burger
-      burgerIcon.outerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>';
-    });
-  </script>
+  closeBurger.addEventListener("click", () => {
+    burgerMenu.classList.add("-translate-x-full");
+  });
+</script>
 
 </body>
 </html>
+
