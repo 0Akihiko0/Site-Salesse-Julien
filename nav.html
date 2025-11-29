@@ -1,4 +1,5 @@
 <!-- NAVIGATION POUR GRAND ET PETIT ÉCRAN -->
+
 <!-- Nav classique (grand écran) -->
 <div class="hidden md:flex fixed top-0 w-full justify-center bg-[#252525]/80 backdrop-blur-md py-4 z-50 shadow-lg">
   <div class="flex space-x-4 flex-wrap justify-center">
@@ -16,14 +17,12 @@
 <div class="md:hidden fixed top-0 w-full z-50 bg-[#252525]/90 backdrop-blur-md shadow-lg">
   <div class="flex justify-between items-center px-4 py-4">
     <span class="text-purple-300 font-bold text-xl">Menu</span>
-    <button id="burger-btn" class="text-white focus:outline-none">
-      <!-- 3 petits traits -->
+    <button id="burger-btn" class="text-white focus:outline-none relative z-[999]">
       <div class="w-6 h-0.5 bg-white mb-1"></div>
       <div class="w-6 h-0.5 bg-white mb-1"></div>
       <div class="w-6 h-0.5 bg-white"></div>
     </button>
   </div>
-  <!-- Menu qui apparaît -->
   <div id="burger-menu" class="hidden flex flex-col bg-[#1e1e1e] border-t border-purple-700/40">
     <a href="index.html" class="px-4 py-3 hover:bg-purple-600/30 transition">Home</a>
     <a href="moi.html" class="px-4 py-3 hover:bg-purple-600/30 transition">Moi</a>
@@ -35,18 +34,7 @@
   </div>
 </div>
 
-<script>
-  // Script pour ouvrir/fermer le menu burger
-  const burgerBtn = document.getElementById('burger-btn');
-  const burgerMenu = document.getElementById('burger-menu');
-
-  burgerBtn.addEventListener('click', () => {
-    burgerMenu.classList.toggle('hidden');
-  });
-</script>
-
 <style>
-  /* Petite animation sur les liens */
   #burger-menu a:hover {
     transform: translateX(4px);
     transition: all 0.2s ease-in-out;
