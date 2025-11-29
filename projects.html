@@ -50,17 +50,12 @@ Sous licence ISC. Voir https://lucide.dev/ pour les détails.
 <body class="bg-[#252525] text-white font-sans">
 
   <!-- NAVIGATION -->
-  <nav class="fixed top-0 w-full flex justify-center bg-[#252525]/80 backdrop-blur-md py-4 z-50 shadow-lg">
-    <div class="flex space-x-4 flex-wrap justify-center">
-      <a href="index.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Home</a>
-      <a href="moi.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Moi</a>
-      <a href="experience.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Expériences</a>
-      <a href="skills.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Compétences</a>
-      <a href="projects.html" class="px-4 py-2 rounded-lg font-semibold bg-purple-600 hover:bg-purple-500 transition">Projets</a>
-      <a href="contact.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Contact</a>
-      <a href="cv.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">CV</a>
-    </div>
-  </nav>
+  <div id="nav-placeholder"></div>
+<script>
+  fetch('nav.html')
+    .then(res => res.text())
+    .then(html => { document.getElementById('nav-placeholder').innerHTML = html; });
+</script>
 
   <!-- MAIN -->
   <main class="pt-32 px-6 md:px-20 pb-20 min-h-screen flex flex-col items-center">
@@ -254,4 +249,5 @@ Ce site représente donc une combinaison de mes connaissances techniques, de mes
 </body>
 
 </html>
+
 
