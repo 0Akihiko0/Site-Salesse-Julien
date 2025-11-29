@@ -50,11 +50,22 @@ Sous licence ISC. Voir https://lucide.dev/ pour les détails.
 <body class="bg-[#252525] text-white font-sans">
 
   <!-- NAVIGATION -->
-  <div id="nav-placeholder"></div>
-<script>
+  <script>
   fetch('nav.html')
     .then(res => res.text())
-    .then(html => { document.getElementById('nav-placeholder').innerHTML = html; });
+    .then(html => {
+      document.getElementById('nav-placeholder').innerHTML = html;
+
+      // IMPORTANT : réactiver le script du menu burger
+      const burgerBtn = document.getElementById('burger-btn');
+      const burgerMenu = document.getElementById('burger-menu');
+
+      if (burgerBtn) {
+        burgerBtn.addEventListener('click', () => {
+          burgerMenu.classList.toggle('hidden');
+        });
+      }
+    });
 </script>
 
   <!-- MAIN -->
@@ -249,5 +260,6 @@ Ce site représente donc une combinaison de mes connaissances techniques, de mes
 </body>
 
 </html>
+
 
 
