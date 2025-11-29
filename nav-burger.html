@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Burger</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <iframe src="nav-burger.html" class="md:hidden w-full h-0 border-0"></iframe>
+  <link rel="icon" type="image/png" href="Favicon.png?v=1">
+
+  <style>
+    /* Fond et style du menu burger */
+    #burgerMenu {
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(-100%);
+    }
+    #burgerMenu.open {
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body class="bg-[#252525]">
+
+  <!-- BOUTON BURGER FIXE EN HAUT DROITE -->
+  <button id="burgerButton" class="fixed top-4 right-4 z-50 flex flex-col justify-between w-10 h-10">
+    <span class="block h-1 w-full bg-purple-300 rounded"></span>
+    <span class="block h-1 w-full bg-purple-300 rounded"></span>
+    <span class="block h-1 w-full bg-purple-300 rounded"></span>
+  </button>
+
+  <!-- MENU SLIDE -->
+  <nav id="burgerMenu" class="fixed top-0 left-0 w-64 h-full bg-[#1e1e1e] shadow-2xl border-r border-purple-700/40 z-40 p-8 flex flex-col space-y-6">
+    <a href="home.html" class="text-white font-semibold text-lg hover:text-purple-400 transition">Home</a>
+    <a href="moi.html" class="text-white font-semibold text-lg hover:text-purple-400 transition">Moi</a>
+    <a href="experience.html" class="text-white font-semibold text-lg hover:text-purple-400 transition">Expériences</a>
+    <a href="skills.html" class="text-white font-semibold text-lg hover:text-purple-400 transition">Compétences</a>
+    <a href="projects.html" class="text-white font-semibold text-lg hover:text-purple-400 transition">Projets</a>
+    <a href="contact.html" class="text-white font-semibold text-lg hover:text-purple-400 transition">Contact</a>
+    <a href="cv.html" class="text-white font-semibold text-lg hover:text-purple-400 transition">CV</a>
+  </nav>
+
+  <script>
+    const burgerButton = document.getElementById('burgerButton');
+    const burgerMenu = document.getElementById('burgerMenu');
+
+    // Ouvrir/fermer le menu
+    burgerButton.addEventListener('click', () => {
+      burgerMenu.classList.toggle('open');
+    });
+
+    // Fermer le menu si on clique en dehors
+    document.addEventListener('click', (e) => {
+      if (!burgerMenu.contains(e.target) && !burgerButton.contains(e.target)) {
+        burgerMenu.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
