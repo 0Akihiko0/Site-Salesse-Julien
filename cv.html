@@ -6,57 +6,38 @@
   <title>CV</title>
   <link rel="icon" type="image/png" href="Favicon.png?v=1">
 
-
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Spline Viewer -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.5/build/spline-viewer.js"></script>
+
   <!-- BARRE DE SCROLL CUSTOM -->
   <style>
-    /* Scroll global */
-    ::-webkit-scrollbar {
-      width: 12px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #1e1e1e;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #6b21a8;
-      border-radius: 10px;
-      border: 3px solid #1e1e1e;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #9333ea;
-    }
-
-    /* Scroll Firefox */
-    * {
-      scrollbar-width: thin;
-      scrollbar-color: #6b21a8 #1e1e1e;
-    }
-
-    html, body {
-      overflow-y: auto !important;
-    }
-
-    /* Scroll pour les popups éventuelles */
-    .popup-content::-webkit-scrollbar {
-      width: 12px;
-    }
-    .popup-content::-webkit-scrollbar-track {
-      background: #1e1e1e;
-      border-radius: 10px;
-    }
-    .popup-content::-webkit-scrollbar-thumb {
-      background: #7e22ce;
-      border-radius: 12px;
-    }
-    .popup-content::-webkit-scrollbar-thumb:hover {
-      background: #a855f7;
-    }
+    ::-webkit-scrollbar { width: 12px; }
+    ::-webkit-scrollbar-track { background: #1e1e1e; }
+    ::-webkit-scrollbar-thumb { background: #6b21a8; border-radius: 10px; border: 3px solid #1e1e1e; }
+    ::-webkit-scrollbar-thumb:hover { background: #9333ea; }
+    * { scrollbar-width: thin; scrollbar-color: #6b21a8 #1e1e1e; }
+    html, body { overflow-y: auto !important; }
   </style>
 </head>
 
-<body class="bg-[#252525] text-white font-sans overflow-y-scroll">
+<body class="bg-[#252525] text-white font-sans overflow-y-scroll relative">
+
+  <!-- Spline en fond -->
+  <spline-viewer 
+    url="https://prod.spline.design/VPgDvr2ll2ntQNX2/scene.splinecode"
+    style="
+      position: fixed;
+      top: 64px; /* hauteur nav */
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - 64px);
+      z-index: -1; /* derrière tout */
+      pointer-events: none; /* bloque interaction */
+    ">
+  </spline-viewer>
 
   <!-- NAVIGATION CLASSIQUE (grand écran) -->
   <nav class="hidden md:flex fixed top-0 w-full justify-center bg-[#252525]/80 backdrop-blur-md py-4 z-50 shadow-lg">
@@ -98,7 +79,7 @@
   </div>
 
   <!-- CONTENU PRINCIPAL -->
-  <main class="pt-28 px-4 md:px-8 flex flex-col items-center min-h-screen">
+  <main class="pt-28 px-4 md:px-8 flex flex-col items-center min-h-screen relative z-10">
 
     <!-- CARTE CV -->
     <div class="bg-[#1e1e1e] rounded-3xl border border-purple-700/40 shadow-2xl shadow-purple-900/30 p-6 md:p-10 max-w-md w-full flex flex-col items-center space-y-6">
