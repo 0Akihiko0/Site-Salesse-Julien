@@ -7,56 +7,43 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" type="image/png" href="Favicon.png?v=1">
 
+  <!-- Spline Viewer -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.5/build/spline-viewer.js"></script>
 
-  <!-- BARRE DE SCROLL CUSTOM -->
   <style>
     /* Scroll global */
-    ::-webkit-scrollbar {
-      width: 12px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #1e1e1e;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #6b21a8;
-      border-radius: 10px;
-      border: 3px solid #1e1e1e;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #9333ea;
-    }
+    ::-webkit-scrollbar { width: 12px; }
+    ::-webkit-scrollbar-track { background: #1e1e1e; }
+    ::-webkit-scrollbar-thumb { background: #6b21a8; border-radius: 10px; border: 3px solid #1e1e1e; }
+    ::-webkit-scrollbar-thumb:hover { background: #9333ea; }
+    * { scrollbar-width: thin; scrollbar-color: #6b21a8 #1e1e1e; }
+    html, body { overflow-y: auto !important; }
 
-    /* Scroll Firefox */
-    * {
-      scrollbar-width: thin;
-      scrollbar-color: #6b21a8 #1e1e1e;
-    }
+    /* Scroll popups */
+    .popup-content::-webkit-scrollbar { width: 12px; }
+    .popup-content::-webkit-scrollbar-track { background: #1e1e1e; border-radius: 10px; }
+    .popup-content::-webkit-scrollbar-thumb { background: #7e22ce; border-radius: 12px; }
+    .popup-content::-webkit-scrollbar-thumb:hover { background: #a855f7; }
 
-    html, body {
-      overflow-y: auto !important;
-    }
-
-    /* Scroll pour les popups éventuelles */
-    .popup-content::-webkit-scrollbar {
-      width: 12px;
-    }
-    .popup-content::-webkit-scrollbar-track {
-      background: #1e1e1e;
-      border-radius: 10px;
-    }
-    .popup-content::-webkit-scrollbar-thumb {
-      background: #7e22ce;
-      border-radius: 12px;
-    }
-    .popup-content::-webkit-scrollbar-thumb:hover {
-      background: #a855f7;
+    /* Spline en fond */
+    spline-viewer {
+      position: fixed;
+      top: 64px; /* hauteur nav */
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - 64px);
+      z-index: 0;
+      pointer-events: none; /* empêche interaction */
     }
   </style>
 </head>
 
 <body class="bg-[#252525] text-white font-sans overflow-y-scroll">
 
-  <!-- NAVIGATION CLASSIQUE (grand écran) -->
+  <!-- Spline en fond -->
+  <spline-viewer url="https://prod.spline.design/VPgDvr2ll2ntQNX2/scene.splinecode"></spline-viewer>
+
+  <!-- NAVIGATION CLASSIQUE -->
   <nav class="hidden md:flex fixed top-0 w-full justify-center bg-[#252525]/80 backdrop-blur-md py-4 z-50 shadow-lg">
     <div class="flex space-x-4 flex-wrap justify-center">
       <a href="index.html" class="px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Home</a>
@@ -70,7 +57,7 @@
     </div>
   </nav>
 
-  <!-- NAVIGATION BURGER (petit écran) -->
+  <!-- NAVIGATION BURGER -->
   <div class="md:hidden fixed top-0 left-0 w-full bg-[#252525]/90 backdrop-blur-md z-50 flex justify-between items-center p-4 shadow-lg">
     <span class="text-purple-300 font-bold text-xl">Menu</span>
     <button id="burgerBtn" class="text-white">
@@ -80,7 +67,6 @@
     </button>
   </div>
 
-  <!-- MENU BURGER TOUTE LARGEUR -->
   <div id="burgerMenu" class="fixed top-0 left-0 w-full h-auto bg-[#1e1e1e] shadow-xl transform -translate-x-full transition-transform z-50">
     <button id="closeBurger" class="absolute top-4 right-4 text-gray-300 hover:text-white text-3xl">&times;</button>
     <div class="flex flex-col mt-16 space-y-4 px-6 pb-6">
@@ -96,30 +82,21 @@
   </div>
 
   <!-- CONTENU -->
-  <main class="flex items-center justify-center min-h-screen px-4 md:px-8 pt-28">
+  <main class="flex items-center justify-center min-h-screen px-4 md:px-8 pt-28 relative z-10">
 
-    <!-- CARTE CONTACT AGRANDIE -->
     <div class="bg-[#1e1e1e] rounded-3xl border border-purple-700/40 shadow-2xl shadow-purple-900/30 p-6 md:p-14 w-full max-w-lg md:max-w-2xl flex flex-col space-y-6">
-
-      <!-- TITRE -->
       <h1 class="text-4xl md:text-5xl font-extrabold text-purple-300 text-center drop-shadow-lg">
         Me Contacter
       </h1>
-
-      <!-- DESCRIPTION -->
       <p class="text-gray-300 text-center text-base md:text-lg drop-shadow-md">
         Besoin d’informations, envie de me prendre en stage de seconde ?  
         Vous pouvez me contacter via le moyen ci-dessous.
       </p>
-
-      <!-- DISPONIBILITÉ -->
       <div id="availability" class="bg-[#252525]/70 p-6 md:p-8 rounded-2xl shadow-lg border border-purple-700/40 text-center">
         <h2 class="text-xl font-semibold mb-1">Disponible pour un stage</h2>
         <p id="availability-text" class="text-gray-300 font-medium">Chargement...</p>
         <p id="availability-dates" class="text-gray-400"></p>
       </div>
-
-      <!-- CONTACT EMAIL -->
       <div class="flex flex-col md:flex-row items-center gap-4 bg-[#252525]/60 p-4 rounded-xl border border-purple-700/40">
         <svg class="w-10 h-10 text-purple-300" fill="none" stroke="currentColor" stroke-width="1.5"
           viewBox="0 0 24 24" aria-hidden="true">
@@ -134,19 +111,16 @@
           Copier
         </button>
       </div>
-
     </div>
 
   </main>
 
   <script>
-    // Configuration disponibilité
-    const AVAILABLE = true; // true = oui, false = non
-    const AVAILABLE_DATES = ""; // Ex: "Du 01/07/2025 au 31/08/2025"
-
+    // Disponibilité
+    const AVAILABLE = true;
+    const AVAILABLE_DATES = "";
     const availTextEl = document.getElementById('availability-text');
     const availDatesEl = document.getElementById('availability-dates');
-
     if (AVAILABLE) {
       availTextEl.innerText = "✔ Oui, je suis disponible.";
       availTextEl.className = "text-green-400 font-semibold";
@@ -160,33 +134,17 @@
     // Copier email
     document.getElementById("copy-btn").addEventListener("click", async () => {
       const text = document.getElementById("email-text").innerText.trim();
-      try {
-        await navigator.clipboard.writeText(text);
-        const btn = document.getElementById("copy-btn");
-        const prev = btn.innerText;
-        btn.innerText = "Copié !";
-        setTimeout(() => btn.innerText = prev, 1500);
-      } catch (e) {
-        alert("Impossible de copier automatiquement — copie manuelle : " + text);
-      }
+      try { await navigator.clipboard.writeText(text); const btn = document.getElementById("copy-btn"); const prev = btn.innerText; btn.innerText = "Copié !"; setTimeout(() => btn.innerText = prev, 1500); }
+      catch (e) { alert("Impossible de copier automatiquement — copie manuelle : " + text); }
     });
-  </script>
 
-  <!-- SCRIPT BURGER -->
-  <script>
+    // Burger
     const burgerBtn = document.getElementById("burgerBtn");
     const closeBurger = document.getElementById("closeBurger");
     const burgerMenu = document.getElementById("burgerMenu");
-
-    burgerBtn.addEventListener("click", () => {
-      burgerMenu.classList.remove("-translate-x-full");
-    });
-
-    closeBurger.addEventListener("click", () => {
-      burgerMenu.classList.add("-translate-x-full");
-    });
+    burgerBtn.addEventListener("click", () => { burgerMenu.classList.remove("-translate-x-full"); });
+    closeBurger.addEventListener("click", () => { burgerMenu.classList.add("-translate-x-full"); });
   </script>
 
 </body>
 </html>
-
