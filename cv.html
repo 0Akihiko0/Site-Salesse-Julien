@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Julien Salesse</title>
+  <link rel="icon" type="image/png" href="Favicon.png?v=1">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Spline Viewer -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.36/build/spline-viewer.js"></script>
+
+  <!-- SCROLL STYLE + ANIMATIONS -->
+  <style>
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #0e1117; }
+    ::-webkit-scrollbar-thumb { background: #00ffff55; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00ffffaa; }
+    * { scrollbar-width: thin; scrollbar-color: #00ffff55 #0e1117; }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animate-gradient { background-size: 200% 200%; animation: gradient 6s ease infinite; }
+  </style>
+</head>
+
+<body class="bg-[#0e1117] text-white font-sans overflow-x-hidden relative">
+
+  <!-- SPLINE VIEWER PLEIN ÉCRAN -->
+  <spline-viewer 
+      url="https://prod.spline.design/VPgDvr2ll2ntQNX2/scene.splinecode"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+      ">
+  </spline-viewer>
+
+  <!-- NAVBAR -->
+  <header class="fixed top-6 left-1/2 -translate-x-1/2 w-[94%] max-w-7xl
+                 backdrop-blur-xl bg-[#0e1117]/40 border border-[#00ffff]/20
+                 rounded-full px-12 py-5 flex items-center justify-between
+                 shadow-lg shadow-[#00ffff]/20 z-50 transition-all duration-300 hover:shadow-xl hover:shadow-[#00ffff]/40">
+
+    <div class="text-xl font-semibold tracking-wide bg-clip-text text-transparent
+                bg-gradient-to-r from-[#00ffff] to-[#7fbf7f] animate-gradient">
+      Julien Salesse
+    </div>
+
+    <nav class="flex items-center gap-6 text-base text-gray-400 tracking-wide">
+      <a href="index.html" class="hidden lg:inline hover:text-[#00ffff] transition">Home</a>
+      <a href="moi.html" class="hidden lg:inline hover:text-[#00ffff] transition">Moi</a>
+      <a href="experience.html" class="hidden lg:inline hover:text-[#00ffff] transition">Expériences</a>
+      <a href="competences.html" class="hidden lg:inline hover:text-[#00ffff] transition">Compétences</a>
+      <a href="projets.html" class="hidden lg:inline hover:text-[#00ffff] transition">Projets</a>
+      <a href="contact.html" class="hidden lg:inline hover:text-[#00ffff] transition">Contact</a>
+      <a href="cv.html" class="hidden lg:inline text-[#00ffff]">CV</a>
+      <a href="voyages.html" class="hidden lg:inline hover:text-[#00ffff] transition">Voyages</a>
+
+      <button id="burgerBtn" class="lg:hidden text-white">
+        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <line x1="4" y1="6" x2="20" y2="6" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4" y1="12" x2="20" y2="12" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4" y1="18" x2="20" y2="18" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- MENU BURGER -->
+  <div id="burgerMenu" class="fixed top-0 left-0 w-full h-screen bg-[#0e1117]/95
+                              backdrop-blur-xl z-50 transform -translate-x-full transition-transform">
+    <button id="closeBurger" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+
+    <div class="flex flex-col mt-20 px-6 space-y-4">
+      <a href="index.html" class="menu-link">Home</a>
+      <a href="moi.html" class="menu-link">Moi</a>
+      <a href="experience.html" class="menu-link">Expériences</a>
+      <a href="competences.html" class="menu-link">Compétences</a>
+      <a href="projets.html" class="menu-link">Projets</a>
+      <a href="contact.html" class="menu-link">Contact</a>
+      <a href="cv.html" class="menu-link">CV</a>
+      <a href="voyages.html" class="menu-link">Voyages</a>
+    </div>
+  </div>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="flex flex-col items-center justify-center px-6 sm:px-12 md:px-24 max-w-6xl mx-auto z-10 min-h-screen">
+
+    <!-- CARTE CV AVEC BLUR + GLOW -->
+    <div class="bg-[#0e1117]/50 backdrop-blur-xl border border-[#00ffff]/20
+                rounded-3xl shadow-lg shadow-[#00ffff]/20 p-6 md:p-10 max-w-md w-full flex flex-col items-center space-y-6">
+
+      <!-- TITRE -->
+      <h1 class="text-3xl md:text-5xl font-extrabold text-center
+                 bg-clip-text text-transparent
+                 bg-gradient-to-r from-[#00ffff] to-[#7fbf7f] animate-gradient">
+        Mon CV
+      </h1>
+
+      <!-- DESCRIPTION -->
+      <p class="text-gray-300 text-center text-sm md:text-base">
+        Visualisez mon CV ou scannez le QR Code pour l’ouvrir directement sur votre smartphone.
+      </p>
+
+      <!-- BOUTON VISUALISER -->
+      <a href="https://www.canva.com/design/DAGtmMnuiuc/TpNIgekVrDOiSdHjXmVUtg/edit?utm_content=DAGtmMnuiuc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+         class="px-6 py-2 md:px-8 md:py-3 rounded-xl font-semibold bg-[#00ffff]/30 hover:bg-[#00ffff]/50 shadow-lg transition transform hover:-translate-y-1"
+         target="_blank">
+        Visualiser le CV
+      </a>
+
+      <!-- QR CODE -->
+      <div class="flex flex-col items-center mt-6 space-y-4">
+        <h2 class="text-xl md:text-2xl font-bold
+                   bg-clip-text text-transparent
+                   bg-gradient-to-r from-[#00ffff] to-[#7fbf7f] animate-gradient">
+          QR Code
+        </h2>
+        <p class="text-gray-400 text-center text-sm md:text-base max-w-xs">
+          Scannez ce code pour ouvrir mon CV directement sur votre smartphone.
+        </p>
+        <img src="Photos/QR.png" alt="QR Code vers mon CV" class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-lg">
+      </div>
+
+    </div>
+
+  </main>
+
+  <style>
+    .menu-link {
+      color: #00ffff;
+      border: 1px solid #00ffff;
+      padding: 0.75rem;
+      border-radius: 9999px;
+      text-align: center;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .menu-link:hover {
+      background: rgba(0,255,255,0.2);
+    }
+  </style>
+
+  <script>
+    const burgerBtn = document.getElementById("burgerBtn");
+    const closeBurger = document.getElementById("closeBurger");
+    const burgerMenu = document.getElementById("burgerMenu");
+
+    burgerBtn.addEventListener("click", () => {
+      burgerMenu.classList.remove("-translate-x-full");
+    });
+
+    closeBurger.addEventListener("click", () => {
+      burgerMenu.classList.add("-translate-x-full");
+    });
+  </script>
+
+    <script src="loader.js"></script>
+<script>enablePageLoader();</script>
+
+<script src="footer.js"></script>
+<script>addFooter();</script>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Julien Salesse</title>
+  <link rel="icon" type="image/png" href="Favicon.png?v=1">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Spline Viewer -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.36/build/spline-viewer.js"></script>
+
+  <style>
+    /* Scroll global */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #0e1117; }
+    ::-webkit-scrollbar-thumb { background: #00ffff55; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00ffffaa; }
+    * { scrollbar-width: thin; scrollbar-color: #00ffff55 #0e1117; }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animate-gradient { background-size: 200% 200%; animation: gradient 6s ease infinite; }
+
+    /* Spline plein écran */
+    spline-viewer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body class="bg-[#0e1117] text-white font-sans overflow-x-hidden relative">
+
+  <!-- SPLINE VIEWER -->
+  <spline-viewer url="https://prod.spline.design/VPgDvr2ll2ntQNX2/scene.splinecode"></spline-viewer>
+
+  <!-- NAVBAR -->
+  <header class="fixed top-6 left-1/2 -translate-x-1/2 w-[94%] max-w-7xl
+                 backdrop-blur-xl bg-[#0e1117]/40 border border-[#00ffff]/20
+                 rounded-full px-12 py-5 flex items-center justify-between
+                 shadow-lg shadow-[#00ffff]/20 z-50 transition-all duration-300 hover:shadow-xl hover:shadow-[#00ffff]/40">
+
+    <div class="text-xl font-semibold tracking-wide bg-clip-text text-transparent
+                bg-gradient-to-r from-[#00ffff] to-[#7fbf7f] animate-gradient">
+      Julien Salesse
+    </div>
+
+    <nav class="flex items-center gap-6 text-base text-gray-400 tracking-wide">
+      <a href="index.html" class="hidden lg:inline hover:text-[#00ffff] transition">Home</a>
+      <a href="moi.html" class="hidden lg:inline hover:text-[#00ffff] transition">Moi</a>
+      <a href="experience.html" class="hidden lg:inline hover:text-[#00ffff] transition">Expériences</a>
+      <a href="competences.html" class="hidden lg:inline hover:text-[#00ffff] transition">Compétences</a>
+      <a href="projets.html" class="hidden lg:inline hover:text-[#00ffff] transition">Projets</a>
+      <a href="contact.html" class="hidden lg:inline text-[#00ffff]">Contact</a>
+      <a href="cv.html" class="hidden lg:inline hover:text-[#00ffff] transition">CV</a>
+      <a href="voyages.html" class="hidden lg:inline hover:text-[#00ffff] transition">Voyages</a>
+
+      <button id="burgerBtn" class="lg:hidden text-white">
+        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <line x1="4" y1="6" x2="20" y2="6" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4" y1="12" x2="20" y2="12" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4" y1="18" x2="20" y2="18" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- MENU BURGER -->
+  <div id="burgerMenu" class="fixed top-0 left-0 w-full h-screen bg-[#0e1117]/95
+                              backdrop-blur-xl z-50 transform -translate-x-full transition-transform">
+    <button id="closeBurger" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+
+    <div class="flex flex-col mt-20 px-6 space-y-4">
+      <a href="index.html" class="menu-link">Home</a>
+      <a href="moi.html" class="menu-link">Moi</a>
+      <a href="experience.html" class="menu-link">Expériences</a>
+      <a href="competences.html" class="menu-link">Compétences</a>
+      <a href="projets.html" class="menu-link">Projets</a>
+      <a href="contact.html" class="menu-link">Contact</a>
+      <a href="cv.html" class="menu-link">CV</a>
+      <a href="voyages.html" class="menu-link">Voyages</a>
+    </div>
+  </div>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="flex flex-col items-center justify-center px-6 sm:px-12 md:px-24 max-w-6xl mx-auto z-10 min-h-screen">
+
+    <!-- CARTE CONTACT AVEC BLUR + GLOW -->
+    <div class="bg-[#0e1117]/50 backdrop-blur-xl border border-[#00ffff]/20
+                rounded-3xl shadow-lg shadow-[#00ffff]/20 p-6 md:p-14 w-full max-w-lg md:max-w-2xl flex flex-col space-y-6">
+
+      <!-- TITRE -->
+      <h1 class="text-4xl md:text-5xl font-extrabold text-center
+                 bg-clip-text text-transparent
+                 bg-gradient-to-r from-[#00ffff] to-[#7fbf7f] animate-gradient">
+        Me Contacter
+      </h1>
+
+      <!-- DESCRIPTION -->
+      <p class="text-gray-300 text-center text-base md:text-lg">
+        Besoin d’informations, envie de me prendre en stage de seconde ?  
+        Vous pouvez me contacter via le moyen ci-dessous.
+      </p>
+
+      <!-- DISPONIBILITÉ -->
+      <div id="availability" class="bg-[#0e1117]/40 p-6 md:p-8 rounded-2xl shadow-lg border border-[#00ffff]/20 text-center">
+        <h2 class="text-xl font-semibold mb-1">Disponible pour un stage</h2>
+        <p id="availability-text" class="text-gray-300 font-medium">Chargement...</p>
+        <p id="availability-dates" class="text-gray-400"></p>
+      </div>
+
+      <!-- EMAIL -->
+      <div class="flex flex-col md:flex-row items-center gap-4 bg-[#0e1117]/30 p-4 rounded-xl border border-[#00ffff]/20">
+        <svg class="w-10 h-10 text-[#00ffff]" fill="none" stroke="currentColor" stroke-width="1.5"
+          viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.92l-7.5 4.5a2.25 2.25 0 01-2.31 0l-7.5-4.5a2.25 2.25 0 01-1.07-1.92V6.75" />
+        </svg>
+        <div class="flex-1 text-center md:text-left">
+          <h3 class="text-lg md:text-xl font-semibold">Email</h3>
+          <p id="email-text" class="text-gray-300 break-all">julien.salesse24@gmail.com</p>
+        </div>
+        <button id="copy-btn" class="px-4 py-2 bg-[#00ffff]/30 hover:bg-[#00ffff]/50 rounded-lg font-semibold transition mt-2 md:mt-0">
+          Copier
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <style>
+    .menu-link {
+      color: #00ffff;
+      border: 1px solid #00ffff;
+      padding: 0.75rem;
+      border-radius: 9999px;
+      text-align: center;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .menu-link:hover {
+      background: rgba(0,255,255,0.2);
+    }
+  </style>
+
+  <script>
+    // Disponibilité
+    const AVAILABLE = true;
+    const AVAILABLE_DATES = "";
+    const availTextEl = document.getElementById('availability-text');
+    const availDatesEl = document.getElementById('availability-dates');
+    if (AVAILABLE) {
+      availTextEl.innerText = "✔ Oui, je suis disponible.";
+      availTextEl.className = "text-green-400 font-semibold";
+      availDatesEl.innerText = AVAILABLE_DATES || "";
+    } else {
+      availTextEl.innerText = "✖ Non, pas disponible pour le moment.";
+      availTextEl.className = "text-red-400 font-semibold";
+      availDatesEl.innerText = "";
+    }
+
+    // Copier email
+    document.getElementById("copy-btn").addEventListener("click", async () => {
+      const text = document.getElementById("email-text").innerText.trim();
+      try { await navigator.clipboard.writeText(text); const btn = document.getElementById("copy-btn"); const prev = btn.innerText; btn.innerText = "Copié !"; setTimeout(() => btn.innerText = prev, 1500); }
+      catch (e) { alert("Impossible de copier automatiquement — copie manuelle : " + text); }
+    });
+
+    // Burger
+    const burgerBtn = document.getElementById("burgerBtn");
+    const closeBurger = document.getElementById("closeBurger");
+    const burgerMenu = document.getElementById("burgerMenu");
+    burgerBtn.addEventListener("click", () => { burgerMenu.classList.remove("-translate-x-full"); });
+    closeBurger.addEventListener("click", () => { burgerMenu.classList.add("-translate-x-full"); });
+  </script>
+
+    <script src="loader.js"></script>
+<script>enablePageLoader();</script>
+
+<script src="footer.js"></script>
+<script>addFooter();</script>
+
+</body>
+</html>
