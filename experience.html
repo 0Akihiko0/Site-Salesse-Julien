@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expériences</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="Favicon.png?v=1">
+
+  <!-- SCROLL STYLE & ANIMATIONS -->
+  <style>
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #0e1117; }
+    ::-webkit-scrollbar-thumb { background: #00ffff55; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00ffffaa; }
+    * { scrollbar-width: thin; scrollbar-color: #00ffff55 #0e1117; }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animate-gradient { background-size: 200% 200%; animation: gradient 6s ease infinite; }
+  </style>
+</head>
+
+<body class="bg-[#0e1117] text-white font-sans overflow-x-hidden">
+
+<!-----Nav + burger ----->
+<script src="navbar.js"></script>
+<script>addNavbar("experience");</script>
+
+<main class="pt-40 px-6 md:px-24 pb-24 max-w-6xl mx-auto space-y-16">
+
+  <h1 class="text-4xl md:text-5xl font-extrabold text-center
+             bg-clip-text text-transparent bg-gradient-to-r
+             from-[#00ffff] to-[#7fbf7f] animate-gradient">
+    Mes Expériences
+  </h1>
+
+  <!-- STAGE MENTALWORKS -->
+  <div class="bg-[#0e1117]/60 border border-[#00ffff]/30 rounded-3xl
+              p-6 md:p-10 shadow-2xl shadow-[#00ffff]/20 space-y-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-[#00ffff] mb-1">Stage - Entreprise Mentalworks</h2>
+    <p class="text-gray-400 italic mb-4">Stage 3ème / 2025</p>
+    <ul class="list-disc list-inside text-gray-300 space-y-2">
+      <li>Observation du travail des développeurs et des graphistes.</li>
+      <li>Compréhension de l'importance des compétences nécessaires pour participer aux tâches techniques.</li>
+      <li>Réalisation d'une mission de vérification orientée vers des activités bureautiques.</li>
+      <li>Apprentissage des méthodes de travail en équipe et des bonnes pratiques bureautiques.</li>
+    </ul>
+    <img src="Photos/Mentalworks.png" class="rounded-2xl w-full mt-4 shadow-lg" alt="Stage Mentalworks">
+  </div>
+
+  <!-- CONCOURS DEFI ROBOT -->
+  <div class="bg-[#0e1117]/60 border border-[#00ffff]/30 rounded-3xl
+              p-6 md:p-10 shadow-2xl shadow-[#00ffff]/20 space-y-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-[#00ffff] mb-1">
+      Concours - DEFI ROBOT ACADEMIQUE COLLEGE
+    </h2>
+    <p class="text-gray-400 italic mb-4">2023 - 2024</p>
+
+    <div class="text-gray-300 space-y-4 leading-relaxed">
+      <p>Au départ, nous étions un groupe assez nombreux à participer au Défi Robot Académique Collège. L’objectif était de créer un robot capable de suivre un parcours précis et de réaliser différentes missions, tout en appliquant nos connaissances en technologie, codage, logique et travail d’équipe. L’ambiance était motivante et chacun avait envie de contribuer au projet.</p>
+
+      <p>Avec le temps, certains membres ont commencé à douter de nos compétences et ont décidé de se retirer, pensant que ce serait trop difficile ou qu’ils n’arriveraient pas à atteindre la finale. Finalement, il ne restait plus que trois d’entre nous, mais nous étions déterminés à aller jusqu’au bout.</p>
+
+      <p>Nous avons alors organisé notre travail de manière logique :</p>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Planification :</strong> identification des tâches, répartition des rôles et suivi dans un fichier Excel.</li>
+        <li><strong>Programmation et montage du robot :</strong> codage des mouvements, tests des capteurs, ajustement des moteurs et vérification des missions.</li>
+        <li><strong>Préparation du dossier numérique :</strong> présentation de notre démarche, analyse du problème et mise en œuvre de solutions techniques.</li>
+        <li><strong>Révision de la présentation orale :</strong> répétition du discours et préparation des réponses aux questions des examinateurs, y compris une partie en anglais.</li>
+      </ul>
+
+      <p>Nous avons également dû faire face à des délais de livraison particulièrement longs pour recevoir une partie essentielle du matériel, ce qui a considérablement freiné l’avancement du projet, retardé certaines phases de tests et nécessité une réorganisation complète de notre planning afin de pouvoir continuer à progresser malgré ces contraintes.</p>
+
+      <p>La soutenance orale, appelée Préao, était un moment clé. Nous disposions de dix minutes pour présenter notre projet devant les examinateurs, en expliquant la conception du robot, les solutions techniques que nous avions choisies et les tests réalisés. Une partie de la présentation devait être faite en anglais, ce qui nous a permis de montrer notre capacité à communiquer dans une autre langue et à valoriser certains aspects du projet devant le jury.</p>
+
+      <p>Malgré la pression, nous avons réussi à présenter notre projet de manière claire et structurée. Notre persévérance a payé : nous avons été qualifiés pour la finale départementale !</p>
+
+      <p>Participer à cette aventure m’a appris l’importance de la persévérance, de la confiance en soi et en son équipe, ainsi que de la planification et de l’organisation logique dans un projet technique.</p>
+
+      <!-- Boutons -->
+          <div class="flex flex-col md:flex-row gap-4 mt-6 justify-center">
+      <button id="openPdfModal" class="px-6 py-2 md:px-8 md:py-3 rounded-xl font-semibold 
+              bg-[#00ffff]/30 hover:bg-[#00ffff]/50 shadow-lg transition transform hover:-translate-y-1 text-center">
+        Visualiser le Règlement
+      </button>
+      <button id="openModal" class="px-6 py-3 bg-[#00ffff]/30 rounded-lg font-semibold 
+              hover:bg-[#00ffff]/50 shadow-lg transition transform hover:-translate-y-1">
+        Voir plus de photos
+      </button>
+    </div>
+
+    </div>
+
+    <img src="Photos/imagesrobot_concours.jpg" class="rounded-2xl w-full mt-4 shadow-lg" alt="Robot Concours">
+  </div>
+
+</main>
+
+<!-- POPUP GALERIE -->
+<div id="popup" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50 p-4 overflow-y-auto">
+  <div class="bg-[#0e1117] p-6 md:p-8 rounded-2xl w-full max-w-3xl relative popup-content overflow-y-auto max-h-[90vh]">
+    <h2 class="text-2xl font-bold text-[#00ffff] mb-4">Galerie de Photos</h2>
+    <p class="text-gray-300 mb-4">Voici quelques photos du parcours et de notre robot :</p>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <img src="Photos/Leparcoursde jeuxOlympiques.jpg" alt="Photo 1" class="rounded-lg w-full h-auto object-cover">
+      <img src="Photos/robot.png" alt="Photo 2" class="rounded-lg w-full h-auto object-cover">
+      <img src="Photos/moi+robot.png" alt="Photo 3" class="rounded-lg w-full h-auto object-cover">
+      <img src="Photos/robot2.png" alt="Photo 4" class="rounded-lg w-full h-auto object-cover">
+      <img src="Photos/robot3.png" alt="Photo 5" class="rounded-lg w-full h-auto object-cover">
+    </div>
+    <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold">&times;</button>
+  </div>
+</div>
+
+<!-- POPUP PDF -->
+<div id="pdfModal" class="fixed inset-0 bg-black/70 flex items-center justify-center hidden z-50 p-4 overflow-y-auto">
+  <div class="bg-[#0e1117] p-4 md:p-6 rounded-2xl w-full max-w-4xl relative popup-content overflow-y-auto max-h-[90vh]">
+    <h2 class="text-2xl font-bold text-[#00ffff] mb-4">Règlement DEFI ROBOT 2024</h2>
+    <iframe src="Photos/fichiers/REGLEMENT DEFI ROBOT 2024 - DRANE.pdf" class="w-full h-[500px] rounded-lg" frameborder="0"></iframe>
+    <button id="closePdfModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold">&times;</button>
+  </div>
+</div>
+
+<!-- SCRIPT BURGER + POPUPS -->
+<script>
+  // Galerie
+  const openModal = document.getElementById('openModal');
+  const closeModal = document.getElementById('closeModal');
+  const popup = document.getElementById('popup');
+  openModal.addEventListener('click', () => popup.classList.remove('hidden'));
+  closeModal.addEventListener('click', () => popup.classList.add('hidden'));
+  popup.addEventListener('click', (e) => { if(e.target === popup) popup.classList.add('hidden'); });
+
+  // PDF
+  const openPdfModal = document.getElementById('openPdfModal');
+  const closePdfModal = document.getElementById('closePdfModal');
+  const pdfModal = document.getElementById('pdfModal');
+  openPdfModal.addEventListener('click', () => pdfModal.classList.remove('hidden'));
+  closePdfModal.addEventListener('click', () => pdfModal.classList.add('hidden'));
+  pdfModal.addEventListener('click', (e) => { if(e.target === pdfModal) pdfModal.classList.add('hidden'); });
+</script>
+
+  <script src="loader.js"></script>
+<script>enablePageLoader();</script>
+
+<script src="footer.js"></script>
+<script>addFooter();</script>
+
+</body>
+</html>
