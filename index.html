@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- SPLINE -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.36/build/spline-viewer.js"></script>
+  <link rel="icon" type="image/png" href="Favicon.png?v=1">
+</head>
+
+<body class="bg-[#0e1117] text-white font-sans overflow-x-hidden">
+
+  <!-- NAVBAR -->
+  <header class="fixed top-6 left-1/2 -translate-x-1/2 w-[94%] max-w-7xl
+                 backdrop-blur-xl bg-[#0e1117]/40 border border-[#00ffff]/20
+                 rounded-full px-12 py-5 flex items-center justify-between
+                 shadow-lg shadow-[#00ffff]/20 z-50 transition-all duration-300 hover:shadow-xl hover:shadow-[#00ffff]/40">
+
+    <!-- Logo / Nom complet -->
+    <div class="text-xl font-semibold tracking-wide bg-clip-text text-transparent
+                bg-gradient-to-r from-[#00ffff] to-[#7fbf7f] animate-gradient">
+      Julien Salesse
+    </div>
+
+    <!-- Liens du header (grand écran uniquement) -->
+    <nav class="flex items-center gap-6 text-base text-gray-400 tracking-wide">
+      <!-- Liens visibles seulement sur grand écran ≥1024px -->
+      <a href="index.html" class="hidden lg:inline text-[#00ffff] transition-colors duration-300">Home</a>
+      <a href="moi.html" class="hidden lg:inline hover:text-[#00ffff] transition-colors duration-300">Moi</a>
+      <a href="experience.html" class="hidden lg:inline hover:text-[#00ffff] transition-colors duration-300">Expériences</a>
+      <a href="competences.html" class="hidden lg:inline hover:text-[#00ffff] transition-colors duration-300">Compétences</a>
+      <a href="projets.html" class="hidden lg:inline hover:text-[#00ffff] transition-colors duration-300">Projets</a>
+      <a href="contact.html" class="hidden lg:inline hover:text-[#00ffff] transition-colors duration-300">Contact</a>
+      <a href="cv.html" class="hidden lg:inline hover:text-[#00ffff] transition-colors duration-300">CV</a>
+      <a href="voyages.html" class="hidden lg:inline hover:text-[#00ffff] transition-colors duration-300">Voyages</a>
+
+      <!-- Bouton burger visible sur tout ce qui est <1024px -->
+      <button id="burgerBtn" class="lg:hidden text-white">
+        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <line x1="4" y1="6" x2="20" y2="6" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4" y1="12" x2="20" y2="12" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4" y1="18" x2="20" y2="18" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+  
+  <!-- MENU BURGER (plein écran) -->
+  <div id="burgerMenu" class="fixed top-0 left-0 w-full h-screen bg-[#0e1117]/95
+                              backdrop-blur-xl z-50 transform -translate-x-full transition-transform">
+    <button id="closeBurger" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+
+    <div class="flex flex-col mt-20 px-6 space-y-4">
+      <a href="index.html" class="text-[#00ffff] border border-[#00ffff] px-6 py-3 rounded-full text-center font-semibold hover:bg-[#00ffff]/20 transition">Home</a>
+      <a href="moi.html" class="text-[#00ffff] border border-[#00ffff] px-6 py-3 rounded-full text-center font-semibold hover:bg-[#00ffff]/20 transition">Moi</a>
+      <a href="experience.html" class="text-[#00ffff] border border-[#00ffff] px-6 py-3 rounded-full text-center font-semibold hover:bg-[#00ffff]/20 transition">Expériences</a>
+      <a href="competences.html" class="text-[#00ffff] border border-[#00ffff] px-6 py-3 rounded-full text-center font-semibold hover:bg-[#00ffff]/20 transition">Compétences</a>
+      <a href="projets.html" class="text-[#00ffff] border border-[#00ffff] px-6 py-3 rounded-full text-center font-semibold hover:bg-[#00ffff]/20 transition">Projets</a>
+      <a href="contact.html" class="text-[#00ffff] border border-[#00ffff] px-6 py-3 rounded-full text-center font-semibold hover:bg-[#00ffff]/20 transition">Contact</a>
+      <a href="cv.html" class="text-[#00ffff] border border-[#00ffff] px-6 py-3 rounded-full text-center font-semibold hover:bg-[#00ffff]/20 transition">CV</a>
+      <a href="voyages.html" class="text-[#00ffff] border border-[#00ffff] px-6 py-3 rounded-full text-center font-semibold hover:bg-[#00ffff]/20 transition">Voyages</a>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="relative w-screen h-screen flex overflow-hidden">
+
+    <!-- SPLINE 3D interactif -->
+    <div class="absolute top-0 left-0 w-full h-full z-0">
+      <spline-viewer
+        url="https://prod.spline.design/YCOUuwyFjh85rruE/scene.splinecode"
+        style="width:100%; height:100%;"
+        interaction-enable
+      ></spline-viewer>
+    </div>
+
+    <!-- Contenu texte -->
+    <div class="relative z-20 flex flex-col justify-center h-full
+                pl-12 sm:pl-16 md:pl-32 lg:pl-48 xl:pl-48 2xl:pl-64 space-y-8 max-w-[calc(100%-4rem)]">
+      
+      <!-- Nom simplifié dans le hero -->
+      <h1 class="text-6xl md:text-7xl font-extrabold bg-clip-text text-transparent
+                 bg-gradient-to-r from-[#00ffff] to-[#7fbf7f] animate-gradient
+                 leading-tight max-w-none">
+        Julien
+      </h1>
+
+      <p class="text-white text-lg md:text-xl leading-relaxed text-left max-w-lg">
+        Ici, vous pourrez découvrir tout ce qu’il y a à savoir sur moi : mon parcours, mes expériences, mes compétences et, bien sûr, mes projets. Chaque section a été pensée pour vous donner une vision complète de mon univers et de mon travail.
+      </p>
+
+      <div class="flex">
+        <a href="moi.html" class="px-6 py-3 bg-[#00ffff]/10 border border-[#00ffff] rounded-full text-[#00ffff] hover:bg-[#00ffff]/30 hover:text-black shadow-md shadow-[#00ffff]/20 transition-all duration-300">
+          En apprendre plus sur moi !
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dégradé animation et Scrollbars -->
+  <style>
+
+    /* Scrollbars */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #0e1117; }
+    ::-webkit-scrollbar-thumb { background: #00ffff55; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00ffffaa; }
+    * { scrollbar-width: thin; scrollbar-color: #00ffff55 #0e1117; }
+
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient 6s ease infinite;
+    }
+  </style>
+
+  <!-- SCRIPT BURGER -->
+  <script>
+    const burgerBtn = document.getElementById("burgerBtn");
+    const closeBurger = document.getElementById("closeBurger");
+    const burgerMenu = document.getElementById("burgerMenu");
+
+    burgerBtn.addEventListener("click", () => {
+      burgerMenu.classList.remove("-translate-x-full");
+    });
+
+    closeBurger.addEventListener("click", () => {
+      burgerMenu.classList.add("-translate-x-full");
+    });
+  </script>
+
+  <script src="loader.js"></script>
+<script>enablePageLoader();</script>
+
+<script src="footer.js"></script>
+<script>addFooter();</script>
+
+</body>
+</html>
