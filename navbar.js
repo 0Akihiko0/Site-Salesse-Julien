@@ -21,7 +21,7 @@ function addNavbar(activePage = "") {
       ${navLink("projets.html", "Projets", "projets", activePage)}
       ${navLink("contact.html", "Contact", "contact", activePage)}
       ${navLink("cv.html", "CV", "cv", activePage)}
-      ${navLink("voyages.html", "Voyages", "voyages", activePage)}
+      ${navLink("/voyages", "Voyages", "voyages", activePage)}
 
       <!-- Burger -->
       <button id="burgerBtn" class="lg:hidden text-white">
@@ -47,7 +47,7 @@ function addNavbar(activePage = "") {
       ${burgerLink("projets.html", "Projets")}
       ${burgerLink("contact.html", "Contact")}
       ${burgerLink("cv.html", "CV")}
-      ${burgerLink("voyages.html", "Voyages")}
+      ${burgerLink("/voyages", "Voyages")}
     </div>
   </div>
   `;
@@ -90,3 +90,4 @@ function burgerLink(href, label) {
     </a>
   `;
 }
+
