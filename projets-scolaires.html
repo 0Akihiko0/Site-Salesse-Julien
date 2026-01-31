@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets scolaires</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" type="image/png" href="Favicon.png?v=1">
+
+  <script src="tarteaucitron/tarteaucitron.js"></script>
+  <script src="cookies.js"></script>
+
+  <style>
+    /* Scroll Chrome, Edge, Safari */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #0e1117; }
+    ::-webkit-scrollbar-thumb { background: #00ffff55; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00ffffaa; }
+
+    /* Scroll Firefox */
+    * { scrollbar-width: thin; scrollbar-color: #00ffff55 #0e1117; }
+
+    body { overflow-y: auto; background-color: #0e1117; color: white; font-family: sans-serif; }
+    .menu-link { color: #00ffff; border: 1px solid #00ffff; padding: 0.75rem; border-radius: 9999px; text-align: center; font-weight: 600; transition: 0.3s; }
+    .menu-link:hover { background: rgba(0,255,255,0.2); }
+    @keyframes gradient { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
+    .animate-gradient { background-size: 200% 200%; animation: gradient 6s ease infinite; }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+<!-----Nav + burger ----->
+<script src="navbar.js"></script>
+<script>addNavbar("projets");</script>
+
+<!-- BOUTON RETOUR -->
+<div class="fixed top-36 left-6 z-40">
+  <a href="projets.html"
+     class="flex items-center gap-2
+            px-4 py-2 rounded-full
+            bg-[#0e1117]/40 backdrop-blur-md
+            border border-[#00ffff]/20
+            text-[#00ffff] font-semibold
+            transition-all duration-300
+            hover:bg-[#0e1117]/60">
+    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+    Retour aux projets
+  </a>
+</div>
+
+
+
+
+  <!-- MAIN -->
+  <main class="pt-48 px-6 md:px-20 pb-24 space-y-20">
+
+    <!-- TITRE -->
+    <section class="max-w-3xl mx-auto text-center
+                    bg-[#1e1e1e]/40 border border-[#00ffff]/40
+                    rounded-3xl shadow-2xl py-10">
+      <h1 class="text-5xl md:text-6xl font-extrabold
+                 bg-clip-text text-transparent
+                 bg-gradient-to-r from-[#00ffff] to-[#7fbf7f]
+                 animate-gradient
+                 leading-[1.35]
+                 pb-[0.35em]">
+        Projets scolaires
+      </h1>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto">
+
+      <!-- ROBOTIQUE (PAS ACCORDÉON) -->
+      <div class="bg-[#1e1e1e]/30 border border-[#00ffff]/40 rounded-3xl p-6 flex flex-col items-center">
+        <h2 class="text-3xl font-bold text-[#00ffff] text-center mb-6
+                   bg-clip-text text-transparent
+                   bg-gradient-to-r from-[#00ffff] to-[#7fbf7f] animate-gradient">
+          Robotique
+        </h2>
+        <div class="space-y-4 text-gray-300 text-center">
+          <p>Défi Robot Académique : un concours exigeant où nous devions programmer un robot pour réaliser des missions complexes. Malgré des délais de livraison extrêmement longs pour le matériel, nous avons persévéré.</p>
+          <img src="Photos/robot.png" class="rounded-lg mx-auto">
+          <a href="experience.html#defirobot" class="inline-block px-6 py-3 border border-white rounded-xl text-white mt-4 hover:bg-white/20 transition">Voir l'expérience</a>
+        </div>
+      </div>
+
+      <!-- OBJETS 3D (ACCORDÉONS) -->
+      <div class="bg-[#1e1e1e]/30 border border-[#00ffff]/40 rounded-3xl p-6">
+        <h2 class="text-3xl font-bold text-[#00ffff] text-center mb-6
+                   bg-clip-text text-transparent
+                   bg-gradient-to-r from-[#00ffff] to-[#7fbf7f] animate-gradient">
+          Objets 3D
+        </h2>
+        <div id="schoolAccordionContainer" class="space-y-6"></div>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    lucide.createIcons();
+    // Données projets scolaires (Objets 3D)
+    const schoolProjects = [
+      { title: "Support de téléphone amélioré", desc: "", images:["Photos/potetel.png"] },
+      { title: "Clé décorative", desc: "", images:["Photos/keyp.png","Photos/keyg.png"] },
+      { title: "Bonhomme de neige", desc: "", images:["Photos/bonhomep.png","Photos/bonhomeg.png"] },
+      { title: "Toupie", desc: "", images:["Photos/toupiep.png","Photos/toupieg.png"] },
+      { title: "Pince", desc: "", images:["Photos/pince2p.png","Photos/pince2g.png"] },
+      { title: "Pince – Version 2", desc: "", images:["Photos/pincep.png","Photos/pinceg.png"] },
+      { title: "Support de téléphone basique", desc: "", images:["Photos/portetelmp.png","Photos/portetelmg.png"] },
+      { title: "Site sur Les frères Lumière et Méliès", desc:`<p>J'ai réalisé un site web sur Les frères Lumière et Georges Méliès grâce à l'outil Canva. Ce projet m'a permis de combiner recherche historique et mise en page digitale.</p>`, images:[], link:"https://carnet-inspiration.my.canva.site/", code:"AuDio24Ju@" }
+    ];
+
+    // Création des accordéons (Objets 3D)
+    function createAccordion(container, data){
+      data.forEach(p=>{
+        const e=document.createElement("div");
+        e.className="border border-white/20 rounded-xl";
+
+        let imagesHTML = (p.images||[]).map(i=>`<img src="${i}" class="rounded-lg">`).join("");
+        let codeHTML = p.code?`<p class="font-bold text-[#00ffff] mt-2 text-lg">Code : ${p.code}</p>`:"";
+
+        e.innerHTML=`
+          <button class="w-full p-4 flex justify-between items-center font-bold">
+            <span>${p.title}</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+          </button>
+          <div class="hidden p-4 space-y-4 text-gray-300">
+            ${p.desc}
+            ${imagesHTML}
+            ${codeHTML}
+            ${p.link?`<a href="${p.link}" target="_blank" class="inline-block px-6 py-3 border border-white rounded-xl text-white hover:bg-white/20 transition">Voir le site</a>`:""}
+          </div>
+        `;
+
+        const btn = e.querySelector("button");
+        const content = e.querySelector("div");
+        const icon = e.querySelector("i");
+        btn.onclick=()=>{
+          content.classList.toggle("hidden");
+          icon.classList.toggle("rotate-180");
+        };
+
+        container.appendChild(e);
+      });
+      lucide.createIcons();
+    }
+
+    createAccordion(document.getElementById("schoolAccordionContainer"), schoolProjects);
+  </script>
+
+    <script src="loader.js"></script>
+<script>enablePageLoader();</script>
+
+<script src="footer.js"></script>
+<script>addFooter();</script>
+
+</body>
+</html>

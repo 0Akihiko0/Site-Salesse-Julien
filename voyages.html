@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voyages</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="Favicon.png?v=1">
+
+  <script src="tarteaucitron/tarteaucitron.js"></script>
+  <script src="cookies.js"></script>
+
+  <style>
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #0e1117; }
+    ::-webkit-scrollbar-thumb { background: #00ffff55; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00ffffaa; }
+    * { scrollbar-width: thin; scrollbar-color: #00ffff55 #0e1117; }
+
+    body { overflow-y: auto; background-color: #0e1117; color: white; font-family: sans-serif; }
+    
+    @keyframes gradient { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
+    .animate-gradient { background-size: 200% 200%; animation: gradient 6s ease infinite; }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+<script src="navbar.js"></script>
+<script>addNavbar("voyages");</script>
+
+  <main class="pt-40 pb-24 px-6 sm:px-12 md:px-24 max-w-7xl mx-auto">
+    <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-16 text-center
+           bg-clip-text text-transparent bg-gradient-to-r from-[#00ffff] to-[#7fbf7f] animate-gradient
+           leading-snug">
+          Mes Voyages
+    </h1>
+
+    <div class="flex flex-col gap-16">
+
+      <div class="md:flex md:items-center md:gap-12">
+        <div class="md:w-1/2 mb-6 md:mb-0">
+          <h2 class="text-3xl font-bold text-[#00ffff] mb-2">États-Unis, Floride</h2>
+          <p class="text-gray-300">Découverte de la plage et de la ville de Miami.</p>
+        </div>
+        <div class="md:w-1/2">
+          <div class="custommaps_embed w-full h-64 rounded-2xl border border-[#00ffff]/20 shadow-lg shadow-[#00ffff]/20 bg-[#161b22] flex items-center justify-center text-center p-8" 
+               data-url="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d460033.90863739623!2d-80.32475367410902!3d25.737020470253103!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20Floride%2C%20%C3%89tats-Unis!5e0!3m2!1sfr!2sfr!4v1764436198342!5m2!1sfr!2sfr">
+               <p class="text-gray-400 text-sm italic">Acceptez les cookies "Cartes Google Maps" pour afficher l'emplacement interactif.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:flex md:items-center md:gap-12 md:flex-row-reverse">
+        <div class="md:w-1/2 mb-6 md:mb-0">
+          <h2 class="text-3xl font-bold text-[#00ffff] mb-2">Canada</h2>
+          <p class="text-gray-300">Voyage dans les villes et paysages naturels du Canada en hiver.</p>
+        </div>
+        <div class="md:w-1/2">
+          <div class="custommaps_embed w-full h-64 rounded-2xl border border-[#00ffff]/20 shadow-lg shadow-[#00ffff]/20 bg-[#161b22] flex items-center justify-center text-center p-8" 
+               data-url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2785929.016265319!2d-123.36564434440022!3d53.72666825000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5346edcd9dfb9bff%3A0x1f6db7e9b67c7f6a!2sCanada!5e0!3m2!1sfr!2sfr!4v1700000000001!5m2!1sfr!2sfr">
+               <p class="text-gray-400 text-sm italic">Acceptez les cookies "Cartes Google Maps" pour afficher l'emplacement interactif.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:flex md:items-center md:gap-12">
+        <div class="md:w-1/2 mb-6 md:mb-0">
+          <h2 class="text-3xl font-bold text-[#00ffff] mb-2">Émirats Arabes Unis</h2>
+          <p class="text-gray-300">Visite de la ville moderne et du désert de Dubai.</p>
+        </div>
+        <div class="md:w-1/2">
+          <div class="custommaps_embed w-full h-64 rounded-2xl border border-[#00ffff]/20 shadow-lg shadow-[#00ffff]/20 bg-[#161b22] flex items-center justify-center text-center p-8" 
+               data-url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.869243143738!2d55.27228358497714!3d25.204849583827528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f4342b96a1d77%3A0x600c3b3d0b3f0b8!2sDuba%C3%AF%2C%20%C3%89mirats%20Arabes%20Unis!5e0!3m2!1sfr!2sfr!4v1700000000002!5m2!1sfr!2sfr">
+               <p class="text-gray-400 text-sm italic">Acceptez les cookies "Cartes Google Maps" pour afficher l'emplacement interactif.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:flex md:items-center md:gap-12 md:flex-row-reverse">
+        <div class="md:w-1/2 mb-6 md:mb-0">
+          <h2 class="text-3xl font-bold text-[#00ffff] mb-2">Espagne</h2>
+          <p class="text-gray-300">Découverte de Barcelone.</p>
+        </div>
+        <div class="md:w-1/2">
+          <div class="custommaps_embed w-full h-64 rounded-2xl border border-[#00ffff]/20 shadow-lg shadow-[#00ffff]/20 bg-[#161b22] flex items-center justify-center text-center p-8" 
+               data-url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d271024.68047522666!2d2.0931361161984596!3d41.36478587256374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49816718e30e5%3A0x44b0fb3d4f47660a!2sBarcelone%2C%20Espagne!5e0!3m2!1sfr!2sfr!4v1764436512392!5m2!1sfr!2sfr">
+               <p class="text-gray-400 text-sm italic">Acceptez les cookies "Cartes Google Maps" pour afficher l'emplacement interactif.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:flex md:items-center md:gap-12">
+        <div class="md:w-1/2 mb-6 md:mb-0">
+          <h2 class="text-3xl font-bold text-[#00ffff] mb-2">Italie</h2>
+          <p class="text-gray-300">Naples et découverte de Pompei.</p>
+        </div>
+        <div class="md:w-1/2">
+          <div class="custommaps_embed w-full h-64 rounded-2xl border border-[#00ffff]/20 shadow-lg shadow-[#00ffff]/20 bg-[#161b22] flex items-center justify-center text-center p-8" 
+               data-url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d163144.7483660327!2d14.22824988975174!3d40.806073977662635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133bbc95914ba4ef%3A0xd2d18a72aeb414a4!2s80045%20Pompei%2C%20Naples%2C%20Italie!5e0!3m2!1sfr!2sfr!4v1764436641866!5m2!1sfr!2sfr">
+               <p class="text-gray-400 text-sm italic">Acceptez les cookies "Cartes Google Maps" pour afficher l'emplacement interactif.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:flex md:items-center md:gap-12 md:flex-row-reverse">
+        <div class="md:w-1/2 mb-6 md:mb-0">
+          <h2 class="text-3xl font-bold text-[#00ffff] mb-2">Tunisie</h2>
+          <p class="text-gray-300">Découverte de Tunis.</p>
+        </div>
+        <div class="md:w-1/2">
+          <div class="custommaps_embed w-full h-64 rounded-2xl border border-[#00ffff]/20 shadow-lg shadow-[#00ffff]/20 bg-[#161b22] flex items-center justify-center text-center p-8" 
+               data-url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2974781.709711949!2d8.78047308851165!3d35.97167682147927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd337f5e7ef543%3A0xd671924e714a0275!2sTunis%2C%20Tunisie!5e0!3m2!1sfr!2sfr!4v1764436729482!5m2!1sfr!2sfr">
+               <p class="text-gray-400 text-sm italic">Acceptez les cookies "Cartes Google Maps" pour afficher l'emplacement interactif.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:flex md:items-center md:gap-12">
+        <div class="md:w-1/2 mb-6 md:mb-0">
+          <h2 class="text-3xl font-bold text-[#00ffff] mb-2">La Réunion</h2>
+          <p class="text-gray-300">Paysages volcaniques, plages et culture créole.</p>
+        </div>
+        <div class="md:w-1/2">
+          <div class="custommaps_embed w-full h-64 rounded-2xl border border-[#00ffff]/20 shadow-lg shadow-[#00ffff]/20 bg-[#161b22] flex items-center justify-center text-center p-8" 
+               data-url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d377174.24741632696!2d55.22736251089883!3d-21.11950028106556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x217c2f5a5f3d3d3b%3A0x4296e8b3c7b7b7b7!2sLa%20R%C3%A9union!5e0!3m2!1sfr!2sfr!4v1764437000000!5m2!1sfr!2sfr">
+               <p class="text-gray-400 text-sm italic">Acceptez les cookies "Cartes Google Maps" pour afficher l'emplacement interactif.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="loader.js"></script>
+  <script>if(typeof enablePageLoader === 'function') enablePageLoader();</script>
+  
+  <script src="footer.js"></script>
+  <script>addFooter();</script>
+
+</body>
+</html>
