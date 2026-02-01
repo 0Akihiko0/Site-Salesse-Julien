@@ -1,8 +1,23 @@
 function initCookies() {
+    // =====================================================
+    // 0. AUTO-INJECTION DU CONSENT MODE (Évite de toucher au HTML)
+    // =====================================================
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    if (!window.gtag) { window.gtag = gtag; }
+
+    // On définit le refus par défaut immédiatement au chargement du script
+    gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+    });
+
     const style = document.createElement('style');
     style.innerHTML = `
 /* =====================================================
-   1. ICÔNE COOKIE (NE PAS TOUCHER)
+   1. ICÔNE COOKIE
    ===================================================== */
 #tarteaucitronIcon {
     background: none !important;
@@ -19,7 +34,7 @@ function initCookies() {
 }
 
 /* =====================================================
-   2. BARRE DU BAS (OK)
+   2. BARRE DU BAS
    ===================================================== */
 #tarteaucitronAlertBig {
     background-color: #0e1117 !important;
@@ -53,7 +68,6 @@ function initCookies() {
     border: 2px solid #00ffff !important;
 }
 
-/* Boutons principaux */
 #tarteaucitronRoot #tarteaucitron .tarteaucitronAllow,
 #tarteaucitronRoot #tarteaucitron #tarteaucitronPersonalize {
     color: #000000 !important;
@@ -113,7 +127,6 @@ function initCookies() {
     background: #0e1117 !important;
 }
 
-/* Bouton ENREGISTRER */
 #tarteaucitronSaveButton {
     background-color: #161b22 !important;
     color: #00ffff !important;
@@ -147,13 +160,12 @@ function initCookies() {
 }
 
 /* =====================================================
-   10. STYLE DES CARTES (FIX INTERACTIVITÉ)
+   10. STYLE DES CARTES
    ===================================================== */
 .custommaps_embed {
     background-color: #161b22 !important;
     min-height: 256px;
 }
-/* Force l'iframe à être interactive */
 .custommaps_embed iframe {
     width: 100% !important;
     height: 100% !important;
@@ -179,7 +191,7 @@ function initCookies() {
         removeCredit: true,
     });
 
-    // --- SERVICE PERSONNALISÉ (AVEC FIX SCROLL/ZOOM) ---
+    // --- SERVICE GOOGLE MAPS ---
     tarteaucitron.services.custommaps = {
         "key": "custommaps",
         "type": "other",
@@ -191,13 +203,12 @@ function initCookies() {
             "use strict";
             tarteaucitron.fallback(['custommaps_embed'], function (x) {
                 var url = x.getAttribute("data-url");
-                // "scrolling" passé à "yes" pour permettre le zoom/mouvement
                 return '<iframe src="' + url + '" frameborder="0" scrolling="yes" allowfullscreen></iframe>';
             });
         }
     };
 
-    // --- SERVICE PERSONNALISÉ SPLINE ---
+    // --- SERVICE SPLINE ---
     tarteaucitron.services.spline = {
         "key": "spline",
         "type": "other",
@@ -221,12 +232,25 @@ function initCookies() {
         }
     };
 
-// Configuration Google Analytics 4
-    tarteaucitron.user.gtagUa = 'G-XXXXXXXXXX'; // Remplace par ton ID
+    // =====================================================
+    // CONFIGURATION GOOGLE ANALYTICS 4 + CONSENT MODE V2
+    // =====================================================
+    tarteaucitron.user.gtagUa = 'G-M5CVVT7F18'; 
     
-    // Ajout de la configuration pour l'anonymisation
     tarteaucitron.user.gtagMore = function () {
-        gtag('config', tarteaucitron.user.gtagUa, { 'anonymize_ip': true });
+        // Envoi du signal de consentement 'update' à Google
+        gtag('consent', 'update', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+        });
+
+        // Configuration GA4 standard
+        gtag('config', tarteaucitron.user.gtagUa, { 
+            'anonymize_ip': true,
+            'allow_ad_personalization_signals': false
+        });
     };
 
     (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
