@@ -222,7 +222,7 @@ function initCookies() {
     };
 
 // Configuration Google Analytics 4
-    tarteaucitron.user.gtagUa = 'G-XXXXXXXXXX'; // Remplace par ton ID
+    tarteaucitron.user.gtagUa = 'G-SYGFFHLSDC'; // Remplace par ton ID
     
     // Ajout de la configuration pour l'anonymisation
     tarteaucitron.user.gtagMore = function () {
@@ -235,3 +235,4 @@ function initCookies() {
 }
 
 initCookies();
+
