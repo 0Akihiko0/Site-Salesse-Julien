@@ -8,8 +8,19 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
 
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied'
+  });
+</script>
+
   <script src="tarteaucitron/tarteaucitron.js"></script>
-  <script src="cookies.js"></script>
+  <script src="cookies.js" defer></script>
 
   <style>
     /* Scroll personnalisé */
@@ -115,6 +126,7 @@
         <li>Les données statistiques sont conservées pour une durée maximale de <strong>14 mois</strong>.</li>
         <li>Le dépôt de cookies Google Analytics est soumis au consentement préalable via Tarteaucitron.</li>
         <li>En cas de refus, aucun cookie de mesure d’audience n’est déposé.</li>
+        <li>Les données permettent une géolocalisation approximative limitée à votre localité (ville ou village) afin d'analyser la provenance de nos visiteurs.</li>
       </ul>
 
       <h3 class="text-xl font-semibold text-gray-100 mt-4">7.2 Contenus 3D – Spline</h3>
@@ -179,5 +191,4 @@
   <script>addFooter();</script>
 
 </body>
-
 </html>
