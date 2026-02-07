@@ -3,62 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site en maintenance</title>
+  <title>Maintenance | Julien Salesse</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" type="image/png" href="Favicon.png?v=1">
   <style>
-    /* Reprise de ton scroll personnalisé */
-    ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-track { background: #0e1117; }
-    ::-webkit-scrollbar-thumb { background: #00ffff55; border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: #00ffffaa; }
-    * { scrollbar-width: thin; scrollbar-color: #00ffff55 #0e1117; }
+    body { background-color: #0a0a0a; color: white; }
+    
+    /* Animation de flottement pour l'icône */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    .float-anim { animation: float 5s ease-in-out infinite; }
 
-    /* Ton animation de gradient */
-    @keyframes gradient { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-    .animate-gradient { background-size: 200% 200%; animation: gradient 6s ease infinite; }
+    /* Scanline effect discret (ton site actuel) */
+    .hero-textured::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(transparent 50%, rgba(255, 255, 255, 0.03) 50%);
+      background-size: 100% 4px; pointer-events: none; z-index: 1;
+    }
+
+    /* Animation de révélation du texte au chargement */
+    .text-reveal {
+      display: inline-block;
+      animation: reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    }
+    @keyframes reveal {
+      0% { transform: translateY(20px); opacity: 0; filter: blur(10px); }
+      100% { transform: translateY(0); opacity: 1; filter: blur(0); }
+    }
   </style>
 </head>
-<body class="bg-[#0e1117] text-white font-sans overflow-hidden flex items-center justify-center min-h-screen">
+<body class="antialiased flex items-center justify-center min-h-screen overflow-hidden hero-textured">
 
-  <main class="relative px-6 text-center">
-    
-    <div class="absolute inset-0 -z-10 bg-[#00ffff]/5 blur-[120px] rounded-full"></div>
-
-    <div class="space-y-8 max-w-2xl mx-auto">
+  <main class="relative px-6 text-center z-10">
+    <div class="space-y-12 max-w-3xl mx-auto">
       
-      <div class="flex justify-center">
-        <div class="p-6 bg-[#0e1117]/60 border border-[#00ffff]/20 rounded-3xl shadow-lg shadow-[#00ffff]/10 animate-pulse">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-[#00ffff]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      <div class="flex justify-center float-anim">
+        <div class="relative p-8 bg-zinc-900/30 border border-white/10 backdrop-blur-md rounded-[3rem] shadow-2xl">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-80">
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 17.66-1.41 1.41"/>
+                <path d="m19.07 4.93-1.41 1.41"/>
             </svg>
         </div>
       </div>
 
-      <h1 class="text-5xl md:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#00ffff] to-[#7fbf7f] animate-gradient">
-        Pause technique
-      </h1>
-
-      <div class="space-y-4">
-        <p class="text-xl md:text-2xl text-gray-300 font-light">
-          Mon site fait peau neuve pour vous offrir une meilleure expérience.
-        </p>
-        <p class="text-gray-400 text-base max-w-md mx-auto">
-          Je travaille actuellement sur de nouvelles fonctionnalités. Tout sera prêt prochainement. Merci de votre patience !
+      <div class="space-y-6">
+        <h1 class="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-none">
+            <span class="text-reveal">PAUSE</span><br>
+            <span class="text-reveal opacity-20 italic" style="animation-delay: 0.2s;">TECHNIQUE.</span>
+        </h1>
+        <p class="text-zinc-500 text-lg md:text-xl font-medium max-w-lg mx-auto leading-relaxed text-reveal" style="animation-delay: 0.4s;">
+            Mon portfolio fait peau neuve. Je travaille sur de nouveaux projets immersifs.
         </p>
       </div>
 
-      <div class="inline-flex items-center gap-2 px-4 py-2 bg-[#00ffff]/10 border border-[#00ffff]/30 rounded-full text-[#00ffff] text-sm font-medium">
+      <div class="inline-flex items-center gap-3 px-6 py-3 bg-white text-black rounded-full transition-transform hover:scale-105">
         <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00ffff] opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-[#00ffff]"></span>
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-40"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
         </span>
-        Réouverture prochainement
+        <span class="text-[10px] font-black uppercase tracking-[0.2em]">
+            Bientôt disponible
+        </span>
       </div>
 
     </div>
   </main>
+
+  <div class="absolute bottom-10 left-10 text-[10px] font-mono text-white/20 uppercase tracking-widest hidden md:block">
+    JS / 2026
+  </div>
+  <div class="absolute bottom-10 right-10 text-[10px] font-mono text-white/20 uppercase tracking-widest hidden md:block">
+    Julien Salesse — Portfolio
+  </div>
 
 </body>
 </html>
