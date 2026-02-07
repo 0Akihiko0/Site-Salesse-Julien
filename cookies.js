@@ -239,7 +239,7 @@ function initCookies() {
 tarteaucitron.services.web3forms = {
     "key": "web3forms",
     "type": "api",
-    "name": "Web3Forms (Captcha)",
+    "name": "Web3Forms",
     "uri": "https://web3forms.com/privacy",
     "needConsent": true,
     "cookies": ['__hssc', '__hssrc', '__hstc', 'hubspotutk'], // Cookies techniques potentiels
@@ -276,3 +276,4 @@ tarteaucitron.services.web3forms = {
 }
 
 initCookies();
+
