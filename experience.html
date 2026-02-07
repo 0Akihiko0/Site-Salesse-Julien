@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expériences</title>
+    <script src="tarteaucitron/tarteaucitron.js"></script>
+    <script src="cookies.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { 
+            background-color: white; 
+            color: #0a0a0a; 
+            font-family: 'Inter', sans-serif; 
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        .dark body { background-color: #0a0a0a; color: white; }
+
+        .hero-title { font-size: clamp(2.5rem, 12vw, 8rem); line-height: 0.85; }
+        
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Accordéon Fluide */
+        #moreText {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+            opacity: 0;
+        }
+        #moreText.expanded {
+            max-height: 3000px;
+            opacity: 1;
+        }
+
+        .btn-ui {
+            padding: 10px 20px;
+            border: 1px solid currentColor;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.2s ease;
+            background: transparent;
+        }
+        @media (min-width: 768px) {
+            .btn-ui { padding: 12px 24px; font-size: 11px; }
+        }
+        .btn-ui:hover { background-color: #0a0a0a; color: white; }
+        .dark .btn-ui:hover { background-color: white; color: #0a0a0a; }
+
+        .task-list li b { color: #000; }
+        .dark .task-list li b { color: #fff; }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <script src="navbar.js"></script>
+    <script>addNavbar("experience");</script>
+
+    <main class="px-4 md:px-24 pt-32 md:pt-48 pb-20">
+        
+        <header class="mb-16 md:mb-24">
+            <h1 class="hero-title font-black uppercase tracking-tighter reveal">
+                Mon Parcours<span class="text-zinc-200 dark:text-zinc-800">.</span>
+            </h1>
+        </header>
+
+        <section class="py-12 md:py-20 border-t border-zinc-100 dark:border-zinc-900 reveal">
+            <div class="flex flex-col lg:flex-row gap-8 md:gap-12 items-center">
+                <div class="text-6xl md:text-9xl font-black text-zinc-100 dark:text-zinc-900 leading-none shrink-0">01</div>
+                
+                <div class="flex-grow w-full">
+                    <p class="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400 mb-4">Stage Entreprise / 2025</p>
+                    <h2 class="text-3xl md:text-7xl font-black uppercase tracking-tighter mb-6 md:mb-10">Mentalworks</h2>
+                    
+                    <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
+                        <div class="space-y-6 text-base md:text-lg opacity-70 leading-relaxed">
+                            <p>Lors de mon stage de 3ème, j'ai pu observer de près le quotidien d'une équipe de production digitale.</p>
+                            <ul class="space-y-4">
+                                <li class="flex gap-3 italic"><i data-lucide="eye" class="w-5 h-5 opacity-60"></i> Observation des développeurs et graphistes.</li>
+                                <li class="flex gap-3 italic"><i data-lucide="check-circle" class="w-5 h-5 opacity-60"></i> Missions de vérification et bureautique.</li>
+                                <li class="flex gap-3 italic"><i data-lucide="users" class="w-5 h-5 opacity-60"></i> Apprentissage du travail en équipe.</li>
+                            </ul>
+                        </div>
+                        <div class="rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border border-zinc-100 dark:border-zinc-900">
+                            <img src="Photos/Mentalworks.png" class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" alt="Mentalworks">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 md:py-20 border-t border-zinc-100 dark:border-zinc-900 reveal" id="defirobot">
+            <div class="flex flex-col lg:flex-row gap-8 md:gap-12">
+                <div class="text-6xl md:text-9xl font-black text-zinc-100 dark:text-zinc-900 leading-none shrink-0">02</div>
+
+                <div class="flex-grow">
+                    <p class="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400 mb-4">Concours Académique / 2023-24</p>
+                    <h2 class="text-3xl md:text-7xl font-black uppercase tracking-tighter mb-6 md:mb-10">Défi Robot</h2>
+
+                    <div class="grid md:grid-cols-2 gap-6 md:gap-8 mb-12">
+                        <div class="rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border border-zinc-100 dark:border-zinc-900 h-64 md:h-full">
+                            <img src="Photos/imagesrobot_concours.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                        </div>
+                        
+                        <div class="flex flex-col justify-between p-6 md:p-10 bg-zinc-50 dark:bg-zinc-900 rounded-2xl md:rounded-3xl border border-zinc-100 dark:border-zinc-900">
+                            <div>
+                                <span class="text-4xl md:text-7xl font-black tracking-tighter mb-2 md:mb-4 block leading-none text-black dark:text-white">PHOTOS.</span>
+                                <p class="text-base md:text-xl font-medium opacity-70 text-black dark:text-white/70">Regarder quelques photos de la finale et de la préparation.</p>
+                            </div>
+                            <button id="openModal" class="btn-ui mt-8 md:mt-10 w-full md:w-fit shadow-lg border-black dark:border-white text-black dark:text-white">Voir la galerie</button>
+                        </div>
+                    </div>
+
+                    <div class="max-w-4xl space-y-6 text-base md:text-lg opacity-80 leading-relaxed border-l-2 md:border-l-4 border-zinc-100 dark:border-zinc-900 pl-4 md:pl-12">
+                        <p>Au départ, nous étions un groupe assez nombreux à participer au Défi Robot Académique Collège. L’objectif était de créer un robot capable de suivre un parcours précis et de réaliser différentes missions, tout en appliquant nos connaissances en technologie, codage, logique et travail d’équipe.</p>
+                        
+                        <div id="moreText" class="space-y-6">
+                            <p>Avec le temps, certains membres ont commencé à douter de nos compétences et ont décidé de se retirer. Finalement, il ne restait plus que trois d’entre nous, mais nous étions déterminés à aller jusqu’au bout.</p>
+                            
+                            <p class="font-bold uppercase text-[10px] tracking-widest opacity-50 pt-4">Notre organisation :</p>
+                            <ul class="task-list space-y-3 pl-4 border-l border-zinc-200 dark:border-zinc-800">
+                                <li><b>Planification :</b> Identification des tâches, répartition des rôles et suivi dans un fichier Excel.</li>
+                                <li><b>Programmation et montage :</b> Codage des mouvements, tests des capteurs, ajustement des moteurs.</li>
+                                <li><b>Dossier numérique :</b> Présentation de la démarche et analyse des solutions techniques.</li>
+                                <li><b>Soutenance orale :</b> Répétition du discours et préparation des réponses (dont une partie en anglais).</li>
+                            </ul>
+
+                            <p>Nous avons également dû faire face à des délais de livraison particulièrement longs pour recevoir une partie essentielle du matériel, ce qui a considérablement freiné l’avancement du projet et nécessité une réorganisation complète de notre planning.</p>
+
+                            <p>La soutenance orale, appelée <b>Préao</b>, était un moment clé. Nous disposions de dix minutes pour présenter notre projet. Une partie de la présentation devait être faite en anglais, ce qui nous a permis de valoriser certains aspects du projet devant le jury.</p>
+
+                            <p>Malgré la pression, nous avons réussi à présenter notre projet de manière claire et structurée. Notre persévérance a payé : <b>nous avons été qualifiés pour la finale départementale !</b></p>
+                            
+                            <p class="italic text-zinc-500 text-sm md:text-base">Cette aventure m’a appris l’importance de la persévérance, de la confiance en soi et de l’organisation logique dans un projet technique.</p>
+                        </div>
+
+                        <div class="pt-6 flex flex-wrap gap-4">
+                            <button id="toggleBtn" class="text-[10px] md:text-xs font-black uppercase tracking-widest border-b-2 border-current pb-1 hover:opacity-50 transition-all">Lire l'histoire complète</button>
+                            <button id="openPdfModal" class="btn-ui border-black dark:border-white text-black dark:text-white">Règlement PDF</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="popup" class="fixed inset-0 bg-[#f9f9f9] dark:bg-[#0a0a0a] z-[300] hidden overflow-y-auto">
+        <button id="closeModal" class="fixed top-6 right-6 z-[310] p-3 bg-white dark:bg-zinc-800 rounded-full shadow-xl text-black dark:text-white">
+            <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="max-w-6xl mx-auto px-4 py-24 md:py-32">
+            <h2 class="text-3xl md:text-5xl font-black uppercase mb-10 md:mb-16 tracking-tighter text-black dark:text-white">Galerie Robotique</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                <img src="Photos/robot.png" class="gallery-img rounded-xl shadow-md w-full h-56 md:h-64 object-cover cursor-pointer hover:scale-[1.02] transition-transform">
+                <img src="Photos/moi+robot.png" class="gallery-img rounded-xl shadow-md w-full h-56 md:h-64 object-cover cursor-pointer hover:scale-[1.02] transition-transform">
+                <img src="Photos/robot2.png" class="gallery-img rounded-xl shadow-md w-full h-56 md:h-64 object-cover cursor-pointer hover:scale-[1.02] transition-transform">
+                <img src="Photos/robot3.png" class="gallery-img rounded-xl shadow-md w-full h-56 md:h-64 object-cover cursor-pointer hover:scale-[1.02] transition-transform">
+                <img src="Photos/leparcoursdejeuxolympiques.jpg" class="gallery-img rounded-xl shadow-md w-full h-56 md:h-64 object-cover cursor-pointer hover:scale-[1.02] transition-transform">
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="fixed inset-0 bg-black/95 z-[1000] hidden items-center justify-center p-4 backdrop-blur-md cursor-zoom-out" onclick="closeLightbox()">
+        <img id="lightboxImg" src="" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl transition-transform duration-300">
+    </div>
+
+    <div id="pdfModal" class="fixed inset-0 bg-black/95 z-[300] hidden flex flex-col items-center justify-center p-2 md:p-4">
+        <button id="closePdfModal" class="absolute top-6 right-6 z-[310] p-3 bg-white text-black rounded-full shadow-xl">
+            <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <iframe src="Photos/fichiers/REGLEMENT DEFI ROBOT 2024 - DRANE.pdf" class="w-full max-w-5xl h-[80vh] rounded-xl bg-white"></iframe>
+    </div>
+
+    <script src="footer.js"></script>
+    <script>addFooter();</script>
+    <script src="loader.js"></script>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        const toggleBtn = document.getElementById('toggleBtn');
+        const moreText = document.getElementById('moreText');
+        toggleBtn.onclick = () => {
+            moreText.classList.toggle('expanded');
+            toggleBtn.innerText = moreText.classList.contains('expanded') ? 'Réduire l\'histoire' : "Lire l'histoire complète";
+        };
+
+        const toggle = (id, s) => {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden', !s);
+            document.body.style.overflow = s ? 'hidden' : ''; 
+        };
+
+        document.getElementById('openModal').onclick = () => toggle('popup', true);
+        document.getElementById('closeModal').onclick = () => toggle('popup', false);
+        document.getElementById('openPdfModal').onclick = () => toggle('pdfModal', true);
+        document.getElementById('closePdfModal').onclick = () => toggle('pdfModal', false);
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        document.querySelectorAll('.gallery-img').forEach(img => {
+            img.onclick = (e) => {
+                e.stopPropagation();
+                lightboxImg.src = img.src;
+                lightbox.classList.remove('hidden');
+                lightbox.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            if(document.getElementById('popup').classList.contains('hidden')) return;
+            document.body.style.overflow = '';
+        }
+
+        window.onload = () => { if(window.lucide) lucide.createIcons(); };
+    </script>
+</body>
+</html>

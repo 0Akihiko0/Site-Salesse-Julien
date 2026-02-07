@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compétences</title>
+    <link rel="icon" type="image/png" href="Favicon.png?v=1">
+    
+    <script src="tarteaucitron/tarteaucitron.js"></script>
+    <script src="cookies.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
+
+    <style>
+        body { 
+            /* Utilisation des polices système standard au lieu de Google Fonts */
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Texture System (Scanlines) */
+        .system-bg { position: relative; min-height: 100vh; }
+        .system-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 50%, rgba(125, 125, 125, 0.07) 50%);
+            background-size: 100% 4px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Slider Fix (Chrome, Safari, Firefox) */
+        .skill-slider {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none; 
+            width: 100%;
+            height: 6px;
+            border-radius: 10px;
+            outline: none;
+            background: transparent;
+        }
+
+        .skill-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+            background: currentColor;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        .skill-slider::-moz-range-thumb {
+            width: 28px;
+            height: 28px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: currentColor;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        .circle-progress {
+            transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        .data-card {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+    </style>
+</head>
+<body class="antialiased transition-colors duration-500 bg-zinc-50 dark:bg-[#0a0a0a] text-zinc-900 dark:text-zinc-100">
+
+    <script src="navbar.js"></script>
+    <script>addNavbar("competences");</script>
+
+    <div class="system-bg">
+        <main class="min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-20">
+            
+            <header class="text-center mb-10 md:mb-16">
+                <h1 class="text-4xl sm:text-6xl md:text-8xl font-black uppercase tracking-tighter mb-2 md:mb-4 leading-[0.9]">
+                    Compétences<span class="text-zinc-400 dark:text-zinc-700">.</span>
+                </h1>
+                <div class="flex items-center justify-center gap-3 md:gap-4 text-zinc-500 uppercase tracking-[0.2em] md:tracking-[0.3em] text-[9px] md:text-[10px] font-bold">
+                    <span class="w-6 md:w-8 h-[1px] bg-zinc-300 dark:bg-zinc-800"></span>
+                    Interactives
+                    <span class="w-6 md:w-8 h-[1px] bg-zinc-300 dark:bg-zinc-800"></span>
+                </div>
+            </header>
+
+            <div class="w-full max-w-6xl grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
+                
+                <div class="relative flex justify-center items-center">
+                    <svg viewBox="0 0 40 40" class="w-44 h-44 sm:w-56 sm:h-56 md:w-96 md:h-96">
+                        <circle class="fill-none stroke-zinc-200 dark:stroke-zinc-900" cx="20" cy="20" r="15.915" stroke-width="1.5" />
+                        <circle id="progressCircle" class="circle-progress fill-none stroke-zinc-900 dark:stroke-white" cx="20" cy="20" r="15.915" stroke-width="1.5" stroke-dasharray="100 100" stroke-dashoffset="100" />
+                    </svg>
+                    <div class="absolute text-center">
+                        <span id="percentLabel" class="text-4xl md:text-8xl font-black tracking-tighter">0%</span>
+                        <p class="text-[9px] md:text-[10px] uppercase tracking-widest opacity-40 mt-1 md:mt-2">Maîtrise</p>
+                    </div>
+                </div>
+
+                <div class="relative w-full">
+                    <div id="skillDisplay" class="data-card p-7 md:p-14 rounded-[2rem] md:rounded-[2.5rem] min-h-[340px] md:min-h-[450px] flex flex-col justify-center border bg-white/60 dark:bg-zinc-900/40 border-zinc-200 dark:border-white/5 backdrop-blur-xl shadow-xl dark:shadow-none">
+                        <div id="skillIcon" class="mb-5 md:mb-8 text-zinc-900 dark:text-white">
+                            <i data-lucide="cpu" class="w-10 h-10 md:w-14 md:h-14"></i>
+                        </div>
+                        <h2 id="skillTitle" class="text-2xl md:text-4xl font-black uppercase mb-4 tracking-tighter leading-tight">Initialisation</h2>
+                        
+                        <div id="skillContent" class="text-sm md:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed min-h-[100px]">
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-zinc-200 dark:border-white/5 flex justify-between items-center font-mono text-[9px] md:text-[10px] opacity-40">
+                            <span>MOD_SKILLS_V2.3</span>
+                            <span id="stepCounter">STEP: 01</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full max-w-xl mt-12 md:mt-20">
+                <div class="relative flex items-center h-12">
+                    <input type="range" min="0" max="6" value="0" step="1" id="skillRange" class="skill-slider bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white">
+                </div>
+                <div class="flex justify-between mt-2 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-600">
+                    <span>Exploration</span>
+                    <span>Expertise</span>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="footer.js"></script>
+    <script>addFooter();</script>
+    <script src="loader.js"></script>
+
+    <script>
+        const skills = [
+            { title: "Robotique", desc: "Expertise technique sur les capteurs, les actionneurs et la programmation logique pour des systèmes autonomes.", percent: 85, icon: "bot" },
+            { title: "Design", desc: "Conception graphique et interfaces visuelles avec une attention particulière à l'expérience utilisateur.", percent: 70, icon: "palette" },
+            { title: "Programmation", desc: "Développement de scripts d'automatisation en Python et intégration front-end moderne.", percent: 25, icon: "code" },
+            { title: "Travail d'Équipe", desc: "Collaboration agile, communication transparente et gestion de projets collectifs.", percent: 95, icon: "users" },
+            { title: "Persévérance", desc: "Volonté constante d'aboutir aux projets et capacité à surmonter les obstacles techniques avec détermination.", percent: 100, icon: "zap" },
+            { title: "Problèmes", desc: "Résolution de problèmes : Analyse logique des bugs et mise en place de solutions durables.", percent: 65, icon: "bar-chart-3" },
+            { title: "Compétences", isList: true, items: ["Programmation par blocs", "Cahier des charges", "Protocoles réseaux (base)", "Circuits électroniques (base)", "Prompt Engineering (avancé)", "Outils de design (Canva)"], percent: 100, icon: "check-circle" }
+        ];
+
+        const range = document.getElementById('skillRange');
+        const title = document.getElementById('skillTitle');
+        const content = document.getElementById('skillContent');
+        const percentLabel = document.getElementById('percentLabel');
+        const circle = document.getElementById('progressCircle');
+        const iconDiv = document.getElementById('skillIcon');
+        const stepCounter = document.getElementById('stepCounter');
+
+        function updateSkill(index) {
+            const data = skills[index];
+            const card = document.getElementById('skillDisplay');
+            
+            card.style.opacity = "0";
+            card.style.transform = "translateY(10px)";
+
+            setTimeout(() => {
+                title.innerText = data.title;
+                stepCounter.innerText = `STEP: 0${parseInt(index) + 1}`;
+                
+                if(data.isList) {
+                    let listHtml = '<ul class="grid grid-cols-1 md:grid-cols-2 gap-y-2 gap-x-4 text-xs md:text-sm">';
+                    data.items.forEach(item => listHtml += `<li class="flex items-center gap-2"><span class="text-zinc-400">→</span>${item}</li>`);
+                    listHtml += '</ul>';
+                    content.innerHTML = listHtml;
+                } else {
+                    content.innerHTML = `<p>${data.desc}</p>`;
+                }
+
+                percentLabel.innerText = data.percent + "%";
+                circle.style.strokeDashoffset = 100 - data.percent;
+                iconDiv.innerHTML = `<i data-lucide="${data.icon}" class="w-10 h-10 md:w-14 md:h-14"></i>`;
+                
+                lucide.createIcons();
+                card.style.opacity = "1";
+                card.style.transform = "translateY(0)";
+            }, 200);
+        }
+
+        range.addEventListener('input', (e) => updateSkill(e.target.value));
+        window.onload = () => { updateSkill(0); lucide.createIcons(); };
+    </script>
+</body>
+</html>

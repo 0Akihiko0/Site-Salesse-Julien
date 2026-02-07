@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets Scolaires</title>
+    
+    <script src="tarteaucitron/tarteaucitron.js"></script>
+    <script src="cookies.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/png" href="Favicon.png?v=1">
+
+    <style>
+        body { 
+            background-color: white; 
+            color: #0a0a0a; 
+            font-family: 'Inter', sans-serif; 
+            transition: background-color 0.5s ease;
+        }
+        .dark body { background-color: #0a0a0a; color: white; }
+
+        .hero-title { font-size: clamp(2.2rem, 9vw, 6rem); line-height: 0.85; }
+        
+        .project-card {
+            background: #f9f9f9;
+            border-radius: 2rem;
+            padding: 1.5rem; /* Réduit pour mobile */
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        @media (min-width: 768px) {
+            .project-card { padding: 2.5rem; }
+        }
+        .dark .project-card { background: #111111; border: 1px solid rgba(255,255,255,0.05); }
+
+        .prof-mention {
+            padding: 1.2rem;
+            border-left: 2px solid rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            opacity: 0.7;
+        }
+        @media (min-width: 768px) {
+            .prof-mention { padding: 1.5rem; font-size: 0.85rem; }
+        }
+        .dark .prof-mention { border-left: 2px solid rgba(255,255,255,0.1); }
+
+        /* Accordéon */
+        .acc-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .dark .acc-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
+        
+        .acc-trigger {
+            width: 100%;
+            padding: 1.2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            background: none;
+            border: none;
+            text-align: left;
+        }
+
+        .acc-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .acc-item.active .acc-content {
+            max-height: 2000px; 
+            opacity: 1;
+            padding-bottom: 2rem;
+        }
+
+        .acc-item.active i { transform: rotate(45deg); }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden min-h-screen">
+
+    <script src="navbar.js"></script>
+    <script>addNavbar("projets");</script>
+
+    <div class="fixed top-20 md:top-28 left-4 md:left-12 z-[999]">
+        <a href="projets.html" 
+           class="flex items-center gap-3 p-3 md:px-5 md:py-3 rounded-full 
+                  bg-white dark:bg-zinc-900 shadow-xl border border-zinc-200 dark:border-zinc-800
+                  transition-all duration-300 hover:scale-105 active:scale-95 group">
+            <i data-lucide="arrow-left" class="w-4 h-4 text-zinc-900 dark:text-white group-hover:-translate-x-1 transition-transform"></i>
+            <span class="hidden md:block text-[10px] font-black uppercase tracking-widest text-zinc-900 dark:text-white">Retour</span>
+        </a>
+    </div>
+
+    <main class="pt-32 md:pt-48 pb-32 px-6 md:px-16 lg:px-24 max-w-[1600px] mx-auto">
+        
+        <header class="mb-16 md:mb-24 reveal">
+            <span class="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] opacity-40 block mb-4">Éducation & Réalisations</span>
+            <h1 class="hero-title font-black uppercase tracking-tighter">
+                Parcours<br><span class="text-zinc-300 dark:text-zinc-800">Scolaire.</span>
+            </h1>
+        </header>
+
+        <div class="grid lg:grid-cols-12 gap-12 md:gap-16">
+            
+            <div class="lg:col-span-7 reveal">
+                <div class="project-card h-full flex flex-col">
+                    <div class="flex justify-between items-start mb-8 md:mb-12">
+                        <div class="bg-black dark:bg-white text-white dark:text-black p-3 md:p-4 rounded-xl md:rounded-2xl">
+                            <i data-lucide="cpu" class="w-6 h-6 md:w-8 md:h-8"></i>
+                        </div>
+                        <span class="text-[9px] md:text-[10px] font-bold uppercase tracking-widest opacity-30">Projet Majeur</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 md:mb-6">Robotique</h2>
+                    <p class="text-sm md:text-lg opacity-60 leading-relaxed mb-8 max-w-xl">
+                        Défi Robot Académique : programmation d'un robot autonome pour des missions complexes malgré des contraintes logistiques fortes.
+                    </p>
+                    
+                    <div class="mt-auto group overflow-hidden rounded-2xl md:rounded-3xl mb-8">
+                        <img src="Photos/robot.png" class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" alt="Robotique">
+                    </div>
+
+                    <a href="experience.html#defirobot" class="inline-flex items-center gap-4 text-[10px] md:text-sm font-bold uppercase tracking-widest group">
+                        Explorer l'histoire complète 
+                        <span class="w-8 h-[1px] bg-current transition-all group-hover:w-12"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 reveal" style="transition-delay: 0.2s">
+                <div class="lg:sticky lg:top-40">
+                    <h3 class="text-[10px] font-bold uppercase tracking-[0.4em] opacity-40 mb-6 md:mb-8 flex items-center gap-4">
+                        <span class="w-8 h-[1px] bg-current"></span> Conception & Design
+                    </h3>
+
+                    <div class="prof-mention">
+                        <p>Ces objets 3D ont été réalisés dans le cadre de mes cours de technologie de 3ème, sous la supervision de mon professeur.</p>
+                    </div>
+                    
+                    <div id="schoolAccordionContainer" class="space-y-1"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="footer.js"></script>
+    <script>addFooter();</script>
+    <script src="loader.js"></script>
+
+    <script>
+        lucide.createIcons();
+
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        });
+
+        const schoolProjects = [
+            { title: "Support de téléphone", imgs:["Photos/potetel.png"] },
+            { title: "Clé décorative", imgs:["Photos/keyp.png", "Photos/keyg.png"] },
+            { title: "Bonhomme de neige", imgs:["Photos/bonhomep.png", "Photos/bonhomeg.png"] },
+            { title: "Toupie", imgs:["Photos/toupiep.png", "Photos/toupieg.png"] },
+            { title: "Pince", imgs:["Photos/pince2p.png", "Photos/pince2g.png"] },
+            { title: "Canva (Audiovisuel)", link:"https://carnet-inspiration.my.canva.site/", code:"AuDio24Ju@" }
+        ];
+
+        function createAccordion(container, data){
+            data.forEach((p, index) => {
+                const item = document.createElement("div");
+                item.className = "acc-item";
+
+                let imagesHTML = '';
+                if(p.imgs){
+                    if(p.imgs.length === 1) {
+                        imagesHTML = `<div class="mt-4"><img src="${p.imgs[0]}" class="rounded-xl w-full grayscale hover:grayscale-0 transition-all shadow-md"></div>`;
+                    } else {
+                        imagesHTML = `
+                            <div class="grid grid-cols-2 gap-3 mt-4">
+                                <img src="${p.imgs[0]}" class="rounded-lg md:rounded-xl w-full grayscale hover:grayscale-0 transition-all shadow-md">
+                                <img src="${p.imgs[1]}" class="rounded-lg md:rounded-xl w-full grayscale hover:grayscale-0 transition-all shadow-md">
+                            </div>
+                        `;
+                    }
+                }
+
+                let contentHTML = `
+                    <div class="acc-content">
+                        ${imagesHTML}
+                        <div class="pt-6 flex flex-col gap-3">
+                            ${p.code ? `<p class="font-bold text-zinc-400 text-[11px] md:text-sm italic">Code d'accès : ${p.code}</p>` : ''}
+                            ${p.link ? `<a href="${p.link}" target="_blank" class="inline-block px-6 py-3 border border-zinc-400 rounded-xl text-zinc-500 hover:bg-zinc-100 dark:hover:bg-white/10 transition text-[9px] font-bold uppercase tracking-[0.2em] w-fit">Consulter le projet</a>` : ''}
+                        </div>
+                    </div>
+                `;
+
+                item.innerHTML = `
+                    <button class="acc-trigger">
+                        <span class="flex items-center gap-3 md:gap-4 pointer-events-none">
+                            <span class="text-[9px] md:text-[10px] opacity-30">0${index + 1}</span>
+                            <span class="text-sm md:text-lg font-bold tracking-tighter">${p.title}</span>
+                        </span>
+                        <i data-lucide="plus" class="w-3 h-3 md:w-4 md:h-4 transition-transform duration-500 pointer-events-none"></i>
+                    </button>
+                    ${contentHTML}
+                `;
+
+                const btn = item.querySelector(".acc-trigger");
+                btn.addEventListener('click', () => {
+                    const isCurrentlyActive = item.classList.contains("active");
+                    document.querySelectorAll('.acc-item').forEach(el => el.classList.remove('active'));
+                    if(!isCurrentlyActive) item.classList.add("active");
+                });
+
+                container.appendChild(item);
+            });
+            lucide.createIcons();
+        }
+
+        createAccordion(document.getElementById("schoolAccordionContainer"), schoolProjects);
+    </script>
+</body>
+</html>

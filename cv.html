@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV</title>
+    
+    <script src="tarteaucitron/tarteaucitron.js"></script>
+    <script src="cookies.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/png" href="Favicon.png?v=1">
+
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-main: #ffffff;
+            --text-zinc: #71717a;
+            --card-bg: rgba(20, 20, 20, 0.4);
+            --border: rgba(255, 255, 255, 0.08);
+            --separator: rgba(255, 255, 255, 0.1);
+        }
+
+        .light {
+            --bg-color: #f5f5f7;
+            --text-main: #1a1a1a;
+            --text-zinc: #636366;
+            --card-bg: rgba(255, 255, 255, 0.6);
+            --border: rgba(0, 0, 0, 0.1);
+            --separator: rgba(0, 0, 0, 0.1);
+        }
+
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        #bg-image-fallback {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('Photos/page3-spline.png');
+            background-size: cover; 
+            z-index: -2;
+            filter: blur(15px) grayscale(1);
+            opacity: 0.15;
+        }
+
+        /* Hauteur fixe pour les deux carrés sur PC */
+        .equal-square-container {
+            height: 65vh;
+            min-height: 500px;
+        }
+
+        /* Style des blocs (CV et QR) */
+        .content-box {
+            position: relative;
+            flex: 1;
+            aspect-ratio: 1 / 1; /* Force la forme carrée */
+            max-width: 550px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 3rem;
+            overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            cursor: pointer;
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Image CV floutée */
+        .cv-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(15px) brightness(0.7);
+            transition: filter 0.5s ease;
+        }
+
+        .content-box:hover .cv-image {
+            filter: blur(10px) brightness(0.5);
+        }
+
+        /* QR Code géant */
+        .qr-image-full {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10%; /* Marge interne pour que le QR ne touche pas les bords */
+            background: #ffffff;
+            filter: grayscale(1);
+        }
+
+        /* Overlay texte */
+        .overlay-label {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .separator-line {
+            border-left: 1px solid var(--separator);
+            height: 60vh;
+        }
+
+        @media (max-width: 1024px) {
+            .equal-square-container { height: auto; flex-direction: column; }
+            .hide-on-mobile { display: none !important; }
+            .cv-mobile-size { width: 100% !important; max-width: none !important; height: 75vh !important; aspect-ratio: auto; }
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen">
+
+    <div id="bg-image-fallback"></div>
+
+    <script src="navbar.js"></script>
+    <script>addNavbar("cv");</script>
+
+    <main class="pt-32 pb-12 px-4 md:px-16">
+        
+        <header class="max-w-7xl mx-auto mb-16 text-center lg:text-left">
+            <h1 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-4">
+                Mon <span class="text-zinc-500">CV.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-zinc-500 font-light max-w-4xl">
+                Consulter mon CV pour voir mon parcours, mes compétences, mes qualités et les projets qui m'animent.
+            </p>
+        </header>
+
+        <!-- Container des deux carrés symétriques -->
+        <div class="max-w-7xl mx-auto flex flex-row items-center justify-center gap-8 lg:gap-20 equal-square-container">
+            
+            <!-- CARRÉ 1 : APERÇU CV -->
+            <div class="content-box shadow-2xl cv-mobile-size group" 
+                 onclick="window.open('https://www.canva.com/design/DAGtmMnuiuc/TpNIgekVrDOiSdHjXmVUtg/edit?utm_content=DAGtmMnuiuc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton', '_blank')">
+                
+                <img src="Photos/CV screenshot.png" alt="Aperçu CV" class="cv-image">
+                
+                <div class="overlay-label">
+                    <div class="bg-white text-black font-black py-4 px-10 rounded-full flex items-center gap-3 shadow-2xl transition group-hover:scale-110">
+                        <i data-lucide="eye"></i>
+                        VOIR LE CV
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIGE DE SÉPARATION -->
+            <div class="hidden lg:block separator-line"></div>
+
+            <!-- CARRÉ 2 : QR CODE GÉANT (Masqué sur mobile) -->
+            <div class="content-box shadow-2xl hide-on-mobile group"
+                 onclick="window.open('https://www.canva.com/design/DAGtmMnuiuc/TpNIgekVrDOiSdHjXmVUtg/edit?utm_content=DAGtmMnuiuc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton', '_blank')">
+                
+                <img src="Photos/QR.png" alt="QR Code" class="qr-image-full">
+                
+                <!-- Overlay discret pour le QR -->
+                <div class="absolute bottom-6 left-0 right-0 text-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="bg-black/80 text-white text-[10px] font-bold tracking-widest uppercase py-2 px-4 rounded-full">
+                        Ouvrir le lien Canva
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="loader.js"></script>
+    <script src="footer.js"></script>
+    <script>
+        if(typeof addFooter === 'function') addFooter();
+        lucide.createIcons();
+
+        function applyTheme() {
+            const isLight = localStorage.theme === 'light';
+            document.documentElement.classList.toggle('light', isLight);
+        }
+        applyTheme();
+        setInterval(applyTheme, 1000);
+    </script>
+
+</body>
+</html>

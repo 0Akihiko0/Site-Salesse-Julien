@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Politique de confidentialité</title>
+    <link rel="icon" type="image/png" href="Favicon.png?v=1">
+
+    <script src="tarteaucitron/tarteaucitron.js"></script>
+    <script src="cookies.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+    <style>
+        body { 
+            background-color: white; 
+            color: #0a0a0a; 
+            transition: background-color 0.3s ease, color 0.3s ease; 
+            font-family: 'Inter', sans-serif; 
+        }
+        .dark body { 
+            background-color: #0a0a0a; 
+            color: white; 
+        }
+        /* Ajustement responsive du titre pour éviter le débordement sur mobile */
+        .hero-title { 
+            font-size: clamp(2rem, 11vw, 6rem); 
+            line-height: 0.9; 
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .legal-section {
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        .dark .legal-section {
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* FORCE LE FOOTER EN MODE DARK PERMANENT */
+        footer, #footer-container, footer * { 
+            background-color: #0a0a0a !important; 
+            color: white !important; 
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 py-6 md:py-8 flex justify-between items-center mix-blend-difference text-white">
+        <a href="index.html" class="group flex items-center gap-2">
+            <i data-lucide="arrow-left" class="w-5 h-5 transition-transform group-hover:-translate-x-1"></i>
+            <span class="text-[10px] md:text-xs font-black uppercase tracking-widest">Retour à l’accueil</span>
+        </a>
+    </nav>
+
+    <header class="pt-32 md:pt-40 pb-12 md:pb-20 px-6 md:px-24">
+        <div class="max-w-4xl">
+            <p class="text-[10px] uppercase tracking-[0.5em] font-bold mb-6 opacity-40 text-zinc-500 dark:text-zinc-400">Information Légale</p>
+            <h1 class="hero-title font-black uppercase tracking-tighter">
+                Politique de<br>confidentialité<span class="text-zinc-200 dark:text-zinc-800">.</span>
+            </h1>
+            <p class="mt-8 text-sm font-mono opacity-40 italic">
+                Dernière mise à jour : 7 février 2026
+            </p>
+        </div>
+    </header>
+
+    <main class="px-6 md:px-24 pb-32">
+        <div class="max-w-4xl space-y-4">
+
+            <section class="legal-section">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-6">1. Présentation du site</h2>
+                <p class="text-base md:text-lg opacity-70">Le présent site est un site personnel de présentation et de portfolio.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-6">2. Responsable du traitement</h2>
+                <p class="text-base md:text-lg opacity-70 leading-relaxed">
+                    Le responsable du traitement des données personnelles est :<br>
+                    <strong class="text-black dark:text-white">Julien Salesse</strong><br>
+                    Email : julien.salesse24@gmail.com<br>
+                    Hébergeur : GitHub Inc. (GitHub Pages)
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-6">3. Cadre légal</h2>
+                <p class="mb-4 opacity-70">La présente politique est établie conformément :</p>
+                <ul class="space-y-2 opacity-70 list-none border-l border-zinc-200 dark:border-zinc-800 pl-6 text-sm md:text-base">
+                    <li>— au Règlement Général sur la Protection des Données (RGPD – UE 2016/679)</li>
+                    <li>— à la loi Informatique et Libertés modifiée</li>
+                    <li>— aux lignes directrices et recommandations de la CNIL relatives aux cookies et traceurs</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-6">4. Enjeux de la protection des données</h2>
+                <p class="text-base md:text-lg leading-relaxed opacity-70">
+                    Lors de la navigation sur internet, les utilisateurs peuvent être suivis par différents acteurs afin d’analyser leur navigation, leurs habitudes ou l’utilisation des services, notamment à des fins statistiques ou de personnalisation. Ce suivi repose sur l’utilisation de traceurs, dont font partie les cookies. La protection des données personnelles vise à garantir la transparence, le contrôle par l’utilisateur et le respect de sa vie privée.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-6">5. Données personnelles collectées</h2>
+                <p class="text-base md:text-lg leading-relaxed opacity-70 mb-4">
+                    Le site ne propose : aucune création de compte utilisateur, aucune collecte volontaire de données personnelles. Aucune donnée personnelle directement identifiable n’est collectée. Toutefois, certaines données techniques peuvent être collectées automatiquement lors de la navigation via des traceurs.
+                </p>
+                <p class="text-base md:text-lg leading-relaxed opacity-70 italic font-bold border-l-2 border-black dark:border-white pl-4">
+                    Excepté : Le formulaire de contact.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-8">6. Cookies et traceurs</h2>
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xs font-bold uppercase mb-2 opacity-40 italic">6.1 Définition</h3>
+                        <p class="opacity-70 text-sm md:text-base">Un cookie ou traceur est un dispositif technique susceptible d’être déposé ou lu sur le terminal de l’utilisateur lors de la consultation d’un site internet.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold uppercase mb-2 opacity-40 italic">6.2 Typologies de traceurs</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mt-4">
+                            <div class="p-6 border border-zinc-100 dark:border-zinc-900 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/30">
+                                <h4 class="font-bold mb-2 uppercase text-[10px] tracking-widest">Traceurs exemptés de consentement</h4>
+                                <p class="text-xs md:text-sm opacity-60 italic">Certains traceurs sont strictement nécessaires au fonctionnement du site ou à la fourniture d’un service expressément demandé.</p>
+                            </div>
+                            <div class="p-6 border border-zinc-100 dark:border-zinc-900 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/30">
+                                <h4 class="font-bold mb-2 uppercase text-[10px] tracking-widest">Traceurs soumis au consentement</h4>
+                                <p class="text-xs md:text-sm opacity-60 italic">Les traceurs non essentiels nécessitent le consentement préalable.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="legal-section">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-8">7. Services tiers utilisés</h2>
+                <div class="space-y-12">
+                    <div>
+                        <h3 class="text-base md:text-lg font-bold mb-4 flex items-center gap-2 text-black dark:text-white">7.1 Mesure d’audience – Google Analytics</h3>
+                        <p class="opacity-70 mb-6 italic text-sm md:text-base">Le site utilise Google Analytics. Les données collectées (nombre de visites, pages consultées, adresse IP anonymisée) sont utilisées exclusivement à des fins statistiques.</p>
+                        <ul class="space-y-3 opacity-70 list-none border-l border-zinc-200 dark:border-zinc-800 pl-6 text-xs md:text-sm">
+                            <li>• Les données collectées comprennent notamment le nombre de visites, les pages consultées, la durée de navigation et le type de terminal utilisé.</li>
+                            <li>• L’adresse IP est anonymisée avant tout traitement, conformément aux recommandations de la CNIL.</li>
+                            <li>• Aucune donnée directement identifiable n’est collectée.</li>
+                            <li>• Les données sont utilisées uniquement pour mesurer l’audience et améliorer le contenu du site.</li>
+                            <li>• Les données statistiques sont conservées pour une durée maximale de <strong>14 mois</strong>.</li>
+                            <li>• Le dépôt de cookies Google Analytics est soumis au consentement préalable via Tarteaucitron.</li>
+                            <li>• En cas de refus, aucun cookie de mesure d’audience n’est déposé.</li>
+                            <li>• Les données permettent une géolocalisation approximative limitée à votre localité (ville ou village) afin d'analyser la provenance de nos visiteurs.</li>
+                        </ul>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 text-sm md:text-base">
+                        <div>
+                            <h3 class="text-base font-bold mb-4 text-black dark:text-white">7.2 Envoi de formulaires – Web3Forms</h3>
+                            <p class="opacity-70 italic leading-relaxed">Le site utilise Web3Forms pour gérer l'envoi des messages via le formulaire de contact. Ce service peut utiliser des cookies techniques pour assurer la transmission sécurisée des données et prévenir les abus. Ces données ne sont utilisées que pour traiter votre demande de contact.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold mb-4 text-black dark:text-white">7.3 Protection Anti-Spam – hCaptcha</h3>
+                            <p class="opacity-70 italic leading-relaxed">Pour protéger le formulaire de contact contre le spam et les bots, nous utilisons hCaptcha. Ce service est susceptible de déposer des cookies et de collecter des données techniques (comme la résolution d'écran ou l'adresse IP) afin de distinguer les humains des robots. Son activation est nécessaire à l'envoi du formulaire.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 text-sm md:text-base">
+                        <div>
+                            <h3 class="text-base font-bold mb-4 text-black dark:text-white">7.4 Contenus 3D – Spline</h3>
+                            <p class="opacity-70 italic leading-relaxed">L'utilisation de Spline pour les contenus 3D interactifs peut entraîner le dépôt de cookies techniques nécessaires au rendu visuel.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold mb-4 text-black dark:text-white">7.5 Cartographie – Google Maps</h3>
+                            <p class="opacity-70 italic leading-relaxed">Le site peut intégrer des cartes via le service Google Maps. Ce service est susceptible de déposer des cookies pour mémoriser vos préférences et analyser votre utilisation de la carte. Le chargement de ce service est soumis à votre consentement préalable.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="legal-section">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-4">8. Base légale du traitement</h2>
+                <p class="opacity-70 italic leading-relaxed text-sm md:text-base">Les traitements reposent soit sur le consentement de l’utilisateur (article 6.1.a du RGPD) pour les traceurs non essentiels, soit sur l’intérêt légitime pour les traceurs strictement nécessaires au fonctionnement du site.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-4">9. Consentement des utilisateurs</h2>
+                <p class="opacity-70 italic leading-relaxed text-sm md:text-base">Lors de la première visite, un bandeau (Tarteaucitron) permet d’accepter ou refuser les cookies. Votre choix est conservé pendant <strong>un an (365 jours)</strong>. Vous pouvez modifier vos préférences à tout moment via l'icône de gestion des cookies.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-4">10. Durée de conservation</h2>
+                <p class="opacity-70 italic text-sm md:text-base">Les données statistiques sont conservées pour une durée maximale de 14 mois.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-4">11. Droits des utilisateurs</h2>
+                <div class="opacity-70 italic space-y-4 text-sm md:text-base">
+                    <p>Conformément au RGPD, vous disposez d’un droit d’accès, de rectification et d’effacement. Pour exercer ces droits, vous pouvez contacter le responsable à l'adresse : julien.salesse24@gmail.com.</p>
+                    <p>Vous pouvez également introduire une réclamation auprès de la CNIL (www.cnil.fr).</p>
+                </div>
+            </section>
+
+            <section class="legal-section">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-4">12. Sécurité</h2>
+                <p class="opacity-70 italic text-sm md:text-base">Le site utilise le protocole HTTPS pour sécuriser les échanges de données.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-4">13. Modification de la politique</h2>
+                <p class="opacity-70 italic text-sm md:text-base">Cette politique peut être mise à jour pour s'adapter aux évolutions législatives.</p>
+            </section>
+
+            <section class="legal-section !border-none">
+                <h2 class="text-lg md:text-xl font-black uppercase tracking-tighter mb-6">14. Liens hypertextes</h2>
+                <p class="opacity-70 italic text-sm md:text-base">Julien Salesse décline toute responsabilité concernant le contenu des sites tiers accessibles via les liens présents sur ce site. L'activation de ces liens peut entraîner l'installation de cookies propres à ces services.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <div id="footer-container">
+        <script src="footer.js"></script>
+        <script>addFooter();</script>
+    </div>
+
+    <script src="loader.js"></script>
+
+    <script>
+        window.addEventListener('load', () => {
+            if (window.lucide) { lucide.createIcons(); }
+        });
+    </script>
+</body>
+</html>
