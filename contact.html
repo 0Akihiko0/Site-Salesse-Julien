@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Test Final - Initialisation forcée</title>
-    
+    <meta charset="UTF-8">
+    <title>Test Web3Forms hCaptcha</title>
     <script src="tarteaucitron/tarteaucitron.js"></script>
     <script src="cookies.js"></script>
 </head>
 <body>
 
-    <h1>Test de fonctionnement (Sans CSS)</h1>
-
-    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+    <form action="https://api.web3forms.com/submit" method="POST" id="YOUR_FORM_ID">
+        
         <input type="hidden" name="access_key" value="dfb35cd0-342b-477a-ace9-dd0e64015220">
         
         <input type="text" name="name" placeholder="Nom" required><br><br>
         <input type="email" name="email" placeholder="Email" required><br><br>
         <textarea name="message" placeholder="Message" required></textarea><br><br>
         
-        <div class="h-captcha" data-captcha="true"></div><br><br>
+        <div class="h-captcha" data-captcha="true"></div>
         
-        <button type="submit" id="submit-btn">Envoyer</button>
+        <button type="submit">Submit Form</button>
     </form>
 
     <script type="text/plain" 
@@ -28,20 +27,15 @@
             async defer></script>
 
     <script>
-    // Correction de l'initialisation : 
-    // On écoute quand Tarteaucitron a fini de charger le service
-    document.addEventListener('web3forms_loaded', function () {
-        console.log("Web3Forms chargé, initialisation du captcha...");
-    });
+    const form = document.getElementById('dfb35cd0-342b-477a-ace9-dd0e64015220');
 
-    const form = document.getElementById('contact-form');
     form.addEventListener('submit', function(e) {
-        // hCaptcha crée un champ caché nommé h-captcha-response
-        const hCaptcha = form.querySelector('[name="h-captcha-response"]')?.value;
+        // Recherche de la réponse hCaptcha dans le textarea généré
+        const hCaptcha = form.querySelector('textarea[name=h-captcha-response]').value;
 
         if (!hCaptcha) {
             e.preventDefault();
-            alert("Erreur : Le Captcha n'est pas prêt ou pas coché.");
+            alert("Please fill out captcha field");
             return;
         }
     });
