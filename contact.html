@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <form action="https://api.web3forms.com/submit" method="POST" id="YOUR_FORM_ID">
+    <form action="https://api.web3forms.com/submit" method="POST" id="monFormulaire">
         
         <input type="hidden" name="access_key" value="dfb35cd0-342b-477a-ace9-dd0e64015220">
         
@@ -16,9 +16,12 @@
         <input type="email" name="email" placeholder="Email" required><br><br>
         <textarea name="message" placeholder="Message" required></textarea><br><br>
         
-        <div class="h-captcha" data-captcha="true"></div>
+        <div class="h-captcha" 
+             data-captcha="true" 
+             data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+             data-size="compact"></div>
         
-        <button type="submit">Submit Form</button>
+        <button type="submit">Envoyer</button>
     </form>
 
     <script type="text/plain" 
@@ -27,16 +30,23 @@
             async defer></script>
 
     <script>
-    const form = document.getElementById('dfb35cd0-342b-477a-ace9-dd0e64015220');
+    // On attend que tout soit chargé
+    window.addEventListener('load', function() {
+        
+        // On récupère le formulaire qui a l'ID "monFormulaire"
+        const form = document.getElementById('monFormulaire');
 
-    form.addEventListener('submit', function(e) {
-        // Recherche de la réponse hCaptcha dans le textarea généré
-        const hCaptcha = form.querySelector('textarea[name=h-captcha-response]').value;
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                // On cherche la réponse du captcha
+                const hCaptcha = form.querySelector('textarea[name="h-captcha-response"]');
 
-        if (!hCaptcha) {
-            e.preventDefault();
-            alert("Please fill out captcha field");
-            return;
+                if (!hCaptcha || !hCaptcha.value) {
+                    e.preventDefault(); // On bloque l'envoi
+                    alert("Veuillez cocher le captcha de sécurité !");
+                    return;
+                }
+            });
         }
     });
     </script>
