@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Julien Salesse</title>
+    <link rel="icon" type="image/png" href="Favicon.png?v=1">
+    
+    <script src="tarteaucitron/tarteaucitron.js"></script>
+    <script src="cookies.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body { background-color: white; color: #0a0a0a; transition: background-color 0.5s ease; font-family: sans-serif; }
+        .dark body { background-color: #0a0a0a; color: white; }
+        .hero-title { font-size: clamp(2.5rem, 12vw, 8.5rem); line-height: 0.85; font-weight: 900; letter-spacing: -0.05em; }
+        
+        /* Design minimaliste pour les champs sans casser le HTML natif */
+        .input-underline { background: transparent; border: none; border-bottom: 1px solid rgba(0,0,0,0.1); width: 100%; padding: 1rem 0; color: inherit; outline: none; }
+        .dark .input-underline { border-bottom-color: rgba(255,255,255,0.1); }
+        .contact-card { background: #f9f9fb; border: 1px solid rgba(0,0,0,0.05); border-radius: 2.5rem; padding: 2rem; }
+        .dark .contact-card { background: #111111; border-color: rgba(255,255,255,0.05); }
+        
+        .btn-send { background-color: #0a0a0a; color: white; padding: 1.5rem 4rem; border-radius: 9999px; font-weight: 900; text-transform: uppercase; cursor: pointer; }
+        .dark .btn-send { background-color: white; color: #0a0a0a; }
+
+        /* Conteneur captcha */
+        .captcha-container { margin: 2rem 0; display: flex; justify-content: center; }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <script src="navbar.js"></script>
+    <script>if(typeof addNavbar === 'function') addNavbar("contact");</script>
+
+    <main class="min-h-screen flex flex-col items-center justify-center px-4 pt-28 pb-20">
+        <div class="w-full max-w-5xl">
+            <h1 class="hero-title uppercase mb-12">Contact<span class="opacity-20 italic">.</span></h1>
+
+            <div class="contact-card shadow-2xl">
+                <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+                    
+                    <input type="hidden" name="access_key" value="dfb35cd0-342b-477a-ace9-dd0e64015220">
+                    
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div class="flex flex-col">
+                            <label for="name" class="text-[10px] uppercase font-bold opacity-40">Nom</label>
+                            <input type="text" id="name" name="name" required autocomplete="name" class="input-underline">
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="email" class="text-[10px] uppercase font-bold opacity-40">Email</label>
+                            <input type="email" id="email" name="email" required autocomplete="email" class="input-underline">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col mt-10">
+                        <label for="message" class="text-[10px] uppercase font-bold opacity-40">Message</label>
+                        <textarea id="message" name="message" rows="4" required class="input-underline resize-none"></textarea>
+                    </div>
+
+                    <div class="captcha-container">
+                        <div class="h-captcha" 
+                             data-captcha="true" 
+                             data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                             data-size="compact"></div>
+                    </div>
+
+                    <div class="flex justify-center md:justify-end">
+                        <button type="submit" class="btn-send">Envoyer le message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="footer.js"></script>
+    <script>if(typeof addFooter === 'function') addFooter();</script>
+
+    <script src="https://web3forms.com/client/script.js" async defer></script>
+
+    <script>
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(e) {
+        // Web3Forms injecte un textarea nommé h-captcha-response
+        const hCaptcha = form.querySelector('textarea[name="h-captcha-response"]').value;
+        if (!hCaptcha) {
+            e.preventDefault();
+            alert("Veuillez cocher la case de sécurité (Captcha).");
+            return;
+        }
+    });
+    </script>
+
+</body>
+</html>
