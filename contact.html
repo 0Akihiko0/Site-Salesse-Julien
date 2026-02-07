@@ -2,54 +2,28 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Test Web3Forms hCaptcha</title>
+    <title>Test Web3Forms Sans Captcha</title>
     <script src="tarteaucitron/tarteaucitron.js"></script>
     <script src="cookies.js"></script>
 </head>
 <body>
 
+    <h1>Test d'envoi sans Captcha</h1>
+
     <form action="https://api.web3forms.com/submit" method="POST" id="monFormulaire">
-        
         <input type="hidden" name="access_key" value="dfb35cd0-342b-477a-ace9-dd0e64015220">
         
         <input type="text" name="name" placeholder="Nom" required><br><br>
         <input type="email" name="email" placeholder="Email" required><br><br>
         <textarea name="message" placeholder="Message" required></textarea><br><br>
         
-        <div class="h-captcha" 
-             data-captcha="true" 
-             data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-             data-size="compact"></div>
-        
-        <button type="submit">Envoyer</button>
+        <button type="submit">Envoyer le formulaire</button>
     </form>
 
     <script type="text/plain" 
             data-tarteaucitron-src="https://web3forms.com/client/script.js" 
             data-tarteaucitron-service="web3forms" 
             async defer></script>
-
-    <script>
-    // On attend que tout soit chargé
-    window.addEventListener('load', function() {
-        
-        // On récupère le formulaire qui a l'ID "monFormulaire"
-        const form = document.getElementById('monFormulaire');
-
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                // On cherche la réponse du captcha
-                const hCaptcha = form.querySelector('textarea[name="h-captcha-response"]');
-
-                if (!hCaptcha || !hCaptcha.value) {
-                    e.preventDefault(); // On bloque l'envoi
-                    alert("Veuillez cocher le captcha de sécurité !");
-                    return;
-                }
-            });
-        }
-    });
-    </script>
 
 </body>
 </html>
