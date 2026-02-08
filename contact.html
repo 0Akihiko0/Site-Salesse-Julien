@@ -6,6 +6,8 @@
 
   <!-- Tarteaucitron -->
   <script src="tarteaucitron/tarteaucitron.js"></script>
+  <script src="cookies.js"></script>
+
   <script>
     tarteaucitron.init({
       highPrivacy: true,
@@ -14,7 +16,7 @@
       cookieslist: true
     });
 
-    // Définition du service Web3Forms / hCaptcha
+    // Définition du service Web3Forms
     tarteaucitron.services.web3forms = {
       key: "web3forms",
       type: "api",
@@ -23,29 +25,8 @@
       needConsent: true,
       cookies: ['__hssc', '__hssrc', '__hstc', 'hubspotutk'],
       js: function () {
-        "use strict";
         // Charger le script Web3Forms APRÈS consentement
         tarteaucitron.addScript("https://web3forms.com/client/script.js");
-      },
-      fallback: function () {
-        "use strict";
-        const id = 'web3forms';
-        tarteaucitron.fallback(['h-captcha'], function (elem) {
-          elem.style.backgroundColor = '#111111';
-          elem.style.display = 'flex';
-          elem.style.flexDirection = 'column';
-          elem.style.alignItems = 'center';
-          elem.style.justifyContent = 'center';
-          elem.style.textAlign = 'center';
-          elem.style.padding = '20px';
-          elem.style.fontSize = '14px';
-          elem.style.color = '#ffffff';
-          elem.style.borderRadius = '10px';
-          elem.style.border = '1px dashed #ffffff';
-          elem.style.minHeight = '80px';
-
-          return '<span>Veuillez accepter les cookies pour afficher le Captcha et envoyer le formulaire.</span><br>' + tarteaucitron.engage(id);
-        });
       }
     };
 
@@ -68,15 +49,12 @@
 <h1>Contact</h1>
 
 <form action="https://api.web3forms.com/submit" method="POST">
-
-  <!-- Web3Forms access key -->
   <input type="hidden" name="access_key" value="97e856c8-c773-46ba-800b-154120d09b9a">
 
   <input type="text" name="name" placeholder="Nom" required>
   <input type="email" name="email" placeholder="Email" required>
   <textarea name="message" placeholder="Message" required></textarea>
 
-  <!-- hCaptcha placeholder -->
   <div class="h-captcha" data-captcha="true"></div>
 
   <button type="submit">Envoyer</button>
