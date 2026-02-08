@@ -29,7 +29,6 @@
             line-height: 0.85; 
         }
 
-        /* Style des champs personnalisé pour matcher l'esthétique */
         .form-input {
             background: transparent;
             border-bottom: 2px solid rgba(0,0,0,0.1);
@@ -45,6 +44,13 @@
         }
         .dark .form-input:focus {
             border-bottom-color: white;
+        }
+
+        /* Style pour masquer le bouton quand il est désactivé */
+        #submit-btn:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            filter: grayscale(1);
         }
     </style>
 </head>
@@ -80,11 +86,11 @@
             </div>
 
             <div class="md:col-span-7">
-                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-12">
+                <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="space-y-12">
                     
                     <input type="hidden" name="access_key" value="97e856c8-c773-46ba-800b-154120d09b9a">
                     
-                    <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+                    <input type="checkbox" name="botcheck" style="display:none">
 
                     <div class="group">
                         <label class="text-[10px] uppercase tracking-widest font-bold opacity-30 group-focus-within:opacity-100 transition-opacity">Nom complet</label>
@@ -104,7 +110,12 @@
                             class="form-input w-full py-4 text-2xl md:text-3xl font-medium placeholder:opacity-10"></textarea>
                     </div>
 
-                    <button type="submit" class="group flex items-center gap-6 mt-12">
+                    <div class="cf-turnstile" 
+                         data-sitekey="0x4AAAAAACZULG1-lPsQtROa" 
+                         data-callback="onTurnstileSuccess"
+                         data-theme="auto"></div>
+
+                    <button type="submit" id="submit-btn" disabled class="group flex items-center gap-6 mt-12 transition-all">
                         <span class="text-4xl md:text-6xl font-black uppercase tracking-tighter group-hover:italic transition-all">Envoyer</span>
                         <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-zinc-900 dark:border-white flex items-center justify-center group-hover:bg-zinc-900 dark:group-hover:bg-white group-hover:text-white dark:group-hover:text-black transition-all">
                             <i data-lucide="arrow-right" class="w-6 h-6"></i>
@@ -121,6 +132,12 @@
     <script>if(typeof addFooter === 'function') addFooter();</script>
 
     <script>
+        // Fonction de rappel pour Turnstile
+        function onTurnstileSuccess(token) {
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = false; // Active le bouton
+        }
+
         window.addEventListener('load', () => {
             if (window.lucide) {
                 lucide.createIcons();
