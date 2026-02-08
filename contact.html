@@ -3,61 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Contact</title>
-
-  <!-- tarteaucitron -->
-  <script src="tarteaucitron/tarteaucitron.js"></script>
-  <script src="cookies.js"></script>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    form {
-      max-width: 500px;
-      margin: auto;
-    }
-    input, textarea, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-    }
-  </style>
 </head>
 <body>
 
-<h1>Contact</h1>
+<form action="https://api.web3forms.com/submit" method="POST">
 
-<form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
-
-  <!-- Web3Forms -->
+  <!-- TA CLÉ WEB3FORMS -->
   <input type="hidden" name="access_key" value="97e856c8-c773-46ba-800b-154120d09b9a">
 
   <input type="text" name="name" placeholder="Nom" required>
   <input type="email" name="email" placeholder="Email" required>
   <textarea name="message" placeholder="Message" required></textarea>
 
-  <!-- hCaptcha MANUAL -->
-  <div class="h-captcha"
-       data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2">
-  </div>
+  <!-- hCaptcha ZERO-CONFIG (gratuit) -->
+  <div class="h-captcha" data-captcha="true"></div>
 
   <button type="submit">Envoyer</button>
 </form>
 
-<!-- hCaptcha chargé UNIQUEMENT après consentement -->
-<script type="text/plain" data-tarteaucitron-service="hcaptcha"></script>
-
-<script>
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  const token = document.querySelector('textarea[name="h-captcha-response"]');
-
-  if (!token || !token.value) {
-    e.preventDefault();
-    alert("Merci d’accepter les cookies hCaptcha et de valider le captcha.");
-  }
-});
-</script>
+<!-- SCRIPT OBLIGATOIRE -->
+<script src="https://web3forms.com/client/script.js" async defer></script>
 
 </body>
 </html>
