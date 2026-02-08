@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Julien Salesse</title>
+    
+    <script src="tarteaucitron/tarteaucitron.js"></script>
+    <script src="cookies.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="Favicon.png?v=1">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          // 1. TA PUBLIC KEY ICI
+          emailjs.init("DZYZ7MoEKlVVKxyp2");
+       })();
+    </script>
+
+    <style>
+        body { background-color: white; color: #0a0a0a; transition: background-color 0.5s ease; font-family: 'Inter', sans-serif; }
+        .dark body { background-color: #0a0a0a; color: white; }
+        .hero-title { font-size: clamp(3rem, 12vw, 10rem); line-height: 0.85; }
+        
+        .form-input {
+            background: transparent;
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dark .form-input { border-bottom: 2px solid rgba(255,255,255,0.1); }
+        .form-input:focus { border-bottom-color: #0a0a0a; outline: none; padding-left: 1rem; }
+        .dark .form-input:focus { border-bottom-color: white; }
+
+        /* État désactivé du bouton */
+        #submit-btn:disabled { opacity: 0.15; cursor: not-allowed; filter: grayscale(1); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <script src="navbar.js"></script>
+    <script>addNavbar("contact");</script>
+
+    <section class="w-full min-h-[50vh] flex items-end px-6 md:px-24 pb-20">
+        <div class="z-10 w-full">
+            <p class="text-[10px] uppercase tracking-[0.5em] font-bold mb-8 opacity-40 flex items-center gap-4">
+                <i data-lucide="send" class="w-4 h-4"></i> Une question ?
+            </p>
+            <h1 class="hero-title font-black uppercase tracking-tighter">
+                Me<br>Contacter<span class="text-zinc-300 dark:text-zinc-700">.</span>
+            </h1>
+        </div>
+    </section>
+
+    <section class="py-20 border-t border-zinc-100 dark:border-zinc-900 px-6 md:px-24">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-16">
+            
+            <div class="md:col-span-5">
+                <p class="text-lg opacity-70 italic leading-relaxed border-l-2 border-zinc-900 dark:border-white pl-6">
+                    Qu'il s'agisse d'une demande de projet ou d'un simple bonjour, n'hésitez pas.
+                </p>
+                <div class="mt-12">
+                    <div class="flex items-center gap-4 opacity-40">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                        <span class="text-sm font-mono tracking-widest">julien.salesse24@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-7">
+                <form id="contact-form" class="space-y-12">
+                    <input type="hidden" name="title" value="Contact Portfolio">
+
+                    <div class="group">
+                        <label class="text-[10px] uppercase tracking-widest font-bold opacity-30">Nom complet</label>
+                        <input type="text" name="name" required placeholder="John Doe" 
+                            class="form-input w-full py-4 text-2xl md:text-3xl font-medium">
+                    </div>
+
+                    <div class="group">
+                        <label class="text-[10px] uppercase tracking-widest font-bold opacity-30">Adresse Email</label>
+                        <input type="email" name="email" required placeholder="john@doe.com" 
+                            class="form-input w-full py-4 text-2xl md:text-3xl font-medium">
+                    </div>
+
+                    <div class="group">
+                        <label class="text-[10px] uppercase tracking-widest font-bold opacity-30">Message</label>
+                        <textarea name="message" required rows="4" placeholder="Bonjour..." 
+                            class="form-input w-full py-4 text-2xl md:text-3xl font-medium"></textarea>
+                    </div>
+
+                    <div class="cf-turnstile" 
+                         data-sitekey="0x4AAAAAACZULG1-lPsQtROa" 
+                         data-callback="enableButton"></div>
+
+                    <button type="submit" id="submit-btn" disabled class="group flex items-center gap-6 mt-12 transition-all">
+                        <span id="btn-text" class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Envoyer</span>
+                        <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-zinc-900 dark:border-white flex items-center justify-center group-hover:bg-zinc-900 dark:group-hover:bg-white group-hover:text-white dark:group-hover:text-black transition-all">
+                            <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                        </div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="footer.js"></script>
+    <script>if(typeof addFooter === 'function') addFooter();</script>
+
+    <script>
+        // 1. Active le bouton dès que le captcha est OK
+        function enableButton() {
+            document.getElementById('submit-btn').disabled = false;
+        }
+
+        // 2. Gestion de l'envoi avec EmailJS
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const btnText = document.getElementById('btn-text');
+            const btn = document.getElementById('submit-btn');
+            
+            btnText.innerText = "ENVOI...";
+            btn.disabled = true;
+
+            // 2. TES IDs EMAILJS ICI
+            emailjs.sendForm('service_xqcs14p', 'template_mq0q4yw', this)
+                .then(() => {
+                    btnText.innerText = "ENVOYÉ !";
+                    alert("C'est tout bon ! Message reçu.");
+                    this.reset();
+                    // On recharge pour réinitialiser le captcha proprement
+                    setTimeout(() => location.reload(), 2000);
+                }, (error) => {
+                    btnText.innerText = "ERREUR";
+                    btn.disabled = false;
+                    alert("Erreur : " + JSON.stringify(error));
+                });
+        });
+
+        window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+    </script>
+</body>
+</html>
