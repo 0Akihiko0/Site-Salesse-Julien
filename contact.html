@@ -2,29 +2,57 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Contact</title>
+  <title>Contact - Web3Forms hCaptcha</title>
+  
   <script src="tarteaucitron/tarteaucitron.js"></script>
   <script src="cookies.js"></script>
+
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
+    form { max-width: 500px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
+    input, textarea, button { width: 100%; padding: 10px; margin-top: 10px; box-sizing: border-box; }
+    button { background-color: #007bff; color: white; border: none; cursor: pointer; border-radius: 4px; }
+    button:hover { background-color: #0056b3; }
+  </style>
 </head>
 <body>
 
-<form action="https://api.web3forms.com/submit" method="POST">
+  <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+    <input type="hidden" name="access_key" value="97e856c8-c773-46ba-800b-154120d09b9a">
 
-  <!-- TA CLÉ WEB3FORMS -->
-  <input type="hidden" name="access_key" value="97e856c8-c773-46ba-800b-154120d09b9a">
+    <label for="name">Nom</label>
+    <input type="text" name="name" id="name" required placeholder="Votre nom">
 
-  <input type="text" name="name" placeholder="Nom" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <textarea name="message" placeholder="Message" required></textarea>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required placeholder="votre@email.com">
 
-  <!-- hCaptcha ZERO-CONFIG (gratuit) -->
-  <div class="h-captcha" data-captcha="true"></div>
+    <label for="message">Message</label>
+    <textarea name="message" id="message" rows="5" required placeholder="Votre message"></textarea>
 
-  <button type="submit">Envoyer</button>
-</form>
+    <div class="h-captcha" data-captcha="true"></div>
 
-<!-- SCRIPT OBLIGATOIRE -->
-<script src="https://web3forms.com/client/script.js" async defer></script>
+    <button type="submit">Envoyer le message</button>
+  </form>
+
+  <script type="text/plain" 
+          data-tarteaucitron-src="https://web3forms.com/client/script.js" 
+          data-tarteaucitron-service="web3forms" 
+          async defer></script>
+
+  <script>
+    (function() {
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', function(e) {
+        // hCaptcha injecte un champ 'h-captcha-response' après validation
+        const hCaptcha = form.querySelector('textarea[name="h-captcha-response"]')?.value;
+
+        if (!hCaptcha) {
+          e.preventDefault();
+          alert("Veuillez accepter les cookies et cocher la case hCaptcha avant d'envoyer.");
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
