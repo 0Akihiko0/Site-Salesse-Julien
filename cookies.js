@@ -257,27 +257,33 @@ tarteaucitron.services.turnstile = {
     "fallback": function () {
         "use strict";
         tarteaucitron.fallback(['turnstile-container'], function (elem) {
-            elem.style.backgroundColor = '#111';
-            elem.style.color = '#fff';
-            elem.style.padding = '20px';
+            elem.style.backgroundColor = '#0a0a0a';
+            elem.style.color = '#ffffff';
+            elem.style.padding = '30px 20px';
             elem.style.borderRadius = '15px';
             elem.style.textAlign = 'center';
-            elem.style.border = '1px dashed #333';
-            return '<p style="margin-bottom:10px;">Veuillez autoriser la protection Turnstile pour envoyer.</p>' + tarteaucitron.engage('turnstile');
+            elem.style.border = '1px solid #333';
+            
+            return '<div style="max-width:300px; margin:0 auto;">' +
+                   '<p style="margin-bottom:15px; font-weight:bold; color:#ff4d4d; text-transform:uppercase; letter-spacing:1px;">🛡️ Sécurité requise</p>' +
+                   '<p style="font-size:14px; line-height:1.5; color:#ccc; margin-bottom:15px;">' +
+                   'Vos réglages de cookies bloquent la protection anti-spam <b>Cloudflare Turnstile</b>.' +
+                   '</p>' +
+                   '<p style="font-size:13px; color:#aaa; margin-bottom:5px;">' +
+                   '1. Cliquez sur l\'icône cookie 🍪' +
+                   '</p>' +
+                   '<p style="font-size:13px; color:#aaa; margin-bottom:5px;">' +
+                   '2. Autorisez "Turnstile"' +
+                   '</p>' +
+                   '<p style="font-size:13px; color:#aaa; margin-bottom:15px;">' +
+                   '3. Actualisez la page' +
+                   '</p>' +
+                   '<p style="font-size:12px; font-style:italic; color:#888;">' +
+                   'Cette étape est indispensable pour valider l\'envoi du formulaire.' +
+                   '</p>' +
+                   '</div>';
         });
     }
-};
-// On surveille tout changement d'état des cookies
-document.addEventListener("tarteaucitron_action", function (event) {
-    // Si l'utilisateur a cliqué sur "Accepter" (respond : true) 
-    // et que cela concerne le service turnstile
-    if (tarteaucitron.state.turnstile === true) {
-        // On attend une fraction de seconde pour que le cookie soit bien écrit
-        setTimeout(() => {
-            location.reload();
-        }, 300);
-    }
-});
     
     tarteaucitron.user.gtagUa = 'G-SYGFFHLSDC';
     tarteaucitron.user.gtagMore = function () {
@@ -290,6 +296,7 @@ document.addEventListener("tarteaucitron_action", function (event) {
 }
 
 initCookies();
+
 
 
 
