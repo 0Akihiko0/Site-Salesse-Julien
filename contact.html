@@ -2,57 +2,85 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Contact - Web3Forms hCaptcha</title>
-  
+  <title>Contact</title>
+
+  <!-- Tarteaucitron -->
   <script src="tarteaucitron/tarteaucitron.js"></script>
-  <script src="cookies.js"></script>
+  <script>
+    tarteaucitron.init({
+      highPrivacy: true,
+      acceptAllCta: true,
+      showAlertSmall: true,
+      cookieslist: true
+    });
+
+    // Définition du service Web3Forms / hCaptcha
+    tarteaucitron.services.web3forms = {
+      key: "web3forms",
+      type: "api",
+      name: "Web3Forms",
+      uri: "https://web3forms.com/privacy",
+      needConsent: true,
+      cookies: ['__hssc', '__hssrc', '__hstc', 'hubspotutk'],
+      js: function () {
+        "use strict";
+        // Charger le script Web3Forms APRÈS consentement
+        tarteaucitron.addScript("https://web3forms.com/client/script.js");
+      },
+      fallback: function () {
+        "use strict";
+        const id = 'web3forms';
+        tarteaucitron.fallback(['h-captcha'], function (elem) {
+          elem.style.backgroundColor = '#111111';
+          elem.style.display = 'flex';
+          elem.style.flexDirection = 'column';
+          elem.style.alignItems = 'center';
+          elem.style.justifyContent = 'center';
+          elem.style.textAlign = 'center';
+          elem.style.padding = '20px';
+          elem.style.fontSize = '14px';
+          elem.style.color = '#ffffff';
+          elem.style.borderRadius = '10px';
+          elem.style.border = '1px dashed #ffffff';
+          elem.style.minHeight = '80px';
+
+          return '<span>Veuillez accepter les cookies pour afficher le Captcha et envoyer le formulaire.</span><br>' + tarteaucitron.engage(id);
+        });
+      }
+    };
+
+    // Activer le service
+    (tarteaucitron.job = tarteaucitron.job || []).push('web3forms');
+  </script>
 
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
-    form { max-width: 500px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
-    input, textarea, button { width: 100%; padding: 10px; margin-top: 10px; box-sizing: border-box; }
-    button { background-color: #007bff; color: white; border: none; cursor: pointer; border-radius: 4px; }
-    button:hover { background-color: #0056b3; }
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    form { max-width: 500px; margin: auto; }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
 
-  <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
-    <input type="hidden" name="access_key" value="97e856c8-c773-46ba-800b-154120d09b9a">
+<h1>Contact</h1>
 
-    <label for="name">Nom</label>
-    <input type="text" name="name" id="name" required placeholder="Votre nom">
+<form action="https://api.web3forms.com/submit" method="POST">
 
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" required placeholder="votre@email.com">
+  <!-- Web3Forms access key -->
+  <input type="hidden" name="access_key" value="97e856c8-c773-46ba-800b-154120d09b9a">
 
-    <label for="message">Message</label>
-    <textarea name="message" id="message" rows="5" required placeholder="Votre message"></textarea>
+  <input type="text" name="name" placeholder="Nom" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <textarea name="message" placeholder="Message" required></textarea>
 
-    <div class="h-captcha" data-captcha="true"></div>
+  <!-- hCaptcha placeholder -->
+  <div class="h-captcha" data-captcha="true"></div>
 
-    <button type="submit">Envoyer le message</button>
-  </form>
-
-  <script type="text/plain" 
-          data-tarteaucitron-src="https://web3forms.com/client/script.js" 
-          data-tarteaucitron-service="web3forms" 
-          async defer></script>
-
-  <script>
-    (function() {
-      const form = document.getElementById('contactForm');
-      form.addEventListener('submit', function(e) {
-        // hCaptcha injecte un champ 'h-captcha-response' après validation
-        const hCaptcha = form.querySelector('textarea[name="h-captcha-response"]')?.value;
-
-        if (!hCaptcha) {
-          e.preventDefault();
-          alert("Veuillez accepter les cookies et cocher la case hCaptcha avant d'envoyer.");
-        }
-      });
-    })();
-  </script>
+  <button type="submit">Envoyer</button>
+</form>
 
 </body>
 </html>
