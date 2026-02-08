@@ -14,7 +14,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
        (function(){
-          // Ta Public Key est bien en place
           emailjs.init("DZYZ7MoEKlVVKxyp2");
        })();
     </script>
@@ -35,8 +34,15 @@
 
         #submit-btn:disabled { opacity: 0.15; cursor: not-allowed; filter: grayscale(1); }
         
-        /* Petit ajustement pour le container de secours */
-        .turnstile-container { min-height: 80px; width: 100%; margin-top: 1rem; }
+        /* Ajustement du container pour le message de secours */
+        .turnstile-container { 
+            min-height: 100px; 
+            width: 100%; 
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -92,7 +98,7 @@
                             class="form-input w-full py-4 text-2xl md:text-3xl font-medium"></textarea>
                     </div>
 
-                    <div class="turnstile-container">
+                    <div id="turnstile-container" class="turnstile-container">
                         <div class="cf-turnstile" 
                              data-sitekey="0x4AAAAAACZULG1-lPsQtROa" 
                              data-callback="enableButton"></div>
@@ -113,6 +119,7 @@
     <script>if(typeof addFooter === 'function') addFooter();</script>
 
     <script>
+        // Cette fonction est appelée par Turnstile une fois validé
         function enableButton() {
             document.getElementById('submit-btn').disabled = false;
         }
