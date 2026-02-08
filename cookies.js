@@ -55,7 +55,6 @@ function initCookies() {
     border: 2px solid #ffffff !important;
 }
 
-/* BOUTON FERMER : RECTANGLE ARRONDI EN HAUT À DROITE */
 #tarteaucitronClosePanel {
     background-color: #1a1a1a !important;
     color: #ffffff !important;
@@ -65,22 +64,18 @@ function initCookies() {
     font-size: 14px !important;
     font-weight: bold !important;
     text-transform: uppercase !important;
-    
-    /* Positionnement en haut à droite sans casser le scroll */
     display: block !important;
     float: right !important;
     position: sticky !important;
     top: 15px !important;
     right: 15px !important;
     margin: 10px !important;
-    
     cursor: pointer !important;
     height: auto !important;
     line-height: normal !important;
     z-index: 10000 !important;
 }
 
-/* Nettoyage du float pour les blocs suivants */
 #tarteaucitronServices {
     clear: both !important;
 }
@@ -168,7 +163,6 @@ function initCookies() {
     pointer-events: auto !important;
 }
 
-/* AJOUT : MASQUER L'ICONE FLOTTANTE SUR MOBILE UNIQUEMENT */
 @media (max-width: 768px) {
     #tarteaucitronIcon { display: none !important; }
 }
@@ -230,74 +224,56 @@ function initCookies() {
         }
     };
 
-// --- CLOUDFLARE TURNSTILE ---
-tarteaucitron.services.turnstile = {
-    "key": "turnstile",
-    "type": "api",
-    "name": "Turnstile (Protection Anti-spam)",
-    "uri": "https://www.cloudflare.com/privacypolicy/",
-    "needConsent": true,
-    "cookies": [],
-    "js": function () {
-        "use strict";
-        // On charge le script
-        tarteaucitron.addScript('https://challenges.cloudflare.com/turnstile/v0/api.js');
-        
-        // On force la suppression du message de fallback après un court délai
-        setTimeout(() => {
-            const containers = document.querySelectorAll('.turnstile-container');
-            containers.forEach(container => {
-                // On ne garde que le widget injecté par Cloudflare
-                if (container.querySelector('iframe')) {
-                     container.innerHTML = ''; // On vide pour laisser Turnstile se ré-injecter proprement
-                }
+    tarteaucitron.services.turnstile = {
+        "key": "turnstile",
+        "type": "api",
+        "name": "Turnstile (Protection Anti-spam)",
+        "uri": "https://www.cloudflare.com/privacypolicy/",
+        "needConsent": true,
+        "cookies": [],
+        "js": function () {
+            "use strict";
+            tarteaucitron.addScript('https://challenges.cloudflare.com/turnstile/v0/api.js');
+            setTimeout(() => {
+                const containers = document.querySelectorAll('.turnstile-container');
+                containers.forEach(container => {
+                    if (container.querySelector('iframe')) {
+                        container.innerHTML = '';
+                    }
+                });
+            }, 500);
+        },
+        "fallback": function () {
+            "use strict";
+            tarteaucitron.fallback(['turnstile-container'], function (elem) {
+                elem.style.backgroundColor = '#0a0a0a';
+                elem.style.color = '#ffffff';
+                elem.style.padding = '30px 20px';
+                elem.style.borderRadius = '15px';
+                elem.style.textAlign = 'center';
+                elem.style.border = '1px solid #333';
+                return '<div style="max-width:300px; margin:0 auto;">' +
+                       '<p style="margin-bottom:15px; font-weight:bold; color:#ff4d4d; text-transform:uppercase; letter-spacing:1px;">🛡️ Sécurité requise</p>' +
+                       '<p style="font-size:14px; line-height:1.5; color:#ccc; margin-bottom:15px;">' +
+                       'Vos réglages de cookies bloquent la protection anti-spam <b>Cloudflare Turnstile</b>.' +
+                       '</p>' +
+                       '<p style="font-size:13px; color:#aaa; margin-bottom:5px;">1. Cliquez sur l\'icône cookie</p>' +
+                       '<p style="font-size:13px; color:#aaa; margin-bottom:5px;">2. Autorisez "Turnstile"</p>' +
+                       '<p style="font-size:13px; color:#aaa; margin-bottom:15px;">3. Actualisez la page</p>' +
+                       '<p style="font-size:12px; font-style:italic; color:#888;">' +
+                       'Cette étape est indispensable pour valider l\'envoi du formulaire.' +
+                       '</p>' +
+                       '</div>';
             });
-        }, 500);
-    },
-    "fallback": function () {
-        "use strict";
-        tarteaucitron.fallback(['turnstile-container'], function (elem) {
-            elem.style.backgroundColor = '#0a0a0a';
-            elem.style.color = '#ffffff';
-            elem.style.padding = '30px 20px';
-            elem.style.borderRadius = '15px';
-            elem.style.textAlign = 'center';
-            elem.style.border = '1px solid #333';
-            
-            return '<div style="max-width:300px; margin:0 auto;">' +
-                   '<p style="margin-bottom:15px; font-weight:bold; color:#ff4d4d; text-transform:uppercase; letter-spacing:1px;">🛡️ Sécurité requise</p>' +
-                   '<p style="font-size:14px; line-height:1.5; color:#ccc; margin-bottom:15px;">' +
-                   'Vos réglages de cookies bloquent la protection anti-spam <b>Cloudflare Turnstile</b>.' +
-                   '</p>' +
-                   '<p style="font-size:13px; color:#aaa; margin-bottom:5px;">' +
-                   '1. Cliquez sur l\'icône cookie' +
-                   '</p>' +
-                   '<p style="font-size:13px; color:#aaa; margin-bottom:5px;">' +
-                   '2. Autorisez "Turnstile"' +
-                   '</p>' +
-                   '<p style="font-size:13px; color:#aaa; margin-bottom:15px;">' +
-                   '3. Actualisez la page' +
-                   '</p>' +
-                   '<p style="font-size:12px; font-style:italic; color:#888;">' +
-                   'Cette étape est indispensable pour valider l\'envoi du formulaire.' +
-                   '</p>' +
-                   '</div>';
-        });
-    }
-    
+        }
+    };
+
     tarteaucitron.user.gtagUa = 'G-SYGFFHLSDC';
     tarteaucitron.user.gtagMore = function () {
         gtag('config', tarteaucitron.user.gtagUa, { 'anonymize_ip': true });
     };
 
-    // --- ACTIVATION DES JOBS ---
-    // Note : on a retiré hcaptcha et web3forms pour ne garder que turnstile
     (tarteaucitron.job = tarteaucitron.job || []).push('gtag', 'custommaps', 'spline', 'turnstile');
 }
 
 initCookies();
-
-
-
-
-
