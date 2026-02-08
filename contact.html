@@ -2,7 +2,6 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Test Final hCaptcha</title>
     <script src="tarteaucitron/tarteaucitron.js"></script>
     <script src="cookies.js"></script>
 </head>
@@ -11,11 +10,13 @@
     <form action="https://api.web3forms.com/submit" method="POST" id="form-test-final">
         <input type="hidden" name="access_key" value="97e856c8-c773-46ba-800b-154120d09b9a">
         
-        <input type="text" name="name" placeholder="Nom" required><br><br>
-        <input type="email" name="email" placeholder="Email" required><br><br>
-        <textarea name="message" placeholder="Message" required></textarea><br><br>
+        <input type="text" name="name" required placeholder="Nom">
+        <input type="email" name="email" required placeholder="Email">
+        <textarea name="message" required placeholder="Message"></textarea>
         
-        <div class="h-captcha" data-captcha="true"></div><br><br>
+        <div class="h-captcha" 
+             data-captcha="true" 
+             data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"></div>
         
         <button type="submit">Submit Form</button>
     </form>
@@ -28,15 +29,11 @@
     <script>
     window.addEventListener('load', function() {
         const form = document.getElementById('form-test-final');
-        
         form.addEventListener('submit', function(e) {
-            // On vérifie si le textarea généré par hCaptcha contient une réponse
             const hCaptchaResponse = form.querySelector('textarea[name="h-captcha-response"]')?.value;
-
             if (!hCaptchaResponse) {
                 e.preventDefault();
-                alert("Veuillez cocher le Captcha (et vérifier que vous avez accepté les cookies Web3Forms)");
-                return;
+                alert("Please fill out captcha field");
             }
         });
     });
