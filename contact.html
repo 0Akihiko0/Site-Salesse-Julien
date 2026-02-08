@@ -14,16 +14,9 @@
         input, textarea { width: 100%; padding: 12px; margin: 10px 0; border-radius: 5px; border: 1px solid #444; background: #1a1a1a; color: #fff; box-sizing: border-box; }
         button { width: 100%; padding: 12px; background: #fff; color: #000; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.3s; }
         button:hover { background: #ccc; }
-        .h-captcha { min-height: 80px; margin: 15px 0; }
         
-        /* Message d'attente quand le captcha n'est pas encore accepté */
-        .tarteaucitronSelfService {
-            background-color: #1a1a1a !important;
-            border: 1px dashed #ffffff !important;
-            border-radius: 10px !important;
-            padding: 15px !important;
-            font-size: 13px !important;
-        }
+        /* On cache le botcheck pour les humains */
+        .hidden { display: none; visibility: hidden; }
     </style>
 </head>
 <body>
@@ -31,34 +24,17 @@
     <h1>Contact</h1>
 
     <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+        
         <input type="hidden" name="access_key" value="97e856c8-c773-46ba-800b-154120d09b9a">
+
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
         <input type="text" name="name" placeholder="Nom" required>
         <input type="email" name="email" placeholder="Email" required>
         <textarea name="message" placeholder="Message" rows="5" required></textarea>
 
-        <div class="h-captcha" data-captcha="true"></div>
-
-        <button type="submit">Envoyer</button>
+        <button type="submit">Envoyer le message</button>
     </form>
-
-    <script>
-        // On attend que la page soit prête
-        window.addEventListener('load', function() {
-            const form = document.getElementById('contactForm');
-            
-            form.addEventListener('submit', function(e) {
-                // Le champ h-captcha-response n'est créé par le script Web3Forms 
-                // que SI le script est chargé ET le captcha résolu.
-                const hCaptcha = form.querySelector('textarea[name="h-captcha-response"]');
-                
-                if (!hCaptcha || !hCaptcha.value) {
-                    e.preventDefault();
-                    alert("Veuillez accepter les cookies hCaptcha et valider le test avant l'envoi.");
-                }
-            });
-        });
-    </script>
 
 </body>
 </html>
