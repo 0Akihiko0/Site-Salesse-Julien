@@ -231,33 +231,43 @@ function initCookies() {
     };
 
 // --- CLOUDFLARE TURNSTILE ---
-    tarteaucitron.services.turnstile = {
-        "key": "turnstile",
-        "type": "api",
-        "name": "Turnstile (Protection Anti-spam)",
-        "uri": "https://www.cloudflare.com/privacypolicy/",
-        "needConsent": true,
-        "cookies": [],
-        "js": function () {
-            "use strict";
-            tarteaucitron.addScript('https://challenges.cloudflare.com/turnstile/v0/api.js');
-        },
-        "fallback": function () {
-            "use strict";
-            const id = 'turnstile';
-            tarteaucitron.fallback(['cf-turnstile'], function (elem) {
-                elem.style.backgroundColor = '#111111';
-                elem.style.color = '#ffffff';
-                elem.style.padding = '20px';
-                elem.style.borderRadius = '15px';
-                elem.style.textAlign = 'center';
-                elem.style.border = '1px dashed #ffffff';
-                elem.style.fontSize = '14px';
-                return '<p style="margin-bottom:15px;">Veuillez autoriser la protection anti-spam pour activer le bouton d\'envoi.</p>' + tarteaucitron.engage(id);
+tarteaucitron.services.turnstile = {
+    "key": "turnstile",
+    "type": "api",
+    "name": "Protection Anti-spam",
+    "uri": "https://www.cloudflare.com/privacypolicy/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        // On charge le script
+        tarteaucitron.addScript('https://challenges.cloudflare.com/turnstile/v0/api.js');
+        
+        // On force la suppression du message de fallback après un court délai
+        setTimeout(() => {
+            const containers = document.querySelectorAll('.turnstile-container');
+            containers.forEach(container => {
+                // On ne garde que le widget injecté par Cloudflare
+                if (container.querySelector('iframe')) {
+                     container.innerHTML = ''; // On vide pour laisser Turnstile se ré-injecter proprement
+                }
             });
-        }
-    };
-
+        }, 500);
+    },
+    "fallback": function () {
+        "use strict";
+        tarteaucitron.fallback(['turnstile-container'], function (elem) {
+            elem.style.backgroundColor = '#111';
+            elem.style.color = '#fff';
+            elem.style.padding = '20px';
+            elem.style.borderRadius = '15px';
+            elem.style.textAlign = 'center';
+            elem.style.border = '1px dashed #333';
+            return '<p style="margin-bottom:10px;">Veuillez autoriser la protection pour envoyer.</p>' + tarteaucitron.engage('turnstile');
+        });
+    }
+};
+    
     tarteaucitron.user.gtagUa = 'G-SYGFFHLSDC';
     tarteaucitron.user.gtagMore = function () {
         gtag('config', tarteaucitron.user.gtagUa, { 'anonymize_ip': true });
@@ -269,3 +279,4 @@ function initCookies() {
 }
 
 initCookies();
+
