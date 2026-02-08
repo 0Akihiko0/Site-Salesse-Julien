@@ -267,6 +267,14 @@ tarteaucitron.services.turnstile = {
         });
     }
 };
+    // Écouteur pour recharger la page après acceptation des cookies
+document.addEventListener("tac.close_panel", function () {
+    // On vérifie si le cookie turnstile est maintenant accepté
+    if (tarteaucitron.state.turnstile === true) {
+        // On recharge la page proprement pour activer le captcha
+        location.reload();
+    }
+});
     
     tarteaucitron.user.gtagUa = 'G-SYGFFHLSDC';
     tarteaucitron.user.gtagMore = function () {
@@ -279,4 +287,5 @@ tarteaucitron.services.turnstile = {
 }
 
 initCookies();
+
 
