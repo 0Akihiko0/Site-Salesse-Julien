@@ -234,7 +234,7 @@ function initCookies() {
 tarteaucitron.services.turnstile = {
     "key": "turnstile",
     "type": "api",
-    "name": "Protection Anti-spam",
+    "name": "Turnstile (Protection Anti-spam)",
     "uri": "https://www.cloudflare.com/privacypolicy/",
     "needConsent": true,
     "cookies": [],
@@ -263,16 +263,19 @@ tarteaucitron.services.turnstile = {
             elem.style.borderRadius = '15px';
             elem.style.textAlign = 'center';
             elem.style.border = '1px dashed #333';
-            return '<p style="margin-bottom:10px;">Veuillez autoriser la protection pour envoyer.</p>' + tarteaucitron.engage('turnstile');
+            return '<p style="margin-bottom:10px;">Veuillez autoriser la protection Turnstile pour envoyer.</p>' + tarteaucitron.engage('turnstile');
         });
     }
 };
-    // Écouteur pour recharger la page après acceptation des cookies
-document.addEventListener("tac.close_panel", function () {
-    // On vérifie si le cookie turnstile est maintenant accepté
+// On surveille tout changement d'état des cookies
+document.addEventListener("tarteaucitron_action", function (event) {
+    // Si l'utilisateur a cliqué sur "Accepter" (respond : true) 
+    // et que cela concerne le service turnstile
     if (tarteaucitron.state.turnstile === true) {
-        // On recharge la page proprement pour activer le captcha
-        location.reload();
+        // On attend une fraction de seconde pour que le cookie soit bien écrit
+        setTimeout(() => {
+            location.reload();
+        }, 300);
     }
 });
     
@@ -287,5 +290,6 @@ document.addEventListener("tac.close_panel", function () {
 }
 
 initCookies();
+
 
 
