@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Contact - Mes Voyages</title>
     
     <script src="tarteaucitron/tarteaucitron.js"></script>
     <script src="cookies.js"></script>
@@ -46,7 +46,7 @@
             border-bottom-color: white;
         }
 
-        /* Style pour masquer le bouton quand il est désactivé */
+        /* État désactivé du bouton */
         #submit-btn:disabled {
             opacity: 0.2;
             cursor: not-allowed;
@@ -75,7 +75,7 @@
             
             <div class="md:col-span-5">
                 <p class="text-lg opacity-70 italic leading-relaxed border-l-2 border-zinc-900 dark:border-white pl-6">
-                    Qu'il s'agisse d'une simple question, ou d'une remarque...
+                    Qu'il s'agisse d'une simple question, ou d'une remarque sur mes carnets de route...
                 </p>
                 <div class="mt-12 space-y-6">
                     <div class="flex items-center gap-4 opacity-40 hover:opacity-100 transition-opacity">
@@ -89,8 +89,7 @@
                 <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="space-y-12">
                     
                     <input type="hidden" name="access_key" value="97e856c8-c773-46ba-800b-154120d09b9a">
-                    
-                    <input type="checkbox" name="botcheck" style="display:none">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
                     <div class="group">
                         <label class="text-[10px] uppercase tracking-widest font-bold opacity-30 group-focus-within:opacity-100 transition-opacity">Nom complet</label>
@@ -110,8 +109,8 @@
                             class="form-input w-full py-4 text-2xl md:text-3xl font-medium placeholder:opacity-10"></textarea>
                     </div>
 
-                    <div class="cf-turnstile" 
-                         data-sitekey="0x4AAAAAACZULG1-lPsQtROa" 
+                    <div class="turnstile-container" 
+                         data-sitekey="VOTRE_SITE_KEY_CLOUDFLARE" 
                          data-callback="onTurnstileSuccess"
                          data-theme="auto"></div>
 
@@ -123,7 +122,6 @@
                     </button>
                 </form>
             </div>
-
         </div>
     </section>
 
@@ -132,10 +130,13 @@
     <script>if(typeof addFooter === 'function') addFooter();</script>
 
     <script>
-        // Fonction de rappel pour Turnstile
+        // Fonction déclenchée par Cloudflare Turnstile
         function onTurnstileSuccess(token) {
             const btn = document.getElementById('submit-btn');
-            btn.disabled = false; // Active le bouton
+            if(btn) {
+                btn.disabled = false;
+                btn.style.opacity = "1";
+            }
         }
 
         window.addEventListener('load', () => {
