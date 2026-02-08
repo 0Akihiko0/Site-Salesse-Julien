@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Contact Officiel</title>
+    <title>Contact Stable</title>
     <script src="tarteaucitron/tarteaucitron.js"></script>
     <script src="cookies.js"></script>
 </head>
@@ -11,15 +11,15 @@
     <form action="https://api.web3forms.com/submit" method="POST" id="monFormulaire">
         <input type="hidden" name="access_key" value="97e856c8-c773-46ba-800b-154120d09b9a">
         
-        <input type="checkbox" name="botcheck" style="display:none;">
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
-        <input type="text" name="name" placeholder="Votre Nom" required><br><br>
-        <input type="email" name="email" placeholder="Votre Email" required><br><br>
-        <textarea name="message" placeholder="Votre Message" required></textarea><br><br>
+        <input type="text" name="name" placeholder="Nom" required><br><br>
+        <input type="email" name="email" placeholder="Email" required><br><br>
+        <textarea name="message" placeholder="Message" required></textarea><br><br>
         
         <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"></div><br><br>
         
-        <button type="submit">Envoyer le message</button>
+        <button type="submit">Envoyer</button>
     </form>
 
     <script type="text/plain" 
@@ -31,12 +31,11 @@
     window.addEventListener('load', function() {
         const form = document.getElementById('monFormulaire');
         form.addEventListener('submit', function(e) {
-            // hCaptcha génère un champ caché "h-captcha-response" après le clic
             const hCaptchaResponse = form.querySelector('[name="h-captcha-response"]')?.value;
 
             if (!hCaptchaResponse) {
                 e.preventDefault();
-                alert("Veuillez valider le captcha avant d'envoyer.");
+                alert("Merci de valider le Captcha avant l'envoi.");
             }
         });
     });
