@@ -14,7 +14,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
        (function(){
-          // 1. TA PUBLIC KEY ICI
+          // Ta Public Key est bien en place
           emailjs.init("DZYZ7MoEKlVVKxyp2");
        })();
     </script>
@@ -33,8 +33,10 @@
         .form-input:focus { border-bottom-color: #0a0a0a; outline: none; padding-left: 1rem; }
         .dark .form-input:focus { border-bottom-color: white; }
 
-        /* État désactivé du bouton */
         #submit-btn:disabled { opacity: 0.15; cursor: not-allowed; filter: grayscale(1); }
+        
+        /* Petit ajustement pour le container de secours */
+        .turnstile-container { min-height: 80px; width: 100%; margin-top: 1rem; }
     </style>
 </head>
 <body class="antialiased">
@@ -90,9 +92,11 @@
                             class="form-input w-full py-4 text-2xl md:text-3xl font-medium"></textarea>
                     </div>
 
-                    <div class="cf-turnstile" 
-                         data-sitekey="0x4AAAAAACZULG1-lPsQtROa" 
-                         data-callback="enableButton"></div>
+                    <div class="turnstile-container">
+                        <div class="cf-turnstile" 
+                             data-sitekey="0x4AAAAAACZULG1-lPsQtROa" 
+                             data-callback="enableButton"></div>
+                    </div>
 
                     <button type="submit" id="submit-btn" disabled class="group flex items-center gap-6 mt-12 transition-all">
                         <span id="btn-text" class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Envoyer</span>
@@ -109,12 +113,10 @@
     <script>if(typeof addFooter === 'function') addFooter();</script>
 
     <script>
-        // 1. Active le bouton dès que le captcha est OK
         function enableButton() {
             document.getElementById('submit-btn').disabled = false;
         }
 
-        // 2. Gestion de l'envoi avec EmailJS
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
             
@@ -124,13 +126,11 @@
             btnText.innerText = "ENVOI...";
             btn.disabled = true;
 
-            // 2. TES IDs EMAILJS ICI
             emailjs.sendForm('service_xqcs14p', 'template_mq0q4yw', this)
                 .then(() => {
                     btnText.innerText = "ENVOYÉ !";
                     alert("C'est tout bon ! Message reçu.");
                     this.reset();
-                    // On recharge pour réinitialiser le captcha proprement
                     setTimeout(() => location.reload(), 2000);
                 }, (error) => {
                     btnText.innerText = "ERREUR";
