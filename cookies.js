@@ -230,49 +230,42 @@ function initCookies() {
         }
     };
 
+// --- CLOUDFLARE TURNSTILE ---
+    tarteaucitron.services.turnstile = {
+        "key": "turnstile",
+        "type": "api",
+        "name": "Turnstile (Protection Anti-spam)",
+        "uri": "https://www.cloudflare.com/privacypolicy/",
+        "needConsent": true,
+        "cookies": [],
+        "js": function () {
+            "use strict";
+            tarteaucitron.addScript('https://challenges.cloudflare.com/turnstile/v0/api.js');
+        },
+        "fallback": function () {
+            "use strict";
+            const id = 'turnstile';
+            tarteaucitron.fallback(['cf-turnstile'], function (elem) {
+                elem.style.backgroundColor = '#111111';
+                elem.style.color = '#ffffff';
+                elem.style.padding = '20px';
+                elem.style.borderRadius = '15px';
+                elem.style.textAlign = 'center';
+                elem.style.border = '1px dashed #ffffff';
+                elem.style.fontSize = '14px';
+                return '<p style="margin-bottom:15px;">Veuillez autoriser la protection anti-spam pour activer le bouton d\'envoi.</p>' + tarteaucitron.engage(id);
+            });
+        }
+    };
+
     tarteaucitron.user.gtagUa = 'G-SYGFFHLSDC';
     tarteaucitron.user.gtagMore = function () {
         gtag('config', tarteaucitron.user.gtagUa, { 'anonymize_ip': true });
     };
 
-    // Définition du service Web3Forms / hCaptcha pour Tarteaucitron
-tarteaucitron.services.web3forms = {
-    "key": "web3forms",
-    "type": "api",
-    "name": "Web3Forms",
-    "uri": "https://web3forms.com/privacy",
-    "needConsent": true,
-    "cookies": ['__hssc', '__hssrc', '__hstc', 'hubspotutk'], // Cookies techniques potentiels
-    "js": function () {
-        "use strict";
-        tarteaucitron.fallback(['h-captcha'], function (x) {
-            return ""; // Le script est chargé via l'import du head
-        });
-    },
-    "fallback": function () {
-        "use strict";
-        const id = 'web3forms';
-        tarteaucitron.fallback(['h-captcha'], function (elem) {
-            elem.style.backgroundColor = '#f3f4f6';
-            elem.style.display = 'flex';
-            elem.style.alignItems = 'center';
-            elem.style.justifyContent = 'center';
-            elem.style.textAlign = 'center';
-            elem.style.padding = '10px';
-            elem.style.fontSize = '12px';
-            elem.style.color = '#4b5563';
-            elem.style.borderRadius = '15px';
-            elem.style.border = '1px dashed #d1d5db';
-            return 'Veuillez accepter les cookies pour afficher le Captcha et envoyer le formulaire. <br>' + tarteaucitron.engage(id);
-        });
-    }
-};
-
-// Activer le service
-(tarteaucitron.job = tarteaucitron.job || []).push('web3forms');
-
-
-    (tarteaucitron.job = tarteaucitron.job || []).push('gtag', 'custommaps', 'spline', 'hcaptcha');
+    // --- ACTIVATION DES JOBS ---
+    // Note : on a retiré hcaptcha et web3forms pour ne garder que turnstile
+    (tarteaucitron.job = tarteaucitron.job || []).push('gtag', 'custommaps', 'spline', 'turnstile');
 }
 
 initCookies();
