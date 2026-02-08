@@ -270,7 +270,7 @@ tarteaucitron.services.turnstile = {
                    'Vos réglages de cookies bloquent la protection anti-spam <b>Cloudflare Turnstile</b>.' +
                    '</p>' +
                    '<p style="font-size:13px; color:#aaa; margin-bottom:5px;">' +
-                   '1. Cliquez sur l\'icône cookie 🍪' +
+                   '1. Cliquez sur l\'icône cookie' +
                    '</p>' +
                    '<p style="font-size:13px; color:#aaa; margin-bottom:5px;">' +
                    '2. Autorisez "Turnstile"' +
@@ -296,6 +296,7 @@ tarteaucitron.services.turnstile = {
 }
 
 initCookies();
+
 
 
 
