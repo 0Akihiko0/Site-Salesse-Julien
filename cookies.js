@@ -235,37 +235,35 @@ function initCookies() {
         gtag('config', tarteaucitron.user.gtagUa, { 'anonymize_ip': true });
     };
 
+    // Définition du service Web3Forms / hCaptcha pour Tarteaucitron
 tarteaucitron.services.web3forms = {
-    key: "web3forms",
-    type: "api",
-    name: "Web3Forms",
-    uri: "https://web3forms.com/privacy",
-    needConsent: true,
-    cookies: ['__hssc', '__hssrc', '__hstc', 'hubspotutk'],
-    js: function () {
+    "key": "web3forms",
+    "type": "api",
+    "name": "Web3Forms",
+    "uri": "https://web3forms.com/privacy",
+    "needConsent": true,
+    "cookies": ['__hssc', '__hssrc', '__hstc', 'hubspotutk'], // Cookies techniques potentiels
+    "js": function () {
         "use strict";
-        // On charge le script Web3Forms APRÈS consentement
-        tarteaucitron.addScript("https://web3forms.com/client/script.js");
+        tarteaucitron.fallback(['h-captcha'], function (x) {
+            return ""; // Le script est chargé via l'import du head
+        });
     },
-    fallback: function () {
+    "fallback": function () {
         "use strict";
         const id = 'web3forms';
         tarteaucitron.fallback(['h-captcha'], function (elem) {
-            // Style sombre pour correspondre à ton site
-            elem.style.backgroundColor = '#111111';
+            elem.style.backgroundColor = '#f3f4f6';
             elem.style.display = 'flex';
-            elem.style.flexDirection = 'column'; // Pour empiler texte + bouton
             elem.style.alignItems = 'center';
             elem.style.justifyContent = 'center';
             elem.style.textAlign = 'center';
-            elem.style.padding = '20px';
-            elem.style.fontSize = '14px';
-            elem.style.color = '#ffffff';
-            elem.style.borderRadius = '10px';
-            elem.style.border = '1px dashed #ffffff';
-            elem.style.minHeight = '80px';
-            
-            return '<span>Veuillez accepter les cookies pour afficher le Captcha et envoyer le formulaire.</span><br>' + tarteaucitron.engage(id);
+            elem.style.padding = '10px';
+            elem.style.fontSize = '12px';
+            elem.style.color = '#4b5563';
+            elem.style.borderRadius = '15px';
+            elem.style.border = '1px dashed #d1d5db';
+            return 'Veuillez accepter les cookies pour afficher le Captcha et envoyer le formulaire. <br>' + tarteaucitron.engage(id);
         });
     }
 };
@@ -278,4 +276,3 @@ tarteaucitron.services.web3forms = {
 }
 
 initCookies();
-
