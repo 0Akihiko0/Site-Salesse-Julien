@@ -2,42 +2,47 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <title>Contact Web3Forms</title>
     <script src="tarteaucitron/tarteaucitron.js"></script>
     <script src="cookies.js"></script>
 </head>
 <body>
 
-    <form action="https://api.web3forms.com/submit" method="POST" id="form-test-final">
-        <input type="hidden" name="access_key" value="97e856c8-c773-46ba-800b-154120d09b9a">
-        
-        <input type="text" name="name" required placeholder="Nom">
-        <input type="email" name="email" required placeholder="Email">
-        <textarea name="message" required placeholder="Message"></textarea>
-        
-        <div class="h-captcha" 
-             data-captcha="true" 
-             data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"></div>
-        
-        <button type="submit">Submit Form</button>
-    </form>
+<form action="https://api.web3forms.com/submit" method="POST" id="monFormulaire">
+    <input type="hidden" name="access_key" value="97e856c8-c773-46ba-800b-154120d09b9a">
+    <input type="text" name="name" required placeholder="Nom">
+    <input type="email" name="email" required placeholder="Email">
+    <textarea name="message" required placeholder="Message"></textarea>
+    
+    <div class="h-captcha" 
+         data-captcha="true" 
+         data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"></div>
+    
+    <button type="submit">Submit Form</button>
+</form>
 
-    <script type="text/plain" 
-            data-tarteaucitron-src="https://web3forms.com/client/script.js" 
-            data-tarteaucitron-service="web3forms" 
-            async defer></script>
+<script type="text/plain" 
+        data-tarteaucitron-src="https://web3forms.com/client/script.js" 
+        data-tarteaucitron-service="web3forms" 
+        async defer></script>
 
-    <script>
-    window.addEventListener('load', function() {
-        const form = document.getElementById('form-test-final');
-        form.addEventListener('submit', function(e) {
-            const hCaptchaResponse = form.querySelector('textarea[name="h-captcha-response"]')?.value;
-            if (!hCaptchaResponse) {
-                e.preventDefault();
-                alert("Please fill out captcha field");
-            }
-        });
+<script>
+// On attend que le DOM soit chargé pour éviter l'erreur "null"
+window.addEventListener('DOMContentLoaded', (event) => {
+    const form = document.getElementById('monFormulaire');
+
+    form.addEventListener('submit', function(e) {
+        // Validation hCaptcha
+        const hCaptcha = form.querySelector('textarea[name=h-captcha-response]').value;
+
+        if (!hCaptcha) {
+            e.preventDefault();
+            alert("Please fill out captcha field");
+            return;
+        }
     });
-    </script>
+});
+</script>
 
 </body>
 </html>
