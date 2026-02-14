@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Julien Salesse | Portfolio</title>
     
     <script src="tarteaucitron/tarteaucitron.js"></script>
     <script src="cookies.js"></script>
@@ -12,60 +12,92 @@
     
     <link rel="icon" type="image/png" href="Favicon.png?v=1">
     <script>
-        tailwind.config = { 
-            darkMode: 'class',
-            theme: { extend: { colors: { dark: '#0a0a0a' } } }
-        }
+        tailwind.config = { darkMode: 'class' }
     </script>
 
     <style>
         * { transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease; }
-        body { background-color: white; color: #0a0a0a; font-family: ui-sans-serif, system-ui, sans-serif; overflow-x: hidden; }
+        body { background-color: white; color: #0a0a0a; font-family: ui-sans-serif, system-ui, sans-serif; overflow-x: hidden; margin: 0; padding: 0; }
         .dark body { background-color: #0a0a0a; color: white; }
 
-        /* --- HERO & EFFET TEXTURE --- */
-        .hero-textured { position: relative; height: 100dvh; width: 100%; overflow: hidden; display: flex; align-items: center; background: #0a0a0a; }
-        
-        /* L'effet de lignes (Scanlines) permanent par-dessus tout le fond */
+        /* --- HERO --- */
+        .hero-textured { 
+            position: relative; 
+            height: 100vh; 
+            width: 100vw; 
+            overflow: hidden; 
+            display: flex; 
+            align-items: center; 
+            background: #000; 
+        }
+
         .hero-textured::before {
             content: ""; position: absolute; inset: 0;
             background: linear-gradient(transparent 50%, rgba(125, 125, 125, 0.07) 50%);
-            background-size: 100% 4px; z-index: 10; pointer-events: none;
+            background-size: 100% 4px; z-index: 20; pointer-events: none;
         }
 
-        #hero_fallback_img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: opacity 1s ease; }
-        .spline-bg-container { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-        #spline_embed { width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease; pointer-events: none; }
-        #spline_embed.loaded { opacity: 1; }
-        #spline_embed spline-viewer { pointer-events: none !important; } /* Bloque interaction Hero */
+        .spline-bg-container { 
+            position: absolute; inset: 0; width: 100%; height: 100%; z-index: 10;
+        }
 
-        .hero-title { font-size: clamp(2.5rem, 10vw, 7rem); line-height: 0.9; font-weight: 900; text-transform: uppercase; color: white !important; }
-        .section-title { font-size: clamp(2rem, 6vw, 4.5rem); line-height: 1.1; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; }
+        /* IMPORTANT : Bloque l'interaction sur le Spline du Héros uniquement */
+        #spline-container {
+            width: 100% !important;
+            height: 100% !important;
+            pointer-events: none !important; /* C'est ici que ça se joue */
+        }
         
-        /* --- RECTIFICATION TEXTE CV --- */
+        spline-viewer {
+            width: 100% !important;
+            height: 100% !important;
+            border: none;
+            display: block;
+        }
+
+        #hero_fallback_img { 
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5; 
+            transition: opacity 1s ease;
+        }
+
+        /* --- FOCUS / CV --- */
+        .spline-frame { 
+            position: relative; 
+            width: 100%; 
+            aspect-ratio: 1/1; 
+            border-radius: 2rem; 
+            overflow: hidden; 
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        #spline-container-focus {
+            position: absolute; inset: 0; width: 100%; height: 100%; z-index: 10;
+            pointer-events: auto !important; /* On autorise l'interaction ici */
+        }
+
+        #focus_fallback_img { 
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5;
+            transition: opacity 1s ease;
+        }
+        
+        /* Le badge est caché par défaut (opacity: 0) */
+        #focus-badge {
+            opacity: 0; 
+            transform: translateY(-10px);
+            transition: all 0.5s ease;
+        }
+        /* Classe ajoutée par JS quand le spline est prêt */
+        #focus-badge.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Animations --- */
         .text-outline-premium { -webkit-text-stroke: 1px rgba(0,0,0,0.4); color: transparent; }
         .dark .text-outline-premium { -webkit-text-stroke: 1px rgba(255,255,255,0.3); }
-
-        /* --- REVEAL ANIMATIONS --- */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* --- FOCUS & SPLINE INTERACTIF --- */
-        .spline-frame { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 3rem; overflow: hidden; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.05); }
-        #focus_fallback_img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: opacity 1s ease; }
-        #spline_focus_embed { position: absolute; inset: 0; z-index: 2; opacity: 0; transition: opacity 1.5s ease; }
-        #spline_focus_embed.visible { opacity: 1; }
-        #spline_focus_embed spline-viewer { pointer-events: auto !important; } /* Autorise interaction Focus */
-
-        .interact-badge {
-            position: absolute; top: 1.5rem; right: 1.5rem; z-index: 10;
-            display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem;
-            background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(8px);
-            border-radius: 99px; border: 1px solid rgba(255,255,255,0.1);
-            color: white; font-size: 10px; font-weight: 800; text-transform: uppercase;
-            opacity: 0; transform: translateY(-10px); transition: all 0.5s ease;
-        }
-        #spline_focus_embed.visible ~ .interact-badge { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="antialiased">
@@ -79,5 +111,4 @@
     <script src="loader.js"></script>
     <script type="module" src="composantshome/main.js"></script>
 </body>
-
 </html>
