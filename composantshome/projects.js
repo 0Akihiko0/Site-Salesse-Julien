@@ -6,7 +6,7 @@ export const Projects = `
                 <p class="text-[10px] font-bold uppercase tracking-widest opacity-40 mb-4">01 — Expérience</p>
                 <h2 class="text-4xl md:text-6xl font-black uppercase mb-6">Mon Parcours</h2>
                 <p class="text-zinc-500 dark:text-zinc-400 text-lg leading-relaxed mb-8">
-                    Découvrez ici mon parcours global et les différentes étapes de ma carrière.
+                    Découvrez sur mon site mon parcours global et les différentes étapes de mon parcours.
                 </p>
                 <a href="moi.html" class="px-8 py-3 border border-zinc-200 dark:border-zinc-800 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
                     En savoir plus
@@ -34,4 +34,5 @@ export const Projects = `
         </div>
     </div>
 </section>
+
 `;
