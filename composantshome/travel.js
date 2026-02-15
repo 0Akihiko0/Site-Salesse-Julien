@@ -21,7 +21,7 @@ export const Travel = `
             </div>
         </div>
 
-        <div id="travel-badge" class="absolute top-6 right-[140px] md:top-10 md:right-[160px] z-30 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 text-[9px] md:text-[10px] text-white font-black uppercase tracking-[0.2em] whitespace-nowrap">
+        <div id="travel-badge" class="absolute top-6 right-6 md:top-10 md:right-10 z-30 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 text-[9px] md:text-[10px] text-white font-black uppercase tracking-[0.2em] whitespace-nowrap">
             <span class="relative flex h-2 w-2">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
