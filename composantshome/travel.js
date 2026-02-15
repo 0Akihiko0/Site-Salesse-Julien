@@ -33,7 +33,7 @@ export const Travel = `
                     Le monde <br>en immersion<span class="text-zinc-500">.</span>
                 </h2>
                 <p class="text-white/80 text-base md:text-xl mb-8 italic leading-relaxed max-w-lg">
-                    Découvrez mes voyages et mes destinations à travers ces cartes interactives.
+                    Découvrez mes voyages et mes destinations à travers ces cartes interactives !
                 </p>
                 <a href="voyages.html" class="group/btn inline-flex items-center gap-5">
                     <span class="text-white font-bold uppercase tracking-widest text-xs">Découvrir les destinations</span>
@@ -47,3 +47,4 @@ export const Travel = `
 </section>
 
 `;
+
