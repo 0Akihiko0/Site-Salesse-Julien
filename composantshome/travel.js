@@ -12,7 +12,12 @@ export const Travel = `
         <div class="absolute inset-0 z-0 bg-zinc-200 dark:bg-zinc-800">
             <div id="spline-container-travel" class="custommaps_embed w-full h-full grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-in-out" 
                  data-url="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d53149141.62970537!2d-29.959063300474067!3d35.60390121596058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sfr!4v1771147750943!5m2!1sfr!2sfr">
+                
                 <img src="Photos/cartem.png" id="travel_fallback_img" alt="Voyages" class="w-full h-full object-cover">
+                
+                <div id="travel-source-badge" class="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-20 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 backdrop-blur-md border border-white/10 text-[8px] text-white/90 font-bold uppercase tracking-widest transition-opacity duration-1000">
+                    <span>Source : Google Maps</span>
+                </div>
             </div>
         </div>
 
@@ -33,7 +38,7 @@ export const Travel = `
                     Le monde <br>en immersion<span class="text-zinc-500">.</span>
                 </h2>
                 <p class="text-white/80 text-base md:text-xl mb-8 italic leading-relaxed max-w-lg">
-                    Découvrez mes voyages et mes destinations à travers ces cartes interactives !
+                    Découvrez mes voyages et mes destinations à travers ces cartes interactives.
                 </p>
                 <a href="voyages.html" class="group/btn inline-flex items-center gap-5">
                     <span class="text-white font-bold uppercase tracking-widest text-xs">Découvrir les destinations</span>
@@ -45,6 +50,4 @@ export const Travel = `
         </div>
     </div>
 </section>
-
 `;
-
