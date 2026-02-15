@@ -11,103 +11,80 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <link rel="icon" type="image/png" href="Favicon.png?v=1">
+    
     <script>
         tailwind.config = { darkMode: 'class' }
     </script>
 
     <style>
+        /* --- GLOBAL --- */
         * { transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease; }
         body { background-color: white; color: #0a0a0a; font-family: ui-sans-serif, system-ui, sans-serif; overflow-x: hidden; margin: 0; padding: 0; }
         .dark body { background-color: #0a0a0a; color: white; }
 
         /* --- HERO --- */
-        .hero-textured { 
-            position: relative; 
-            height: 100vh; 
-            width: 100vw; 
-            overflow: hidden; 
-            display: flex; 
-            align-items: center; 
-            background: #000; 
-        }
+        .hero-textured { position: relative; height: 100vh; width: 100vw; overflow: hidden; display: flex; align-items: center; background: #000; }
+        .hero-textured::before { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 50%, rgba(125, 125, 125, 0.07) 50%); background-size: 100% 4px; z-index: 20; pointer-events: none; }
+        .spline-bg-container { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 10; }
+        #spline-container, spline-viewer { width: 100% !important; height: 100% !important; border: none; display: block; }
+        #spline-container { pointer-events: none !important; }
 
-        .hero-textured::before {
-            content: ""; position: absolute; inset: 0;
-            background: linear-gradient(transparent 50%, rgba(125, 125, 125, 0.07) 50%);
-            background-size: 100% 4px; z-index: 20; pointer-events: none;
-        }
-
-        .spline-bg-container { 
-            position: absolute; inset: 0; width: 100%; height: 100%; z-index: 10;
-        }
-
-        /* IMPORTANT : Bloque l'interaction sur le Spline du Héros uniquement */
-        #spline-container {
-            width: 100% !important;
-            height: 100% !important;
-            pointer-events: none !important; /* C'est ici que ça se joue */
-        }
-        
-        spline-viewer {
-            width: 100% !important;
-            height: 100% !important;
-            border: none;
-            display: block;
-        }
-
-        #hero_fallback_img { 
+        /* --- IMAGES DE CHARGEMENT (FALLBACKS) --- */
+        #hero_fallback_img, #travel_fallback_img, #contactcv_fallback_img { 
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5; 
             transition: opacity 1s ease;
         }
 
-        /* --- FOCUS / CV --- */
+        /* --- CADRE 3D (Pour ContactCV) --- */
         .spline-frame { 
             position: relative; 
             width: 100%; 
             aspect-ratio: 1/1; 
             border-radius: 2rem; 
             overflow: hidden; 
-            background: #111;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        #spline-container-focus {
-            position: absolute; inset: 0; width: 100%; height: 100%; z-index: 10;
-            pointer-events: auto !important; /* On autorise l'interaction ici */
-        }
-
-        #focus_fallback_img { 
-            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5;
-            transition: opacity 1s ease;
+            background: #111; 
+            border: 1px solid rgba(255,255,255,0.1); 
         }
         
-        /* Le badge est caché par défaut (opacity: 0) */
-        #focus-badge {
-            opacity: 0; 
-            transform: translateY(-10px);
-            transition: all 0.5s ease;
-        }
-        /* Classe ajoutée par JS quand le spline est prêt */
-        #focus-badge.active {
-            opacity: 1;
-            transform: translateY(0);
+        /* C'est ici que le lien se fait avec contactcv.js */
+        #spline-container-contactcv { 
+            position: absolute; inset: 0; width: 100%; height: 100%; z-index: 10; 
+            pointer-events: auto !important; 
         }
 
-        /* --- Animations --- */
+        /* --- BADGES INTERACTIFS --- */
+        #contactcv-badge, #travel-badge {
+            opacity: 0; 
+            transform: translateY(-10px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none; 
+            z-index: 50;
+        }
+        
+        #contactcv-badge.active, #travel-badge.active { 
+            opacity: 1 !important; 
+            transform: translateY(0) !important; 
+        }
+
+        /* --- UTILITAIRES --- */
         .text-outline-premium { -webkit-text-stroke: 1px rgba(0,0,0,0.4); color: transparent; }
         .dark .text-outline-premium { -webkit-text-stroke: 1px rgba(255,255,255,0.3); }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
+        .backdrop-blur-xl { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
     </style>
 </head>
 <body class="antialiased">
     <script src="navbar.js"></script>
     <script>addNavbar("home");</script>
+
     <div id="home-app"></div>
+
     <div id="footer-wrap">
         <script src="footer.js"></script>
         <script>addFooter();</script>
     </div>
+
     <script src="loader.js"></script>
     <script type="module" src="composantshome/main.js"></script>
 </body>
