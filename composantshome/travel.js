@@ -15,13 +15,13 @@ export const Travel = `
                 
                 <img src="Photos/cartem.png" id="travel_fallback_img" alt="Voyages" class="w-full h-full object-cover">
                 
-                <div id="travel-source-badge" class="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-20 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 backdrop-blur-md border border-white/10 text-[8px] text-white/90 font-bold uppercase tracking-widest transition-opacity duration-1000">
+                <div id="travel-source-badge" class="absolute top-6 right-6 md:top-10 md:right-10 z-20 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 text-[7px] md:text-[8px] text-white font-bold uppercase tracking-widest transition-opacity duration-1000">
                     <span>Source : Google Maps</span>
                 </div>
             </div>
         </div>
 
-        <div id="travel-badge" class="absolute top-6 right-6 md:top-10 md:right-10 z-20 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 text-[9px] md:text-[10px] text-white font-black uppercase tracking-[0.2em]">
+        <div id="travel-badge" class="absolute top-6 right-[140px] md:top-10 md:right-[160px] z-30 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 text-[9px] md:text-[10px] text-white font-black uppercase tracking-[0.2em] whitespace-nowrap">
             <span class="relative flex h-2 w-2">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
