@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 // Direction Perdue</title>
+    
+    <link rel="icon" type="image/png" href="Favicon.png?v=1">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Grille Noir/Blanc sans reflet bleu */
+        .bg-home-theme {
+            background-image: 
+                linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .dark .bg-home-theme {
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+        }
+
+        /* Fix Footer Noir Pur */
+        #footer-fix-container {
+            background-color: #0A0A0A !important;
+            color: #ffffff !important;
+        }
+
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+
+<body class="antialiased bg-[#FFFFFF] dark:bg-[#0A0A0A] bg-home-theme transition-colors duration-500">
+
+    <script src="loader.js"></script>
+
+    <script src="navbar.js"></script>
+    <script>addNavbar("home");</script>
+
+    <main class="relative z-10 w-full min-h-screen flex flex-col items-center justify-center px-6 text-[#000000] dark:text-[#FFFFFF] text-center transition-colors duration-500">
+        
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+            <h1 class="text-[35vw] md:text-[45vw] font-black tracking-tighter select-none leading-none opacity-[0.05] dark:opacity-[0.015]">
+                404
+            </h1>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center w-full">
+            
+            <div class="flex items-center gap-6 mb-12 opacity-30">
+                <div class="h-[1px] w-12 bg-current"></div>
+                <span class="text-[10px] font-black uppercase tracking-[0.5em]">Page Erreur</span>
+                <div class="h-[1px] w-12 bg-current"></div>
+            </div>
+
+            <h2 class="text-6xl md:text-[10rem] font-black uppercase tracking-tighter leading-[0.85] mb-10">
+                Vous êtes<br>perdus<span class="opacity-30">.</span>
+            </h2>
+
+            <p class="text-[#000000] dark:text-[#FFFFFF] text-sm md:text-xl font-medium italic opacity-60 max-w-lg mb-20 leading-relaxed">
+                Il n'y a rien ici. La page que vous cherchez a sans doute disparu dans le vide.
+            </p>
+
+            <a href="index.html" class="group inline-flex flex-col items-center gap-6">
+                <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border border-black/20 dark:border-white/20 flex items-center justify-center group-hover:bg-black dark:group-hover:bg-white group-hover:scale-110 group-hover:text-white dark:group-hover:text-black transition-all duration-500 ease-in-out">
+                    <i data-lucide="arrow-left" class="w-8 h-8 md:w-10 md:h-10"></i>
+                </div>
+                <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] opacity-40 group-hover:opacity-100 transition-opacity">
+                    Retourner au menu
+                </span>
+            </a>
+        </div>
+    </main>
+
+    <div id="footer-fix-container" class="w-full">
+        <script src="footer.js"></script>
+        <script>addFooter();</script>
+    </div>
+
+    <script>lucide.createIcons();</script>
+    <script src="tarteaucitron/tarteaucitron.js"></script>
+    <script src="cookies.js"></script>
+
+</body>
+</html>
