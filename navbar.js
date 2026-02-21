@@ -17,23 +17,23 @@ function addNavbar(activePage = "") {
 
     <div id="mobile-dock" class="md:hidden fixed bottom-6 left-0 right-0 z-[100] flex justify-center px-6">
         <nav class="w-full max-w-[340px] bg-[#0a0a0a] border border-zinc-800 rounded-full p-3 flex justify-around items-center shadow-2xl">
-            <a href="index.html" class="${activePage === 'home' ? 'text-white' : 'text-zinc-500'}"><i data-lucide="home"></i></a>
-            <a href="moi.html" class="${activePage === 'moi' ? 'text-white' : 'text-zinc-500'}"><i data-lucide="user"></i></a>
-            <a href="contact.html" class="${activePage === 'contact' ? 'text-white' : 'text-zinc-500'}"><i data-lucide="mail"></i></a>
+            <a href="index" class="${activePage === 'home' ? 'text-white' : 'text-zinc-500'}"><i data-lucide="home"></i></a>
+            <a href="moi" class="${activePage === 'moi' ? 'text-white' : 'text-zinc-500'}"><i data-lucide="user"></i></a>
+            <a href="contact" class="${activePage === 'contact' ? 'text-white' : 'text-zinc-500'}"><i data-lucide="mail"></i></a>
             <button onclick="tarteaucitron.userInterface.openPanel();" class="text-zinc-500"><i data-lucide="cookie"></i></button>
         </nav>
     </div>
 
     <div id="menu-overlay" class="fixed inset-0 bg-[#0a0a0a] z-[150] flex flex-col opacity-0 pointer-events-none transition-opacity duration-500 overflow-hidden">
         <nav class="flex flex-col gap-1 md:gap-3 p-6 md:p-24 my-auto w-full max-w-full overflow-hidden">
-            ${navLink("index.html", "Home", activePage === "home")}
-            ${navLink("moi.html", "Moi", activePage === "moi")}
-            ${navLink("experience.html", "Expériences", activePage === "experience")}
-            ${navLink("competences.html", "Compétences", activePage === "competences")}
-            ${navLink("projets.html", "Projets", activePage === "projets")}
-            ${navLink("voyages.html", "Voyages", activePage === "voyages")}
-            ${navLink("cv.html", "CV", activePage === "cv")}
-            ${navLink("contact.html", "Contact", activePage === "contact")}
+            ${navLink("index", "Home", activePage === "home")}
+            ${navLink("moi", "Moi", activePage === "moi")}
+            ${navLink("experience", "Expériences", activePage === "experience")}
+            ${navLink("competences", "Compétences", activePage === "competences")}
+            ${navLink("projets", "Projets", activePage === "projets")}
+            ${navLink("voyages", "Voyages", activePage === "voyages")}
+            ${navLink("cv", "CV", activePage === "cv")}
+            ${navLink("contact", "Contact", activePage === "contact")}
         </nav>
     </div>
     `;
@@ -88,3 +88,4 @@ function navLink(href, label, isActive) {
         ${label}
     </a>`;
 }
+
