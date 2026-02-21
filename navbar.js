@@ -1,7 +1,7 @@
 function addNavbar(activePage = "") {
     const navbarHTML = `
     <header class="fixed top-0 left-0 w-full z-[200] p-6 md:p-10 flex justify-between items-center mix-blend-difference text-white">
-        <div class="text-2xl font-black tracking-tighter uppercase cursor-pointer" onclick="window.location.href='index.html'">
+        <div class="text-2xl font-black tracking-tighter uppercase cursor-pointer" onclick="window.location.href='https://julien.salesse.me'">
             Julien<span class="text-zinc-500 italic">_</span>
         </div>
         
@@ -17,7 +17,7 @@ function addNavbar(activePage = "") {
 
     <div id="mobile-dock" class="md:hidden fixed bottom-6 left-0 right-0 z-[100] flex justify-center px-6">
         <nav class="w-full max-w-[340px] bg-[#0a0a0a] border border-zinc-800 rounded-full p-3 flex justify-around items-center shadow-2xl">
-            <a href="index" class="${activePage === 'home' ? 'text-white' : 'text-zinc-500'}"><i data-lucide="home"></i></a>
+            <a href="https://julien.salesse.me" class="${activePage === 'home' ? 'text-white' : 'text-zinc-500'}"><i data-lucide="home"></i></a>
             <a href="moi" class="${activePage === 'moi' ? 'text-white' : 'text-zinc-500'}"><i data-lucide="user"></i></a>
             <a href="contact" class="${activePage === 'contact' ? 'text-white' : 'text-zinc-500'}"><i data-lucide="mail"></i></a>
             <button onclick="tarteaucitron.userInterface.openPanel();" class="text-zinc-500"><i data-lucide="cookie"></i></button>
@@ -88,4 +88,5 @@ function navLink(href, label, isActive) {
         ${label}
     </a>`;
 }
+
 
