@@ -33,7 +33,7 @@ function addFooter() {
             </div>
 
             <div class="pt-10 border-t border-white/10 flex flex-col items-center gap-4">
-                <a href="politique-de-confidentialite.html" class="text-[10px] uppercase tracking-widest opacity-30 hover:opacity-100 transition text-white">Politique de confidentialité</a>
+                <a href="politique-de-confidentialite" class="text-[10px] uppercase tracking-widest opacity-30 hover:opacity-100 transition text-white">Politique de confidentialité</a>
                 <p class="text-[10px] font-bold uppercase tracking-[0.3em] opacity-20 text-center text-white">
                     © 2026 Julien Salesse. Tous droits réservés.
                 </p>
@@ -44,4 +44,5 @@ function addFooter() {
     document.body.insertAdjacentHTML("beforeend", footerHTML);
 
 }
+
 
