@@ -14,20 +14,20 @@ function addFooter() {
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-12 w-full md:w-auto">
                     <div class="flex flex-col gap-3 text-sm">
                         <p class="text-[10px] font-black uppercase tracking-widest opacity-20 text-white">Exploration</p>
-                        <a href="index.html" class="opacity-50 hover:opacity-100 transition text-white">Accueil</a>
-                        <a href="moi.html" class="opacity-50 hover:opacity-100 transition text-white">Moi</a>
-                        <a href="projets.html" class="opacity-50 hover:opacity-100 transition text-white">Projets</a>
+                        <a href="index" class="opacity-50 hover:opacity-100 transition text-white">Accueil</a>
+                        <a href="moi" class="opacity-50 hover:opacity-100 transition text-white">Moi</a>
+                        <a href="projets" class="opacity-50 hover:opacity-100 transition text-white">Projets</a>
                     </div>
                     <div class="flex flex-col gap-3 text-sm">
                         <p class="text-[10px] font-black uppercase tracking-widest opacity-20 text-white">Parcours</p>
-                        <a href="experience.html" class="opacity-50 hover:opacity-100 transition text-white">Expériences</a>
-                        <a href="competences.html" class="opacity-50 hover:opacity-100 transition text-white">Compétences</a>
-                        <a href="voyages.html" class="opacity-50 hover:opacity-100 transition text-white">Voyages</a>
+                        <a href="experience" class="opacity-50 hover:opacity-100 transition text-white">Expériences</a>
+                        <a href="competences" class="opacity-50 hover:opacity-100 transition text-white">Compétences</a>
+                        <a href="voyages" class="opacity-50 hover:opacity-100 transition text-white">Voyages</a>
                     </div>
                     <div class="flex flex-col gap-3 text-sm">
                         <p class="text-[10px] font-black uppercase tracking-widest opacity-20 text-white">Contact & CV</p>
-                        <a href="contact.html" class="opacity-50 hover:opacity-100 transition text-white">Me contacter</a>
-                        <a href="cv.html" class="opacity-50 hover:opacity-100 transition text-white">Mon CV</a>
+                        <a href="contact" class="opacity-50 hover:opacity-100 transition text-white">Me contacter</a>
+                        <a href="cv" class="opacity-50 hover:opacity-100 transition text-white">Mon CV</a>
                     </div>
                 </div>
             </div>
@@ -42,4 +42,5 @@ function addFooter() {
     </footer>
     `;
     document.body.insertAdjacentHTML("beforeend", footerHTML);
+
 }
