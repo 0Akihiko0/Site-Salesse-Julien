@@ -9,12 +9,12 @@ export const ContactCV = `
                 Téléchargez mon CV ou contactez-moi pour toute question ou remarque.
             </p>
             
-            <div class="flex flex-wrap gap-6 pt-4"> <a href="cv.html" class="group px-10 py-6 bg-black dark:bg-white text-white dark:text-black rounded-full text-xs md:text-sm font-black uppercase tracking-[0.2em] hover:scale-105 transition-all duration-300 shadow-2xl flex items-center gap-3">
+            <div class="flex flex-wrap gap-6 pt-4"> <a href="cv" class="group px-10 py-6 bg-black dark:bg-white text-white dark:text-black rounded-full text-xs md:text-sm font-black uppercase tracking-[0.2em] hover:scale-105 transition-all duration-300 shadow-2xl flex items-center gap-3">
                     <span>Télécharger CV</span>
                     <i data-lucide="download" class="w-4 h-4"></i>
                 </a>
                 
-                <a href="contact.html" class="group px-10 py-6 border-2 border-zinc-200 dark:border-zinc-800 text-black dark:text-white rounded-full text-xs md:text-sm font-black uppercase tracking-[0.2em] hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black hover:scale-105 transition-all duration-300 flex items-center gap-3">
+                <a href="contact" class="group px-10 py-6 border-2 border-zinc-200 dark:border-zinc-800 text-black dark:text-white rounded-full text-xs md:text-sm font-black uppercase tracking-[0.2em] hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black hover:scale-105 transition-all duration-300 flex items-center gap-3">
                     <span>Me contacter</span>
                     <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </a>
@@ -33,3 +33,4 @@ export const ContactCV = `
     </div>
 </section>
 `;
+
