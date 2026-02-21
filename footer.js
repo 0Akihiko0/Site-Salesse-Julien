@@ -14,7 +14,7 @@ function addFooter() {
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-12 w-full md:w-auto">
                     <div class="flex flex-col gap-3 text-sm">
                         <p class="text-[10px] font-black uppercase tracking-widest opacity-20 text-white">Exploration</p>
-                        <a href="index" class="opacity-50 hover:opacity-100 transition text-white">Accueil</a>
+                        <a href="https://julien.salesse.me" class="opacity-50 hover:opacity-100 transition text-white">Accueil</a>
                         <a href="moi" class="opacity-50 hover:opacity-100 transition text-white">Moi</a>
                         <a href="projets" class="opacity-50 hover:opacity-100 transition text-white">Projets</a>
                     </div>
@@ -44,3 +44,4 @@ function addFooter() {
     document.body.insertAdjacentHTML("beforeend", footerHTML);
 
 }
+
