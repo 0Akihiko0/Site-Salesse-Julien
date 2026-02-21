@@ -26,7 +26,7 @@ function addNavbar(activePage = "") {
 
     <div id="menu-overlay" class="fixed inset-0 bg-[#0a0a0a] z-[150] flex flex-col opacity-0 pointer-events-none transition-opacity duration-500 overflow-hidden">
         <nav class="flex flex-col gap-1 md:gap-3 p-6 md:p-24 my-auto w-full max-w-full overflow-hidden">
-            ${navLink("index", "Home", activePage === "home")}
+            ${navLink("https://julien.salesse.me", "Home", activePage === "home")}
             ${navLink("moi", "Moi", activePage === "moi")}
             ${navLink("experience", "Expériences", activePage === "experience")}
             ${navLink("competences", "Compétences", activePage === "competences")}
@@ -88,5 +88,6 @@ function navLink(href, label, isActive) {
         ${label}
     </a>`;
 }
+
 
 
