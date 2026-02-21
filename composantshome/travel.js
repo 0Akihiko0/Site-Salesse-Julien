@@ -40,7 +40,7 @@ export const Travel = `
                 <p class="text-white/80 text-base md:text-xl mb-8 italic leading-relaxed max-w-lg">
                     Découvrez mes voyages et mes destinations à travers ces cartes interactives.
                 </p>
-                <a href="voyages.html" class="group/btn inline-flex items-center gap-5">
+                <a href="voyages" class="group/btn inline-flex items-center gap-5">
                     <span class="text-white font-bold uppercase tracking-widest text-xs">Découvrir les destinations</span>
                     <div class="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center group-hover/btn:bg-white group-hover/btn:scale-110 group-hover/btn:text-black transition-all duration-500">
                         <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
@@ -51,3 +51,4 @@ export const Travel = `
     </div>
 </section>
 `;
+
