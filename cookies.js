@@ -170,7 +170,7 @@ function initCookies() {
     document.head.appendChild(style);
 
     tarteaucitron.init({
-        privacyUrl: "politique-de-confidentialite.html",
+        privacyUrl: "politique-de-confidentialite",
         hashtag: "#tarteaucitron",
         cookieName: "tarteaucitron",
         orientation: "bottom",
@@ -253,7 +253,7 @@ function initCookies() {
                 elem.style.textAlign = 'center';
                 elem.style.border = '1px solid #333';
                 return '<div style="max-width:300px; margin:0 auto;">' +
-                       '<p style="margin-bottom:15px; font-weight:bold; color:#ff4d4d; text-transform:uppercase; letter-spacing:1px;">🛡️ Sécurité requise</p>' +
+                       '<p style="margin-bottom:15px; font-weight:bold; color:#ff4d4d; text-transform:uppercase; letter-spacing:1px;">Sécurité requise</p>' +
                        '<p style="font-size:14px; line-height:1.5; color:#ccc; margin-bottom:15px;">' +
                        'Vos réglages de cookies bloquent la protection anti-spam <b>Cloudflare Turnstile</b>.' +
                        '</p>' +
@@ -277,3 +277,4 @@ function initCookies() {
 }
 
 initCookies();
+
