@@ -8,7 +8,7 @@ export const Projects = `
                 <p class="text-zinc-500 dark:text-zinc-400 text-lg leading-relaxed mb-8">
                     Découvrez sur mon site mon parcours global et les différentes étapes de ma carrière.
                 </p>
-                <a href="moi.html" class="px-8 py-3 border border-zinc-200 dark:border-zinc-800 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+                <a href="moi" class="px-8 py-3 border border-zinc-200 dark:border-zinc-800 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
                     En savoir plus
                 </a>
             </div>
@@ -36,3 +36,4 @@ export const Projects = `
 </section>
 
 `;
+
