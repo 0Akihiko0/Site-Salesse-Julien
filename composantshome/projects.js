@@ -34,6 +34,4 @@ export const Projects = `
         </div>
     </div>
 </section>
-
 `;
-
