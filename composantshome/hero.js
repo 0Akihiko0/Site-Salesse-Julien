@@ -14,10 +14,11 @@ export const Hero = `
             <p class="text-white/90 text-lg md:text-2xl max-w-xl mb-10 font-medium drop-shadow-md">
                 Découvrez mon univers : mon parcours, mes expériences et mes projets innovants.
             </p>
-            <a href="moi.html" class="inline-flex items-center gap-4 px-10 py-5 bg-white text-black text-[12px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-zinc-200 transition-all shadow-xl">
+            <a href="moi" class="inline-flex items-center gap-4 px-10 py-5 bg-white text-black text-[12px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-zinc-200 transition-all shadow-xl">
                 Découvrir mon profil <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
         </div>
     </div>
 </section>
+
 `;
