@@ -1,9 +1,16 @@
 export const Hero = `
-<section class="hero-textured">
-    <img src="Photos/fondhome.png" id="hero_fallback_img" alt="Background">
+<section class="hero-textured relative overflow-hidden h-screen">
+    <img src="Photos/fondhome.png" 
+         id="hero_fallback_img" 
+         alt="Background" 
+         class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 z-10"
+         style="opacity: 1;">
     
-    <div class="spline-bg-container">
-        <div id="spline-container" data-spline-url="https://prod.spline.design/svr5QCKQOCmAjuui/scene.splinecode"></div>
+    <div class="spline-bg-container absolute inset-0">
+        <div id="spline-container" 
+             class="w-full h-full opacity-0 transition-opacity duration-1000 z-0"
+             data-spline-url="https://prod.spline.design/svr5QCKQOCmAjuui/scene.splinecode">
+        </div>
     </div>
 
     <div class="relative z-30 px-6 md:px-24 w-full h-full flex flex-col justify-center pointer-events-none">
@@ -20,5 +27,4 @@ export const Hero = `
         </div>
     </div>
 </section>
-
 `;
