@@ -13,22 +13,31 @@ function manageSplines() {
         setTimeout(() => { if(heroFallback) heroFallback.style.opacity = '0'; }, 800);
     }
 
-    // 2. CONTACT CV
+    // 2. CONTACT CV (Optimisé avec Fondu et Badge)
     const cvContainer = document.getElementById('spline-container-contactcv');
     const cvFallback = document.getElementById('contactcv_fallback_img');
     const cvBadge = document.getElementById('contactcv-badge');
     
-    // Vérification Tarteaucitron pour Spline
     const isSplineAllowed = (window.tarteaucitron && window.tarteaucitron.state.spline === true);
 
-    if (cvContainer && isSplineAllowed && !cvContainer.querySelector('spline-viewer')) {
-        const url = cvContainer.getAttribute('data-spline-url');
-        cvContainer.innerHTML = `<spline-viewer url="${url}"></spline-viewer>`;
-        
-        setTimeout(() => {
-            if(cvFallback) cvFallback.style.opacity = '0';
-            if(cvBadge) cvBadge.classList.add('active'); 
-        }, 1500);
+    if (cvContainer && isSplineAllowed) {
+        // Injection du viewer s'il n'existe pas
+        if (!cvContainer.querySelector('spline-viewer')) {
+            const url = cvContainer.getAttribute('data-spline-url');
+            cvContainer.innerHTML = `<spline-viewer url="${url}"></spline-viewer>`;
+        }
+
+        // Détection du chargement réel pour le fondu
+        const viewer = cvContainer.querySelector('spline-viewer');
+        // On vérifie si le canvas est généré dans le shadow DOM de spline-viewer
+        if (viewer && viewer.shadowRoot && viewer.shadowRoot.querySelector('canvas')) {
+            cvFallback.style.opacity = '0';
+            cvContainer.style.opacity = '1';
+            cvBadge.style.opacity = '1';
+            
+            // On cache définitivement l'image après 1s pour optimiser
+            setTimeout(() => { if(cvFallback) cvFallback.style.display = 'none'; }, 1000);
+        }
     }
 
     // 3. TRAVEL
@@ -43,14 +52,13 @@ function manageSplines() {
 }
 
 function initHome() {
-    // --- NOUVEL ORDRE ---
-    // Hero -> Projets -> Voyage -> Contact/CV
+    // Injection des composants
     app.innerHTML = Hero + Projects + Travel + ContactCV; 
 
-    // Recharger les icônes Lucide après injection
+    // Icônes Lucide
     if (window.lucide) lucide.createIcons();
 
-    // Boucle de vérification
+    // Boucle de vérification des chargements
     const checkInterval = setInterval(() => {
         manageSplines();
         
@@ -61,7 +69,7 @@ function initHome() {
         if (h && c && t) clearInterval(checkInterval);
     }, 1000);
 
-    // Animation au scroll (Reveal)
+    // Reveal au scroll
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('active');
