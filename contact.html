@@ -10,13 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="Favicon.png?v=1">
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-       (function(){
-          emailjs.init("DZYZ7MoEKlVVKxyp2");
-       })();
-    </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <style>
         body { background-color: white; color: #0a0a0a; transition: background-color 0.5s ease; font-family: 'Inter', sans-serif; }
@@ -34,7 +28,6 @@
 
         #submit-btn:disabled { opacity: 0.15; cursor: not-allowed; filter: grayscale(1); }
         
-        /* Ajustement du container pour le message de secours */
         .turnstile-container { 
             min-height: 100px; 
             width: 100%; 
@@ -124,26 +117,41 @@
             document.getElementById('submit-btn').disabled = false;
         }
 
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
+        document.getElementById('contact-form').addEventListener('submit', async function(event) {
             event.preventDefault();
             
             const btnText = document.getElementById('btn-text');
             const btn = document.getElementById('submit-btn');
+            const formData = new FormData(this);
             
-            btnText.innerText = "ENVOI...";
+            btnText.innerText = "VÉRIFICATION...";
             btn.disabled = true;
 
-            emailjs.sendForm('service_xqcs14p', 'template_mq0q4yw', this)
-                .then(() => {
+            try {
+                // !!! REMPLACE PAR TON URL WORKER ICI !!!
+                const workerUrl = "formulaire-contact.julien-salesse24.workers.dev";
+
+                const response = await fetch(workerUrl, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
                     btnText.innerText = "ENVOYÉ !";
                     alert("C'est tout bon, votre message a bien été envoyé !");
                     this.reset();
                     setTimeout(() => location.reload(), 2000);
-                }, (error) => {
-                    btnText.innerText = "ERREUR";
-                    btn.disabled = false;
-                    alert("Erreur : " + JSON.stringify(error));
-                });
+                } else {
+                    // Si la Worker bloque (bouton forcé sans Turnstile par ex.)
+                    throw new Error(result.error || "Échec de l'envoi");
+                }
+            } catch (error) {
+                btnText.innerText = "ERREUR";
+                btn.disabled = false;
+                alert("Erreur de sécurité : " + error.message);
+            }
         });
 
         window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
