@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Contact | Julien Salesse</title>
     
     <script src="tarteaucitron/tarteaucitron.js"></script>
     <script src="cookies.js"></script>
@@ -11,12 +11,21 @@
     <link rel="icon" type="image/png" href="Favicon.png?v=1">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
+    
     <style>
-        body { background-color: white; color: #0a0a0a; transition: background-color 0.5s ease; font-family: 'Inter', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+        body { 
+            background-color: white; 
+            color: #0a0a0a; 
+            transition: background-color 0.5s ease; 
+            font-family: 'Inter', sans-serif; 
+        }
         .dark body { background-color: #0a0a0a; color: white; }
+        
         .hero-title { font-size: clamp(3rem, 12vw, 10rem); line-height: 0.85; }
         
+        /* Formulaire */
         .form-input {
             background: transparent;
             border-bottom: 2px solid rgba(0,0,0,0.1);
@@ -27,21 +36,92 @@
         .dark .form-input:focus { border-bottom-color: white; }
 
         #submit-btn:disabled { opacity: 0.15; cursor: not-allowed; filter: grayscale(1); }
-        
-        .turnstile-container { 
-            min-height: 100px; 
-            width: 100%; 
-            margin-top: 2rem;
+
+        /* POPUP DESIGN RECTANGLE PREMIUM */
+        #custom-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #0a0a0a;
+            color: white;
+            padding: 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            z-index: 1000;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            width: 95%;
+            max-width: 550px;
+            overflow: hidden;
+        }
+
+        .popup-content { display: flex; align-items: stretch; min-height: 180px; }
+
+        .popup-image {
+            width: 140px;
+            background: #141414;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-right: 1px solid rgba(255,255,255,0.05);
         }
+
+        .popup-text-side { flex: 1; padding: 32px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+        }
+
+        /* ANIMATIONS */
+        @keyframes shake {
+            0% { transform: translate(-50%, -50%) translateX(0); }
+            25% { transform: translate(-50%, -50%) translateX(-8px); }
+            50% { transform: translate(-50%, -50%) translateX(8px); }
+            75% { transform: translate(-50%, -50%) translateX(-8px); }
+            100% { transform: translate(-50%, -50%) translateX(0); }
+        }
+        .shake-it { animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both; }
+
+        @keyframes fadeInScale {
+            0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+        .fade-in-popup { animation: fadeInScale 0.3s ease-out forwards; }
+
+        .turnstile-container { min-height: 100px; width: 100%; margin-top: 2rem; display: flex; align-items: center; justify-content: flex-start; }
     </style>
 </head>
 <body class="antialiased">
 
     <script src="navbar.js"></script>
     <script>addNavbar("contact");</script>
+
+    <div id="overlay" onclick="closePopup()"></div>
+    <div id="custom-popup">
+        <div class="popup-content">
+            <div id="popup-img-container" class="popup-image">
+                <i id="popup-icon" data-lucide="shield-off" class="w-10 h-10 opacity-20"></i>
+            </div>
+            <div class="popup-text-side">
+                <h2 id="popup-title" class="text-xl font-black uppercase tracking-tighter mb-2">Titre...</h2>
+                <p id="popup-message" class="text-zinc-400 text-[11px] leading-relaxed mb-6 uppercase tracking-widest"></p>
+                <div>
+                    <button id="popup-btn" onclick="closePopup()" class="px-6 py-2 border border-white/20 hover:bg-white hover:text-black transition-all text-[10px] uppercase font-bold tracking-widest">
+                        Fermer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="w-full min-h-[50vh] flex items-end px-6 md:px-24 pb-20 pt-20 md:pt-64">
         <div class="z-10 w-full">
@@ -72,23 +152,23 @@
             <div class="md:col-span-7">
                 <form id="contact-form" class="space-y-12">
                     <input type="hidden" name="title" value="Contact Portfolio">
-
+                    
                     <div class="group">
                         <label class="text-[10px] uppercase tracking-widest font-bold opacity-30">Nom complet</label>
                         <input type="text" name="name" required placeholder="John Doe" 
-                            class="form-input w-full py-4 text-2xl md:text-3xl font-medium">
+                               class="form-input w-full py-4 text-2xl md:text-3xl font-medium">
                     </div>
 
                     <div class="group">
                         <label class="text-[10px] uppercase tracking-widest font-bold opacity-30">Adresse Email</label>
                         <input type="email" name="email" required placeholder="john@doe.com" 
-                            class="form-input w-full py-4 text-2xl md:text-3xl font-medium">
+                               class="form-input w-full py-4 text-2xl md:text-3xl font-medium">
                     </div>
 
                     <div class="group">
                         <label class="text-[10px] uppercase tracking-widest font-bold opacity-30">Message</label>
                         <textarea name="message" required rows="4" placeholder="Bonjour..." 
-                            class="form-input w-full py-4 text-2xl md:text-3xl font-medium"></textarea>
+                                  class="form-input w-full py-4 text-2xl md:text-3xl font-medium"></textarea>
                     </div>
 
                     <div id="turnstile-container" class="turnstile-container">
@@ -112,14 +192,51 @@
     <script>if(typeof addFooter === 'function') addFooter();</script>
 
     <script>
-        // Cette fonction est appelée par Turnstile une fois validé
+        // Gestion Unifiée de la Pop-up
+        function showPopup(type, title, message) {
+            const popup = document.getElementById('custom-popup');
+            const overlay = document.getElementById('overlay');
+            const icon = document.getElementById('popup-icon');
+            
+            document.getElementById('popup-title').innerText = title;
+            document.getElementById('popup-message').innerText = message;
+            
+            // Configuration selon le type (Succès ou Erreur)
+            if(type === 'success') {
+                icon.setAttribute('data-lucide', 'check-circle');
+                icon.className = "w-10 h-10 opacity-40 text-white";
+                popup.style.borderColor = "rgba(255,255,255,0.1)";
+                popup.classList.add('fade-in-popup');
+            } else {
+                icon.setAttribute('data-lucide', 'shield-off');
+                icon.className = "w-10 h-10 opacity-20 text-zinc-500";
+                popup.style.borderColor = "rgba(255,255,255,0.1)";
+                popup.classList.add('shake-it');
+            }
+            
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+            
+            if (window.lucide) lucide.createIcons();
+            
+            // Nettoyage des classes d'animation pour la prochaine fois
+            setTimeout(() => {
+                popup.classList.remove('shake-it');
+                popup.classList.remove('fade-in-popup');
+            }, 600);
+        }
+
+        function closePopup() {
+            document.getElementById('custom-popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
         function enableButton() {
             document.getElementById('submit-btn').disabled = false;
         }
 
         document.getElementById('contact-form').addEventListener('submit', async function(event) {
             event.preventDefault();
-            
             const btnText = document.getElementById('btn-text');
             const btn = document.getElementById('submit-btn');
             const formData = new FormData(this);
@@ -128,9 +245,7 @@
             btn.disabled = true;
 
             try {
-                // !!! REMPLACE PAR TON URL WORKER ICI !!!
                 const workerUrl = "https://formulaire-contact.julien-salesse24.workers.dev";
-
                 const response = await fetch(workerUrl, {
                     method: 'POST',
                     body: formData
@@ -140,17 +255,25 @@
 
                 if (response.ok) {
                     btnText.innerText = "ENVOYÉ !";
-                    alert("C'est tout bon, votre message a bien été envoyé !");
+                    // AFFICHAGE POP-UP SUCCÈS
+                    showPopup('success', 'C\'est tout bon !', 'Votre message a bien été envoyé. Je vous répondrai dans les plus brefs délais.');
                     this.reset();
-                    setTimeout(() => location.reload(), 2000);
+                    // On laisse la pop-up visible 3 secondes avant de recharger
+                    setTimeout(() => location.reload(), 3500);
                 } else {
-                    // Si la Worker bloque (bouton forcé sans Turnstile par ex.)
                     throw new Error(result.error || "Échec de l'envoi");
                 }
             } catch (error) {
                 btnText.innerText = "ERREUR";
                 btn.disabled = false;
-                alert("Erreur de sécurité : " + error.message);
+                
+                let customMsg = "Une erreur est survenue lors de l'envoi.";
+                if(error.message.includes("Turnstile")) {
+                    customMsg = "Sécurité : Veuillez valider le test anti-robot avant l'envoi.";
+                }
+                
+                // AFFICHAGE POP-UP ERREUR
+                showPopup('error', 'Une erreur technique...', customMsg);
             }
         });
 
