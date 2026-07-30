@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Favicon.png">
+    <title>Site en construction</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            background:#09090b;
+            color:#ffffff;
+            overflow:hidden;
+        }
+
+        /* Lueur d'arrière-plan */
+        body::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:
+                radial-gradient(circle at top, rgba(59,130,246,.15), transparent 45%),
+                radial-gradient(circle at bottom, rgba(99,102,241,.12), transparent 45%);
+            filter:blur(50px);
+            z-index:-1;
+        }
+
+        .card{
+            width:min(90%,650px);
+            padding:60px;
+            text-align:center;
+            background:rgba(24,24,27,.85);
+            border:1px solid rgba(255,255,255,.08);
+            border-radius:22px;
+            backdrop-filter:blur(20px);
+            box-shadow:0 20px 60px rgba(0,0,0,.6);
+        }
+
+        h1{
+            font-size:3rem;
+            font-weight:700;
+            margin-bottom:20px;
+            letter-spacing:-1px;
+        }
+
+        p{
+            color:#a1a1aa;
+            font-size:1.1rem;
+            line-height:1.8;
+            margin-bottom:12px;
+        }
+
+        .loader{
+            margin:40px auto 0;
+            width:240px;
+            height:4px;
+            background:#27272a;
+            border-radius:50px;
+            overflow:hidden;
+        }
+
+        .loader span{
+            display:block;
+            width:35%;
+            height:100%;
+            background:linear-gradient(90deg,#3b82f6,#60a5fa);
+            border-radius:50px;
+            animation:loading 1.8s ease-in-out infinite;
+        }
+
+        @keyframes loading{
+            from{
+                transform:translateX(-100%);
+            }
+            to{
+                transform:translateX(380%);
+            }
+        }
+
+        @media(max-width:600px){
+            .card{
+                padding:40px 25px;
+            }
+
+            h1{
+                font-size:2.2rem;
+            }
+
+            p{
+                font-size:1rem;
+            }
+
+            .loader{
+                width:180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Site en construction</h1>
+
+        <p>
+            Je travaille actuellement sur mon nouveau site.
+        </p>
+
+        <p>
+            Revenez prochainement pour découvrir quelque chose de nouveau et de performant.
+        </p>
+
+        <div class="loader">
+            <span></span>
+        </div>
+    </div>
+
+</body>
+</html>
